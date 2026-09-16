@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منظمة تاماينوت – فرع تمنار احاحان</title>
+<meta name="description" content="الموقع الرسمي لفرع منظمة تاماينوت بتمنار احاحان: من نحن، أهدافنا، أنشطة الفرع، سلسلة وجوه، والأخبار.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="منظمة تاماينوت – فرع تمنار احاحان">
+<meta property="og:description" content="حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم">
+<meta property="og:url" content="https://tamaynut-ihahan.github.io/">
+<meta property="og:image" content="https://tamaynut-ihahan.github.io/hero.jpg">
+<meta name="theme-color" content="#0059C3">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&display=swap">
+<style>
+:root{
+  --blue:#0059C3; --blue-deep:#00408F; --ink:#0A1A3A; --gold:#C9A24A;
+  --bg:#F4F6FA; --surface:#FFFFFF; --text:#18212F; --muted:#5B6576; --line:#DDE3EC; --link:#0059C3;
+  --f-tz:"Noto Sans Tifinagh","Ebrima","Segoe UI Historic",sans-serif;
+  --f-head:"Noto Kufi Arabic","Noto Sans Tifinagh","Segoe UI",Tahoma,sans-serif;
+  --f-body:"Noto Naskh Arabic","Noto Sans Tifinagh","Traditional Arabic","Times New Roman",serif;
+  --wrap:1140px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0B1322;--surface:#111B2D;--text:#E6EBF3;--muted:#9DA9BB;--line:#24324A;--link:#8DB8FF}
+}
+:root[data-theme="dark"]{--bg:#0B1322;--surface:#111B2D;--text:#E6EBF3;--muted:#9DA9BB;--line:#24324A;--link:#8DB8FF}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:1.125rem;line-height:1.9;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--link)}
+h1,h2,h3,h4{font-family:var(--f-head);line-height:1.45;margin:0}
+p{margin:0 0 1em}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+.tz{font-family:var(--f-tz);direction:ltr;unicode-bidi:isolate}
+.skip{position:absolute;right:-999px;top:0;background:var(--gold);color:var(--ink);padding:.5rem 1rem;z-index:100}
+.skip:focus{right:1rem}
+
+/* bilingual heading: Tifinagh large, Arabic small beneath, gold rule */
+.bh{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;margin-bottom:2rem}
+.bh .tz{font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.25;color:var(--blue);font-weight:400}
+.bh .ar{font-family:var(--f-head);font-size:1.02rem;font-weight:700;color:var(--muted)}
+.bh::after{content:"";width:56px;height:3px;background:var(--gold);margin-top:.7rem}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bh .tz{color:#8DB8FF}}
+:root[data-theme="dark"] .bh .tz{color:#8DB8FF}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--f-head);font-weight:700;font-size:1rem;line-height:1.3;padding:.85rem 1.5rem;border-radius:4px;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:#D8B45E}
+.btn-ghost{border-color:rgba(255,255,255,.75);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-line{border-color:var(--blue);color:var(--link)}
+.btn-line:hover{background:var(--blue);color:#fff}
+.btn-row{display:flex;flex-wrap:wrap;gap:.8rem}
+.more{font-family:var(--f-head);font-weight:700;font-size:.98rem;text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:2px}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:70px}
+.brand img{height:46px;width:auto}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand img{background:#fff;border-radius:6px;padding:3px 6px}}
+:root[data-theme="dark"] .brand img{background:#fff;border-radius:6px;padding:3px 6px}
+.menu-btn{display:none;align-items:center;gap:.55rem;background:none;border:1px solid var(--line);border-radius:4px;padding:.5rem .85rem;font-family:var(--f-head);font-size:.95rem;color:var(--text);cursor:pointer}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;position:relative}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;inset-inline:0;height:2px;background:currentColor}
+.menu-btn i::before{top:-6px}.menu-btn i::after{top:6px}
+.main-nav ul{display:flex;gap:.1rem}
+.main-nav a{display:flex;flex-direction:column;align-items:center;padding:.35rem .6rem;text-decoration:none;color:var(--text);line-height:1.5}
+.main-nav .tz{font-size:1rem}
+.main-nav .ar{font-family:var(--f-head);font-size:.74rem;color:var(--muted)}
+.main-nav a:hover .tz,.main-nav a[aria-current="page"] .tz{color:var(--link)}
+.main-nav a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--gold)}
+@media (max-width:1080px){
+  .menu-btn{display:inline-flex}
+  .main-nav{display:none;position:absolute;top:70px;inset-inline:0;background:var(--surface);border-bottom:1px solid var(--line);max-height:calc(100vh - 70px);overflow:auto}
+  .main-nav.open{display:block}
+  .main-nav ul{flex-direction:column;gap:0}
+  .main-nav a{flex-direction:row;justify-content:space-between;align-items:baseline;padding:.95rem clamp(1.1rem,4vw,2rem);border-top:1px solid var(--line)}
+  .main-nav .tz{font-size:1.35rem}
+  .main-nav .ar{font-size:.92rem}
+  .main-nav a[aria-current="page"]{box-shadow:inset -4px 0 0 var(--gold)}
+}
+
+/* pages */
+.page[hidden]{display:none}
+.band{padding-block:clamp(3rem,7vw,5.5rem)}
+.band + .band{border-top:1px solid var(--line)}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,720px);display:grid;align-items:end;color:#fff;background:var(--ink);overflow:hidden}
+.hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(.3) contrast(1.05)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(10,26,58,.97) 0%,rgba(10,26,58,.8) 42%,rgba(0,64,143,.45) 75%,rgba(0,89,195,.3) 100%)}
+@media (min-width:821px){.hero::before{background:linear-gradient(270deg,rgba(10,26,58,.94) 0%,rgba(10,26,58,.78) 42%,rgba(0,64,143,.25) 78%,rgba(0,89,195,.15) 100%),linear-gradient(0deg,rgba(10,26,58,.85) 0%,rgba(10,26,58,0) 45%)}}
+.hero-inner{position:relative;z-index:2;padding-block:6rem 3.5rem;width:100%}
+.hero-name{display:block;font-size:clamp(2.7rem,8vw,5.6rem);line-height:1.08;text-align:right}
+.hero-branch{display:block;font-size:clamp(1.15rem,3vw,1.9rem);color:#DDE8F8;margin-top:.5rem;text-align:right}
+.hero .rule{width:76px;height:4px;background:var(--gold);margin:1.6rem 0 1.3rem}
+.hero h1{font-size:clamp(1.25rem,2.8vw,1.85rem);font-weight:800}
+.hero .slogan{max-width:42ch;color:#D3DDEB;font-size:clamp(1.05rem,2vw,1.25rem);margin:.4rem 0 1.8rem}
+@media (prefers-reduced-motion:no-preference){
+  .hero-name{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-branch{animation:rise .9s .12s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+}
+
+/* home: intro */
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.lead-text{font-size:1.2rem;max-width:62ch}
+.axes li{padding:1.05rem 0;border-top:1px solid var(--line)}
+.axes li:first-child{border-top:3px solid var(--blue)}
+.axes h3{font-size:1.08rem;margin-bottom:.2rem}
+.axes p{margin:0;color:var(--muted);font-size:1.02rem;line-height:1.8}
+@media (max-width:820px){.intro{grid-template-columns:1fr}}
+
+/* activity cards (home) */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+.card{text-decoration:none;color:inherit;display:block}
+.card .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--line)}
+.card .thumb img{width:100%;height:100%;object-fit:cover;object-position:72% center;transition:transform .5s}
+.card:hover .thumb img{transform:scale(1.03)}
+.date{font-family:var(--f-head);font-size:.86rem;color:var(--muted);display:block;margin:.9rem 0 .25rem}
+.card h3{font-size:clamp(1.08rem,2vw,1.28rem)}
+.card:hover h3{color:var(--link)}
+.section-foot{margin-top:2.2rem}
+@media (max-width:720px){.cards{grid-template-columns:1fr}}
+
+/* faces band */
+.faces-band{background:var(--ink);color:#E6ECF5}
+.faces-band .bh .tz{color:#fff}
+.faces-band .bh .ar{color:#AEBBD0}
+.faces-grid{display:grid;grid-template-columns:1fr minmax(240px,380px);gap:clamp(2rem,6vw,5rem);align-items:center}
+.faces-band p{color:#C6D1E2;max-width:48ch}
+.face-name{font-size:clamp(1.5rem,3.4vw,2.2rem);display:block;margin:1.2rem 0 1.6rem;color:#fff;text-align:right}
+.faces-band .btn-line{border-color:var(--gold);color:#fff}
+.faces-band .btn-line:hover{background:var(--gold);color:var(--ink)}
+.zoom{cursor:zoom-in}
+.face-card img{box-shadow:0 24px 60px rgba(0,0,0,.45)}
+@media (max-width:760px){.faces-grid{grid-template-columns:1fr}.face-card{max-width:300px}}
+
+/* news list */
+.news-list li{display:grid;grid-template-columns:92px 1fr;gap:1.1rem;padding:1.1rem 0;border-top:1px solid var(--line);align-items:start}
+.news-list li:last-child{border-bottom:1px solid var(--line)}
+.news-list .nthumb{aspect-ratio:3/4;overflow:hidden;background:var(--line)}
+.news-list .nthumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.news-list a{text-decoration:none;color:inherit}
+.news-list a:hover h3{color:var(--link)}
+.news-list .date{margin-top:0}
+.news-list h3{font-size:1.1rem}
+
+/* join band */
+.join-band{background:var(--blue);color:#fff}
+.join-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.join-band .bh .tz{color:#fff}.join-band .bh .ar{color:#D6E4FA}
+.join-band p{color:#E3ECFA;max-width:52ch;margin:0}
+@media (max-width:760px){.join-grid{grid-template-columns:1fr}}
+
+/* inner page head */
+.page-head{background:var(--blue);color:#fff;padding-block:clamp(2.6rem,6vw,4.2rem) clamp(2.2rem,5vw,3.4rem)}
+.page-head .bh{margin:0}
+.page-head .bh .tz{color:#fff;font-size:clamp(2.4rem,7.5vw,4.6rem)}
+.page-head .bh .ar{color:#D6E4FA;font-size:1.15rem}
+
+/* prose */
+.prose{max-width:66ch}
+.prose h2{font-size:1.3rem;margin:2.2rem 0 .6rem}
+.prose h2:first-child{margin-top:0}
+.two-col{display:grid;grid-template-columns:1fr 300px;gap:clamp(2rem,6vw,5rem);align-items:start}
+.infobox{background:var(--surface);border-top:3px solid var(--gold);padding:1.4rem 1.5rem}
+.infobox h3{font-size:1rem;margin-bottom:.5rem}
+.infobox p{font-size:1rem;line-height:1.8;margin-bottom:1rem;color:var(--muted)}
+.infobox p:last-child{margin-bottom:0}
+.infobox a{word-break:break-all}
+@media (max-width:860px){.two-col{grid-template-columns:1fr}}
+
+/* goals */
+.axis{padding-block:2.4rem;border-top:1px solid var(--line)}
+.axis:first-child{border-top:0;padding-top:0}
+.axis h2{font-size:clamp(1.25rem,2.6vw,1.6rem);margin-bottom:1.2rem}
+.goal-list{columns:2;column-gap:3rem}
+.goal-list li{break-inside:avoid;position:relative;padding-inline-start:1.2rem;margin-bottom:.9rem;line-height:1.85}
+.goal-list li::before{content:"";position:absolute;right:0;top:.8em;width:7px;height:7px;background:var(--gold)}
+@media (max-width:820px){.goal-list{columns:1}}
+.principles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 2rem}
+.principles li{font-family:var(--f-head);font-weight:700;font-size:1.02rem;padding:.9rem 0;border-top:1px solid var(--line)}
+
+/* activities */
+.activity{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.8rem,5vw,4rem);padding-block:clamp(2.5rem,6vw,4rem);border-top:1px solid var(--line);scroll-margin-top:80px}
+.activity:first-child{border-top:0}
+.activity h2{font-size:clamp(1.3rem,3vw,1.75rem);margin-bottom:1.2rem}
+.activity .date{margin-top:0}
+.lead-media img{width:100%}
+.lead-media.landscape img{aspect-ratio:4/3;object-fit:cover;object-position:center}
+.gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.gallery button{padding:0;border:0;background:var(--line);aspect-ratio:4/3;overflow:hidden;cursor:zoom-in}
+.gallery img{width:100%;height:100%;object-fit:cover;object-position:center}
+@media (max-width:820px){.activity{grid-template-columns:1fr}.lead-media.portrait{max-width:320px}}
+
+
+/* language tabs for long texts */
+.bi .tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:1.1rem;background:var(--surface)}
+.bi .tabs button{font-family:var(--f-head);font-size:.9rem;padding:.3rem 1.05rem;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer;line-height:1.6}
+.bi .tabs button.t-tz{font-family:var(--f-tz);font-size:1rem}
+.bi .tabs button[aria-selected="true"]{background:var(--blue);color:#fff}
+.bi[data-show="ar"] .pane-tz,.bi[data-show="tz"] .pane-ar{display:none}
+.pane-tz{font-family:var(--f-tz);direction:ltr;text-align:left;line-height:2;font-size:1.08rem}
+
+/* faces page */
+.faces-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2rem}
+.faces-list figure{margin:0}
+.faces-list button{padding:0;border:0;background:none;cursor:zoom-in;width:100%}
+.faces-list figcaption{font-size:1.25rem;margin-top:.7rem;text-align:right}
+
+/* news page */
+.news-item{display:grid;grid-template-columns:260px 1fr;gap:clamp(1.5rem,4vw,3rem);padding-block:clamp(2.2rem,5vw,3.2rem);border-top:1px solid var(--line);scroll-margin-top:80px;align-items:start}
+.news-item:first-child{border-top:0}
+.news-item h2{font-size:clamp(1.2rem,2.6vw,1.5rem);margin-bottom:1rem}
+.news-item .date{margin-top:0}
+.news-item > button{padding:0;border:0;background:none;cursor:zoom-in}
+@media (max-width:760px){.news-item{grid-template-columns:1fr}.news-item > button{max-width:300px}}
+
+/* join page */
+.conditions li{position:relative;padding-inline-start:1.3rem;padding-block:.75rem;border-top:1px solid var(--line)}
+.conditions li::before{content:"";position:absolute;right:0;top:1.55em;width:7px;height:7px;background:var(--gold)}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}
+dialog.lb::backdrop{background:rgba(5,12,28,.92)}
+dialog.lb img{max-width:94vw;max-height:88vh;width:auto;height:auto;margin:auto}
+dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--ink);border:0;border-radius:4px;font-family:var(--f-head);font-size:.95rem;padding:.5rem 1rem;cursor:pointer}
+
+/* footer */
+.site-footer{background:var(--ink);color:#B9C5D8;padding-block:3.2rem 1.6rem;font-size:1rem}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem}
+.foot-logo{background:#fff;display:inline-block;padding:.6rem .9rem;border-radius:6px}
+.foot-logo img{height:64px;width:auto}
+.site-footer h2{font-size:.95rem;color:#fff;margin-bottom:.8rem}
+.site-footer a{color:#DDE6F3;text-decoration:none}
+.site-footer a:hover{text-decoration:underline}
+.site-footer li{margin-bottom:.35rem}
+.foot-slogan{margin-top:1rem;line-height:1.8;max-width:34ch}
+.copy{border-top:1px solid #22335A;margin-top:2.4rem;padding-top:1.2rem;font-size:.9rem;color:#8C9AB2}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">انتقل إلى المحتوى</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#home" aria-label="منظمة تاماينوت – فرع تمنار احاحان، الرئيسية"><img src="logo.png" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" width="815" height="367"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="main-nav"><i aria-hidden="true"></i>القائمة</button>
+    <nav class="main-nav" id="main-nav" aria-label="القائمة الرئيسية">
+      <ul>
+        <li><a href="#home"><span class="tz" lang="zgh">ⴰⵙⵏⵓⴱⴱⴳ</span><span class="ar">الرئيسية</span></a></li>
+        <li><a href="#about"><span class="tz" lang="zgh">ⵎⴰⴷ ⵏⴳⴰ?</span><span class="ar">من نحن</span></a></li>
+        <li><a href="#goals"><span class="tz" lang="zgh">ⵉⵡⵜⵜⴰⵙⵏ ⵏⵏⵖ</span><span class="ar">أهدافنا</span></a></li>
+        <li><a href="#activities"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">أنشطة</span></a></li>
+        <li><a href="#faces"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></a></li>
+        <li><a href="#news"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></a></li>
+        <li><a href="#join"><span class="tz" lang="zgh">ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ</span><span class="ar">انخراط وتواصل</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="content">
+
+<!-- ===================== HOME ===================== -->
+<section class="page" id="home" data-title="الرئيسية">
+  <div class="hero">
+    <img src="hero.jpg" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" width="1080" height="484">
+    <div class="wrap hero-inner">
+      <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
+      <span class="tz hero-branch" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span>
+      <div class="rule" aria-hidden="true"></div>
+      <h1>منظمة تاماينوت – فرع تمنار احاحان</h1>
+      <p class="slogan">حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="#join">انخرط معنا</a>
+        <a class="btn btn-ghost" href="#about">تعرّف على الفرع</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap intro">
+      <div>
+        <h2 class="bh"><span class="tz" lang="zgh">ⵎⴰⴷ ⵏⴳⴰ?</span><span class="ar">من نحن</span></h2>
+        <p class="lead-text">فرع تمنار احاحان أحد فروع منظمة تاماينوت، المنظمة الفدرالية الأمازيغية الديمقراطية غير الحكومية التي تأسست سنة 1978. يعمل الفرع على ترجمة أهداف المنظمة إلى أنشطة ثقافية وتربوية وتنموية ملموسة، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
+        <a class="more" href="#about">اقرأ المزيد</a>
+      </div>
+      <div>
+        <ul class="axes">
+          <li><h3>الحقوق والهوية</h3><p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p></li>
+          <li><h3>الثقافة والتربية</h3><p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p></li>
+          <li><h3>التنمية المحلية</h3><p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p></li>
+        </ul>
+        <div class="section-foot"><a class="more" href="#goals">أهدافنا ومبادئنا كاملة</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2 class="bh"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">آخر الأنشطة</span></h2>
+      <div class="cards">
+        <a class="card" href="#act-2026-05-31">
+          <div class="thumb"><img src="a2026-group.jpg" alt="المشاركون يحملون نسخا من كتاب مساري" loading="lazy" width="1080" height="483"></div>
+          <span class="date">الأحد 31 ماي 2026</span>
+          <h3>ورشة في الإملائية الأمازيغية، وتقديم وتوقيع كتاب «مساري»</h3>
+        </a>
+        <a class="card" href="#act-2025-06-08">
+          <div class="thumb"><img src="a2025-talk.jpg" alt="الأديب محمد اكوناض خلال اللقاء المفتوح" loading="lazy" width="1080" height="486"></div>
+          <span class="date">الأحد 8 يونيو 2025</span>
+          <h3>لقاء مفتوح حول الأدب الأمازيغي مع الأديب محمد اكوناض</h3>
+        </a>
+      </div>
+      <div class="section-foot"><a class="more" href="#activities">كل الأنشطة</a></div>
+    </div>
+  </div>
+
+  <div class="band faces-band">
+    <div class="wrap faces-grid">
+      <div>
+        <h2 class="bh"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></h2>
+        <p>سلسلة بطاقات بتيفيناغ تعرّف بأعلام الأدب والحركة الأمازيغية.</p>
+        <span class="tz face-name" lang="zgh">ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ</span>
+        <a class="btn btn-line" href="#faces">كل الوجوه</a>
+      </div>
+      <button class="face-card zoom" data-zoom="udm-akounad.jpg" style="padding:0;border:0;background:none" aria-label="تكبير بطاقة الأستاذ محمد اكوناض">
+        <img src="udm-akounad.jpg" alt="بطاقة وجوه: الأستاذ محمد اكوناض" loading="lazy" width="991" height="1350">
+      </button>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2 class="bh"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></h2>
+      <ul class="news-list">
+        <li><a class="nthumb" href="#news-2026-award"><img src="n2026-award.jpg" alt="" loading="lazy"></a>
+          <a href="#news-2026-award"><span class="date">ماي 2026</span><h3>تهنئة للكاتب محمد اخصاصي بفوزه بالمرتبة الأولى في المباراة الوطنية للمبدعين الشباب</h3></a></li>
+        <li><a class="nthumb" href="#news-2025-albacha"><img src="n2025-albacha.jpg" alt="" loading="lazy"></a>
+          <a href="#news-2025-albacha"><span class="date">17 يوليوز 2025</span><h3>تعزية في وفاة الفنان صالح الباشا</h3></a></li>
+        <li><a class="nthumb" href="#news-2025-karrah"><img src="n2025-karrah.jpg" alt="" loading="lazy"></a>
+          <a href="#news-2025-karrah"><span class="date">3 يوليوز 2025</span><h3>تعزية في وفاة والد الأستاذ عبد الصمد الكارح، رئيس الفرع</h3></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="band join-band">
+    <div class="wrap join-grid">
+      <div>
+        <h2 class="bh"><span class="tz" lang="zgh">ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ</span><span class="ar">انخراط وتواصل</span></h2>
+        <p>الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في الفرع والمساهمة في أنشطته.</p>
+      </div>
+      <a class="btn btn-gold" href="#join">شروط الانخراط</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="page" id="about" data-title="من نحن" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⵎⴰⴷ ⵏⴳⴰ?</span><span class="ar">من نحن</span></h1>
+  </div></div>
+  <div class="band"><div class="wrap two-col">
+    <div class="prose">
+      <h2>تأسيس المنظمة</h2>
+      <p>تأسست منظمة تاماينوت بتاريخ 16 أكتوبر 1978، وهي منظمة فدرالية أمازيغية ديمقراطية غير حكومية، يوجد مقرها الفدرالي بمدينة إنزكان، ولها فروع منتشرة عبر مختلف مدن وقرى المغرب.</p>
+      <h2>فرعنا</h2>
+      <p>فرع تمنار احاحان هو أحد فروع المنظمة، ويقع مقره بمدينة تمنار، إقليم الصويرة. يعمل الفرع، ضمن الإطار الفدرالي للمنظمة، على ترجمة أهدافها إلى أنشطة ثقافية وتربوية وتنموية ملموسة على المستوى المحلي، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
+      <h2>ما ننشغل به</h2>
+      <p>ينشط الفرع في ثلاثة محاور رئيسية: الدفاع عن الحقوق والهوية الأمازيغية، ودعم الكتابة والإبداع والتربية باللغة الأمازيغية، والمساهمة في التنمية المحلية بشراكة مع الساكنة والفاعلين المدنيين.</p>
+      <p><a class="more" href="#goals">اقرأ أهدافنا ومبادئنا</a></p>
+      <h2>انضم إلينا</h2>
+      <p>الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في صفوف الفرع والمساهمة في أنشطته.</p>
+      <a class="btn btn-line" href="#join">شروط الانخراط</a>
+    </div>
+    <aside class="infobox">
+      <h3>المنظمة</h3>
+      <p>تأسست في 16 أكتوبر 1978<br>المقر الفدرالي: إنزكان</p>
+      <h3>مقر الفرع</h3>
+      <p>شارع المقاومة، تمنار<br>إقليم الصويرة</p>
+      <h3>البريد الإلكتروني</h3>
+      <p><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></p>
+    </aside>
+  </div></div>
+</section>
+
+<!-- ===================== GOALS ===================== -->
+<section class="page" id="goals" data-title="أهدافنا" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⵉⵡⵜⵜⴰⵙⵏ ⵏⵏⵖ</span><span class="ar">أهدافنا ومبادئنا</span></h1>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <p class="prose" style="margin-bottom:2.6rem">تعمل المنظمة، وفق قانونها الأساسي، على تحقيق أهدافها في ثلاثة مستويات.</p>
+    <div class="axis">
+      <h2>على المستوى الحقوقي والهوياتي</h2>
+      <ul class="goal-list">
+        <li>الدفاع عن حقوق الإنسان وحقوق الشعوب طبقا للإعلانات والمواثيق الدولية.</li>
+        <li>العمل على إقرار دستور ديمقراطي شكلا ومضمونا.</li>
+        <li>تدعيم الهوية الثقافية المغربية وإغناؤها بإعادة الاعتبار للبعد الثقافي الأمازيغي في جميع مجالات الحياة، وإدماجه في الحياة العامة.</li>
+        <li>المساهمة في محاربة جميع أشكال التمييز بسبب الجنس أو اللون أو الدين أو اللغة أو الرأي أو غير ذلك.</li>
+        <li>المساهمة في محاربة كل أشكال التمييز ضد المرأة في جميع المجالات.</li>
+        <li>توسيع المشاركة في الحياة الثقافية بدون تمييز.</li>
+        <li>توسيع المشاركة في الحياة السياسية بدون تمييز، والنضال من أجل احترام الحقوق المدنية والسياسية والاقتصادية والاجتماعية.</li>
+        <li>النضال من أجل إدماج اللغة الأمازيغية في مختلف دواليب الدولة المغربية، بشكل يحفظ للإنسان المغربي هويته وكرامته على أرضه.</li>
+        <li>النضال من أجل ملاءمة القوانين المغربية مع المواثيق الدولية، مع إدماج القوانين العرفية الأمازيغية (ءيزرفان) في التشريع المغربي.</li>
+        <li>الترافع من أجل الحريات الفردية وحرية المعتقد.</li>
+      </ul>
+    </div>
+    <div class="axis">
+      <h2>على المستوى الثقافي والتربوي</h2>
+      <ul class="goal-list">
+        <li>الكتابة بالأمازيغية والإبداع بها أولوية للحفاظ عليها وتطويرها، مع تنظيم أوراش الإبداع للأطفال والشباب في إطار المساواة بين الجنسين.</li>
+        <li>خلق جو ثقافي يدعم الثقافة الأمازيغية ويطورها، ويشجع مختلف أشكال الإبداع باللغة الأمازيغية.</li>
+        <li>إصدار مجلات وجرائد ودوريات ورقية أو رقمية أو حائطية، وإنشاء خزانات.</li>
+        <li>تنشيط وتأطير وتنظيم المخيمات والتداريب الوطنية والدولية.</li>
+        <li>إنجاز رحلات ثقافية وأوراش ودورات تكوينية.</li>
+        <li>التعاون مع الجمعيات الثقافية ذات الاهتمامات المشتركة أو المتقاربة، وطنيا ودوليا.</li>
+        <li>تطوير لغة وثقافة الطفولة المغربية في إطار احترام هويتها اللغوية والثقافية.</li>
+        <li>الاهتمام بالجانب التربوي، بما في ذلك التربية على حقوق الإنسان والمواطنة.</li>
+        <li>المساهمة في تقعيد اللغة الأمازيغية ومعيرتها بالبحث والتدريس.</li>
+        <li>تنظيم وتأطير الأنشطة الرياضية بمختلف أشكالها، وخصوصا للشباب والأطفال.</li>
+        <li>تعزيز حضور اللغة والثقافة الأمازيغيتين في وسائل التواصل الإلكتروني والتحول الرقمي.</li>
+        <li>الترافع من أجل جعل الثقافة والفنون الأمازيغية قاطرة للتنمية وتحديث المجتمع.</li>
+      </ul>
+    </div>
+    <div class="axis">
+      <h2>على المستوى التنموي</h2>
+      <ul class="goal-list">
+        <li>إنجاز مشاريع تنموية بشراكة مباشرة مع السكان وتنظيمات المجتمع المدني وجميع المتدخلين في مجال التنمية.</li>
+        <li>الدفاع والترافع من أجل حماية المجال البيئي والتنوع البيولوجي وشجرة أركان، مع احترام حقوق وممتلكات السكان الأصليين المحمية عرفيا.</li>
+        <li>العمل على التمكين الاقتصادي والاجتماعي للنساء والشباب.</li>
+      </ul>
+    </div>
+    <div class="axis">
+      <h2>مبادئنا</h2>
+      <ul class="principles">
+        <li>المساواة</li><li>العقلانية</li><li>الحداثة</li>
+        <li>العلمانية</li><li>النسبية في تناول جميع القضايا</li><li>التقدمية</li>
+        <li>الديمقراطية والفدرالية في العلاقات بين الأعضاء والهياكل</li>
+        <li>الاستقلالية عن السلطة والأحزاب</li><li>الجماهيرية</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<!-- ===================== ACTIVITIES ===================== -->
+<section class="page" id="activities" data-title="أنشطة" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">أنشطة</span></h1>
+  </div></div>
+  <div class="wrap">
+
+    <article class="activity" id="act-2026-05-31">
+      <div>
+        <span class="date">الأحد 31 ماي 2026 – مقر الفرع بتمنار</span>
+        <h2>ورشة في الإملائية الأمازيغية، وتقديم وتوقيع كتاب «مساري»</h2>
+        <div class="bi" data-show="ar">
+          <div class="tabs" role="tablist" aria-label="لغة النص">
+            <button role="tab" data-l="ar" aria-selected="true">العربية</button>
+            <button role="tab" class="t-tz" data-l="tz" aria-selected="false" lang="zgh">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+          </div>
+          <div class="pane-ar">
+            <p>في إطار سعينا المستمر لتدعيم الهوية الثقافية المغربية وإغنائها، وتماشيا مع أهدافنا الاستراتيجية التي تجعل من الكتابة بالأمازيغية والإبداع بها أولوية للحفاظ عليها وتطويرها، نظمت منظمة تاماينوت فرع تمنار احاحان، يوم 31 ماي 2026، نشاطا ثقافيا بمقر الفرع بتمنار.</p>
+            <p>تضمن النشاط ورشة تكوينية في الإملائية الأمازيغية أطرها الأستاذ حسن بوتسعيد، إضافة إلى تقديم وتوقيع كتاب «مساري» للكاتب عمر إيجيني، بتأطير من الأستاذ محمد اكوناض.</p>
+          </div>
+          <div class="pane-tz" lang="zgh">
+            <p>ⴳ ⵓⵙⴰⵜⵉ ⵏⵏⵖ ⴰⵙⵓⵍⴰⵏ ⵍⵍⵉ ⵉⵡⴰⵜⵜⵙⵏ ⴰⴷ ⵉⵙⴷⵓⵙ ⵜⴰⵎⴰⴳⵉⵜ ⵜⴰⴷⵍⵙⴰⵏⵜ ⵜⴰⵎⵖⵔⵉⴱⵉⵜ, ⴷ ⵃⵎⴰ ⴰⴷ ⵏⵣⵣⵓⴳⵣ ⵉⵡⵜⵜⴰⵙⵏ ⵏⵏⵖ ⵉⵙⵜⵔⴰⵜⵊⵢⵢⵉⵏ, ⴷⴰ ⵉⵣⴷⵉⵏ ⴷ ⵜⵉⵔⵔⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⵙ ⵜⵓⵜⵍⴰⵢⵜ ⵜⴰⵎⴰⵣⵉⵖⵜ, ⵏⵙⵏⵎⴰⵍⴰ ⵢⴰⵜ ⵜⵉⵍⴰⵍⵜ ⵜⴰⴷⵍⵙⴰⵏⵜ ⴳ ⵓⵙⵖⵉⵎ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⴳ ⵜⵎⴰⵏⴰⵔ ⴰⵙⵙ ⵏ ⵓⵙⴰⵎⴰⵙ 31 ⵎⴰⵢⵢⵓ 2026.</p>
+            <p>ⵜⵉⵍⴰⵍⴰⵜ ⵍⵍⵉ ⵉⴱⴹⴰⵏ ⵅⴼ ⵙⵉⵏ ⵉⴳⵯⵣⵎⴰⵏ, ⴰⵎⵣⵡⴰⵔⵓ ⵉⵜⵜⵢⴰⵡⵥⵍⴰⵢ ⵉ ⵜⵙⴰⵡⵔⵜ ⵅⴼ ⵓⵙⵏⵎⴰⵔⵔⴰ ⵏ ⵜⵎⴰⵣⵉⵖⵜ, ⵉⴱⵉⴷⴷ ⴼⵍⵍⴰⵙ ⵓⵙⵍⵎⴰⴷ ⵎⴰⵙⵙ ⵃⴰⵙⴰⵏ ⴱⵓⵜⵙⵄⵉⴷ, ⵡⵉⵙ ⵙⵉⵏ ⵉⵙⵙⵏⴽⴷ ⴳⵉⵙ ⵓⵎⵖⴰⵔ ⵏ ⵜⵙⴽⵍⴰ ⵜⴰⵎⴰⵣⵉⵖⵜ ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ ⴰⴷⵍⵉⵙ ⵏ ⵓⵎⴰⵔⴰ ⵎⴰⵙⵙ ⵄⵓⵎⴰⵕ ⵉⵊⵉⵏⵉ ⵍⵍⵉ ⵉⴳⴰⵏ ⵙ ⵓⵣⵡⵓⵍ (ⴰⴱⵔⵉⴷ ⵉⵏⵓ).</p>
+          </div>
+        </div>
+      </div>
+      <button class="lead-media portrait zoom" data-zoom="a2026-poster.jpg" style="padding:0;border:0;background:none" aria-label="تكبير ملصق النشاط">
+        <img src="a2026-poster.jpg" alt="ملصق النشاط: ورشة الإملائية الأمازيغية وتقديم كتاب مساري" loading="lazy" width="955" height="1350">
+      </button>
+      <div class="gallery">
+        <button class="zoom" data-zoom="a2026-group.jpg" aria-label="تكبير الصورة"><img src="a2026-group.jpg" alt="صورة جماعية للمشاركين مع كتاب مساري" loading="lazy"></button>
+        <button class="zoom" data-zoom="a2026-session.jpg" aria-label="تكبير الصورة"><img src="a2026-session.jpg" alt="جانب من الحضور خلال النشاط" loading="lazy"></button>
+        <button class="zoom" data-zoom="a2026-board.jpg" aria-label="تكبير الصورة"><img src="a2026-board.jpg" alt="الأستاذ حسن بوتسعيد يؤطر ورشة الإملائية" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="activity" id="act-2025-06-08">
+      <div>
+        <span class="date">الأحد 8 يونيو 2025</span>
+        <h2>لقاء مفتوح حول الأدب الأمازيغي مع الأديب محمد اكوناض</h2>
+        <div class="bi" data-show="ar">
+          <div class="tabs" role="tablist" aria-label="لغة النص">
+            <button role="tab" data-l="ar" aria-selected="true">العربية</button>
+            <button role="tab" class="t-tz" data-l="tz" aria-selected="false" lang="zgh">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+          </div>
+          <div class="pane-ar">
+            <p>في إطار تعزيز الدينامية الثقافية داخل فرع منظمة تاماينوت تمنار احاحان، نظم الفرع، يوم الأحد 8 يونيو 2025، الجلسة الافتتاحية لأنشطته لهذا العام، حيث استضاف الأديب والروائي محمد اكوناض في لقاء مفتوح حول الأدب الأمازيغي.</p>
+          </div>
+          <div class="pane-tz" lang="zgh">
+            <p>ⵃⵎⴰ ⴰⴷ ⴰⵡⵙⵏ ⴳ ⵓⵙⵓⴷⵙ ⵏ ⵜⵡⵓⵔⵉ ⵜⴰⴷⵍⵙⴰⵏⵜ ⵖ ⵓⴳⵯⵏⵙ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵉⵙⵏⵎⴰⵍⴰ ⵡⴰⵢⵢⴰⵡ ⴰⵙⵙ ⴰⴷ ⵏ ⵓⵙⴰⵎⴰⵙ 8 ⵢⵓⵏⵢⵓ 2025, ⴰⴳⵔⴰⵡ ⵏ ⵓⵏⵏⵓⵕⵥⵎ ⵏ ⵜⵉⵍⴰⵍ ⵏⵏⵙ ⵏ ⵓⵙⴳⴳⵯⴰⵙ ⴰⴷ, ⵙ ⵓⵙⴱⴱⵔⴽ ⵏ ⵓⵎⴰⵔⴰ ⴰⵎⵏⴳⴰⵍ ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ ⵖ ⵢⴰⵏ ⵢⵉⴳⵉⵡⵔ ⵅⴼ ⵜⵙⴽⵍⴰ ⵜⴰⵎⴰⵣⵉⵖⵜ.</p>
+          </div>
+        </div>
+      </div>
+      <button class="lead-media landscape zoom" data-zoom="a2025-talk.jpg" style="padding:0;border:0;background:none" aria-label="تكبير الصورة">
+        <img src="a2025-talk.jpg" alt="الأديب محمد اكوناض خلال اللقاء المفتوح" loading="lazy" width="1080" height="486">
+      </button>
+      <div class="gallery">
+        <button class="zoom" data-zoom="hero.jpg" aria-label="تكبير الصورة"><img src="hero.jpg" alt="صورة جماعية لأعضاء الفرع مع الأديب محمد اكوناض" loading="lazy"></button>
+        <button class="zoom" data-zoom="a2025-audience.jpg" aria-label="تكبير الصورة"><img src="a2025-audience.jpg" alt="جانب من الحضور خلال اللقاء" loading="lazy"></button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== FACES ===================== -->
+<section class="page" id="faces" data-title="وجوه" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></h1>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <p class="prose" style="margin-bottom:2.4rem">سلسلة بطاقات بتيفيناغ تعرّف بأعلام الأدب والحركة الأمازيغية.</p>
+    <div class="faces-list">
+      <figure>
+        <button class="zoom" data-zoom="udm-akounad.jpg" aria-label="تكبير بطاقة الأستاذ محمد اكوناض"><img src="udm-akounad.jpg" alt="بطاقة وجوه: الأستاذ محمد اكوناض" loading="lazy" width="991" height="1350"></button>
+        <figcaption class="tz" lang="zgh">ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ</figcaption>
+      </figure>
+    </div>
+  </div></div>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section class="page" id="news" data-title="أخبار" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></h1>
+  </div></div>
+  <div class="wrap">
+
+    <article class="news-item" id="news-2026-award">
+      <button class="zoom" data-zoom="n2026-award.jpg" aria-label="تكبير الصورة"><img src="n2026-award.jpg" alt="الكاتب محمد اخصاصي يحمل درع التتويج في المعرض الدولي للنشر والكتاب بالرباط 2026" loading="lazy" width="1013" height="1350"></button>
+      <div>
+        <span class="date">ماي 2026</span>
+        <h2>تهنئة للكاتب محمد اخصاصي</h2>
+        <div class="bi" data-show="ar">
+          <div class="tabs" role="tablist" aria-label="لغة النص">
+            <button role="tab" data-l="ar" aria-selected="true">العربية</button>
+            <button role="tab" class="t-tz" data-l="tz" aria-selected="false" lang="zgh">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+          </div>
+          <div class="pane-ar">
+            <p>باسم منظمة تاماينوت، فرع تمنار احاحان، نتقدم بالتهنئة للكاتب ابن الفرع، الأستاذ محمد اخصاصي، على فوزه بالمرتبة الأولى في المباراة الوطنية للمبدعين الشباب، في مجال الرواية الأمازيغية، التي أقيمت في المعرض الدولي للنشر والكتاب بالرباط.</p>
+          </div>
+          <div class="pane-tz" lang="zgh">
+            <p>ⵙ ⵢⵉⵙⵎ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⴰⵔ ⵏⵙⵙⵉⵔⵖⵓⴷ ⵉ ⵓⵎⴰⵔⴰ ⵢⵓⵎⴰⵏ ⵏⵏ ⵡⴰⵢⵢⴰⵡ, ⵎⴰⵙⵙ ⵎⵓⵃⴰⵎⵎⴰⴷ ⴰⵅⵚⴰⵚⵉ ⵜⴰⴼⵙⵏⴰ ⵜⴰⵎⵣⵡⴰⵔⵓⵜ ⴳ ⵓⵎⵃⵉⵣⵡⴰⵔ ⴰⵏⴰⵎⵓⵔ ⵏ ⵉⵎⵙⵏⴼⵍⵓⵍⵏ ⵉⵄⵔⵔⵉⵎⵏ, ⴳ ⵢⵉⴳⵔ ⵏ ⵡⴰⵍⵍⴰⵙ ⴰⵎⴰⵣⵉⵖ, ⵍⵍⵉ ⵉⵜⵜⵓⵙⴽⴰⵔⵏ ⴳ ⵓⵙⴼⵙⵔ ⴰⴳⵔⴰⵖⵍⴰⵏ ⵏ ⵜⵥⵕⵉⴳⵜ ⴷ ⵓⴷⵍⵉⵙ ⴳ ⵕⵕⴱⴰⵟ.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-item" id="news-2025-albacha">
+      <button class="zoom" data-zoom="n2025-albacha.jpg" aria-label="تكبير نص التعزية"><img src="n2025-albacha.jpg" alt="نص التعزية الرسمي باللغتين الأمازيغية والعربية" loading="lazy" width="946" height="1350"></button>
+      <div>
+        <span class="date">17 يوليوز 2025</span>
+        <h2>تعزية في وفاة الفنان صالح الباشا</h2>
+        <p>ببالغ الحزن والأسى تلقينا، في منظمة تاماينوت فرع تمنار احاحان، نبأ وفاة الفنان الكبير صالح الباشا، أحد أعمدة ورواد فن تيرويسا الأمازيغية، الذي بصم الساحة الفنية الأمازيغية بعطائه الصادق، وصوته الأصيل، وكلماته التي لامست وجدان الأجيال.</p>
+        <p>لقد فقدت الأغنية الأمازيغية برحيله قامة فنية نادرة، شكلت جزءا لا يُمحى من الذاكرة الثقافية والفنية لبلادنا، وأسهمت في حفظ ونقل تراثنا الشفهي وهويتنا الثقافية بكل فخر واعتزاز.</p>
+        <p>وبهذا المصاب الجلل، نتقدم بخالص التعازي وصادق المواساة إلى أسرته الصغيرة، وإلى أسرته الفنية الكبيرة، وإلى جميع محبيه ومتابعيه في المغرب وخارجه. إنا لله وإنا إليه راجعون.</p>
+      </div>
+    </article>
+
+    <article class="news-item" id="news-2025-karrah">
+      <button class="zoom" data-zoom="n2025-karrah.jpg" aria-label="تكبير نص التعزية"><img src="n2025-karrah.jpg" alt="بطاقة التعزية باللغتين الأمازيغية والعربية" loading="lazy" width="1024" height="1024"></button>
+      <div>
+        <span class="date">3 يوليوز 2025</span>
+        <h2>تعزية في وفاة والد الأستاذ عبد الصمد الكارح، رئيس الفرع</h2>
+        <p>تلقى فرع منظمة تاماينوت بتمنار احاحان، ببالغ الحزن والأسى، نبأ وفاة والد الأستاذ عبد الصمد الكارح، رئيس الفرع.</p>
+        <p>وفي هذا الظرف الأليم، يتقدم أعضاء الفرع ومنخرطوه إلى الأستاذ عبد الصمد وعائلته الكريمة بأحر التعازي وأصدق المواساة. إنا لله وإنا إليه راجعون.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== JOIN ===================== -->
+<section class="page" id="join" data-title="انخراط وتواصل" hidden>
+  <div class="page-head"><div class="wrap">
+    <h1 class="bh"><span class="tz" lang="zgh">ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ</span><span class="ar">انخراط وتواصل</span></h1>
+  </div></div>
+  <div class="band"><div class="wrap two-col">
+    <div class="prose">
+      <h2>شروط الانخراط</h2>
+      <p>تُقبل العضوية في المنظمة على أساس الالتزام بقانونها الأساسي ومبادئها وإطارها المرجعي وقانونها الداخلي وقرارات هياكلها، ويشترط في المنخرط:</p>
+      <ul class="conditions">
+        <li>أن يكون بالغا 18 سنة.</li>
+        <li>أن يؤدي واجب الانخراط السنوي الذي يحدده مكتب الفرع كل سنة.</li>
+        <li>أن يقدم طلبه على المطبوع الموحد الذي تعده المنظمة، وأن يقبل مكتب الفرع انخراطه.</li>
+        <li>في حالة الانتقال من فرع آخر، أن يدلي بما يفيد تسوية وضعيته مع الفرع السابق.</li>
+      </ul>
+      <h2>كيف تنخرط؟</h2>
+      <p>راسلنا عبر البريد الإلكتروني باسمك ومدينتك ورقم هاتفك، وسيتواصل معك مكتب الفرع لإتمام الإجراءات.</p>
+      <a class="btn btn-line" href="mailto:tamaynut44200@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%A7%D9%86%D8%AE%D8%B1%D8%A7%D8%B7">راسلنا لطلب الانخراط</a>
+    </div>
+    <aside class="infobox">
+      <h3>البريد الإلكتروني</h3>
+      <p><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></p>
+      <h3>مقر الفرع</h3>
+      <p>شارع المقاومة، تمنار<br>إقليم الصويرة</p>
+    </aside>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="#home"><img src="logo.png" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" loading="lazy" width="815" height="367"></a>
+        <p class="foot-slogan">حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم</p>
+      </div>
+      <div>
+        <h2>الموقع</h2>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#goals">أهدافنا</a></li>
+          <li><a href="#activities">أنشطة</a></li>
+          <li><a href="#faces">وجوه</a></li>
+          <li><a href="#news">أخبار</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>تواصل</h2>
+        <ul>
+          <li><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></li>
+          <li>شارع المقاومة، تمنار – إقليم الصويرة</li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© <span id="year">2026</span> منظمة تاماينوت – فرع تمنار احاحان</p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="عرض الصورة">
+  <button class="close" type="button">إغلاق ✕</button>
+  <img alt="">
+</dialog>
+
+<script>
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('.page'));
+  var links=[].slice.call(document.querySelectorAll('.main-nav a'));
+  var nav=document.getElementById('main-nav');
+  var btn=document.querySelector('.menu-btn');
+  var base='منظمة تاماينوت – فرع تمنار احاحان';
+
+  function closeMenu(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+
+  function route(){
+    var id=decodeURIComponent(location.hash.slice(1))||'home';
+    var el=document.getElementById(id);
+    var page=el&&(el.classList.contains('page')?el:el.closest('.page'));
+    if(!page){page=document.getElementById('home');el=page;}
+    pages.forEach(function(p){p.hidden=(p!==page);});
+    links.forEach(function(a){
+      if(a.getAttribute('href')==='#'+page.id)a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    closeMenu();
+    document.title=page.id==='home'?base:page.dataset.title+' | '+base;
+    if(el===page){window.scrollTo(0,0);}
+    else{requestAnimationFrame(function(){el.scrollIntoView();});}
+  }
+  window.addEventListener('hashchange',route);
+  route();
+
+  /* language tabs: Arabic by default, choice remembered */
+  var blocks=[].slice.call(document.querySelectorAll('.bi'));
+  function setLang(l){
+    blocks.forEach(function(b){
+      b.dataset.show=l;
+      b.querySelectorAll('.tabs button').forEach(function(t){t.setAttribute('aria-selected',t.dataset.l===l?'true':'false');});
+    });
+    try{localStorage.setItem('tm-lang',l);}catch(e){}
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.bi .tabs button');
+    if(t)setLang(t.dataset.l);
+  });
+  try{var saved=localStorage.getItem('tm-lang');if(saved==='tz'||saved==='ar')setLang(saved);}catch(e){}
+
+  /* lightbox */
+  var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+  document.addEventListener('click',function(e){
+    var z=e.target.closest('.zoom');
+    if(!z)return;
+    var img=z.querySelector('img');
+    lbImg.src=z.dataset.zoom||img.src;
+    lbImg.alt=img?img.alt:'';
+    if(lb.showModal)lb.showModal();else window.open(lbImg.src);
+  });
+  lb.querySelector('.close').addEventListener('click',function(){lb.close();});
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target===lbImg)lb.close();});
+
+  var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
