@@ -238,6 +238,13 @@ dialog.lb::backdrop{background:rgba(5,12,28,.92)}
 dialog.lb img{max-width:94vw;max-height:88vh;width:auto;height:auto;margin:auto}
 dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--ink);border:0;border-radius:4px;font-family:var(--f-head);font-size:.95rem;padding:.5rem 1rem;cursor:pointer}
 
+/* faces intro (Arabic + Tifinagh) */
+.faces-intro{margin-bottom:.4rem}
+.faces-lead{font-family:var(--f-head);font-weight:700;font-size:1.15rem;line-height:1.7;margin-bottom:.35rem}
+.faces-lead-tz{font-size:1.08rem;line-height:1.8;text-align:right;color:var(--muted)}
+.faces-band .faces-lead{color:#fff}
+.faces-band .faces-lead-tz{color:#AEBBD0}
+
 /* footer */
 .site-footer{background:var(--ink);color:#B9C5D8;padding-block:3.2rem 1.6rem;font-size:1rem}
 .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem}
@@ -248,6 +255,11 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 .site-footer a:hover{text-decoration:underline}
 .site-footer li{margin-bottom:.35rem}
 .foot-slogan{margin-top:1rem;line-height:1.8;max-width:34ch}
+.site-footer .foot-fb{display:inline-flex;align-items:center;gap:.85rem;margin-top:1.2rem;padding:.75rem 1.1rem;border:1px solid #2E4470;border-radius:4px;color:#fff;text-decoration:none;line-height:1.45}
+.site-footer .foot-fb:hover{border-color:var(--gold);background:rgba(255,255,255,.05);text-decoration:none}
+.foot-fb svg{flex:none;width:22px;height:22px;color:var(--gold)}
+.foot-fb strong{display:block;font-family:var(--f-head);font-weight:700;font-size:.98rem}
+.foot-fb small{display:block;font-size:.86rem;color:#9AA8C0}
 .copy{border-top:1px solid #22335A;margin-top:2.4rem;padding-top:1.2rem;font-size:.9rem;color:#8C9AB2}
 @media (max-width:820px){.foot-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
@@ -335,7 +347,10 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
     <div class="wrap faces-grid">
       <div>
         <h2 class="bh"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></h2>
-        <p>سلسلة بطاقات بتيفيناغ تعرّف بأعلام الأدب والحركة الأمازيغية.</p>
+        <div class="faces-intro">
+          <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
+          <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
+        </div>
         <span class="tz face-name" lang="zgh">ⵚⴰⵍⵃ ⵍⴱⴰⵛⴰ</span>
         <a class="btn btn-line" href="#faces">كل الوجوه</a>
       </div>
@@ -543,7 +558,10 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
     <h1 class="bh"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></h1>
   </div></div>
   <div class="band"><div class="wrap">
-    <p class="prose" style="margin-bottom:2.4rem">سلسلة بطاقات بتيفيناغ تعرّف بأعلام الأدب والحركة الأمازيغية.</p>
+    <div class="faces-intro prose" style="margin-bottom:2.4rem">
+          <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
+          <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
+        </div>
     <div class="faces-list">
       <figure>
         <button class="zoom" data-zoom="udm-albacha.jpg" aria-label="تكبير بطاقة الفنان صالح الباشا"><img src="udm-albacha.jpg" alt="بطاقة وجوه: الفنان صالح الباشا" loading="lazy" width="962" height="1350"></button>
@@ -690,6 +708,10 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
           <li><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></li>
           <li>شارع المقاومة، تمنار – إقليم الصويرة</li>
         </ul>
+        <a class="foot-fb" href="https://www.facebook.com/profile.php?id=61573979400539" target="_blank" rel="noopener noreferrer" aria-label="صفحة الفرع على فيسبوك، تفتح في نافذة جديدة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+          <span><strong>صفحتنا على فيسبوك</strong><small>تابعوا أنشطة الفرع وأخباره أولا بأول</small></span>
+        </a>
       </div>
     </div>
     <p class="copy">© <span id="year">2026</span> منظمة تاماينوت – فرع تمنار احاحان</p>
