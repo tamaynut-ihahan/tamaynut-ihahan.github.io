@@ -14,9 +14,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh&family=Noto+Kufi+Arabic:wght@500;700;800&family=Noto+Naskh+Arabic:wght@400;600&display=swap">
 <style>
 :root{
   --blue:#0059C3; --blue-deep:#00408F; --ink:#0A1A3A; --gold:#C9A24A;
@@ -274,12 +272,12 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
     <button class="menu-btn" aria-expanded="false" aria-controls="main-nav"><i aria-hidden="true"></i>القائمة</button>
     <nav class="main-nav" id="main-nav" aria-label="القائمة الرئيسية">
       <ul>
-        <li><a href="#home"><span class="tz" lang="zgh">ⴰⵙⵏⵓⴱⴱⴳ</span><span class="ar">الرئيسية</span></a></li>
+        <li><a href="#home"><span class="tz" lang="zgh">ⴰⵙⵏⵓⴱⴳ</span><span class="ar">الرئيسية</span></a></li>
         <li><a href="#about"><span class="tz" lang="zgh">ⵎⴰⴷ ⵏⴳⴰ?</span><span class="ar">من نحن</span></a></li>
         <li><a href="#goals"><span class="tz" lang="zgh">ⵉⵡⵜⵜⴰⵙⵏ ⵏⵏⵖ</span><span class="ar">أهدافنا</span></a></li>
         <li><a href="#activities"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">أنشطة</span></a></li>
         <li><a href="#faces"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></a></li>
-        <li><a href="#newsletter"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ</span><span class="ar">النشرة</span></a></li>
+        <li><a href="#newsletter"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ ⴰⵢⵢⵓⵔⴰⵏ</span><span class="ar">النشرة الشهرية</span></a></li>
         <li><a href="#news"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></a></li>
         <li><a href="#join"><span class="tz" lang="zgh">ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ</span><span class="ar">انخراط وتواصل</span></a></li>
       </ul>
@@ -292,7 +290,7 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 <!-- ===================== HOME ===================== -->
 <section class="page" id="home" data-title="الرئيسية">
   <div class="hero">
-    <img src="hero.jpg" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" width="1080" height="484">
+    <img src="hero.jpg" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
     <div class="wrap hero-inner">
       <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
       <span class="tz hero-branch" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span>
@@ -363,9 +361,9 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
   <div class="band">
     <div class="wrap intro">
       <div>
-        <h2 class="bh"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ</span><span class="ar">النشرة</span></h2>
+        <h2 class="bh"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ ⴰⵢⵢⵓⵔⴰⵏ</span><span class="ar">النشرة الشهرية</span></h2>
         <p class="lead-text">ⴰⵖⵎⵉⵙ ⵏ ⵜⵎⴰⵢⵏⵓⵜ نشرة رقمية شهرية جديدة يصدرها الفرع، تتضمن كل عدد كلمة افتتاحية ومقالات وإبداعا وسلسلة وجوه وأدبا شفويا ومعجما أمازيغيا.</p>
-        <a class="more" href="#newsletter">تفاصيل النشرة</a>
+        <a class="more" href="#newsletter">تفاصيل النشرة الشهرية</a>
       </div>
       <aside class="infobox">
         <h3>العدد الأول</h3>
@@ -576,15 +574,15 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 </section>
 
 <!-- ===================== NEWSLETTER ===================== -->
-<section class="page" id="newsletter" data-title="النشرة" hidden>
+<section class="page" id="newsletter" data-title="النشرة الشهرية" hidden>
   <div class="page-head"><div class="wrap">
-    <h1 class="bh"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ</span><span class="ar">النشرة</span></h1>
+    <h1 class="bh"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ ⴰⵢⵢⵓⵔⴰⵏ</span><span class="ar">النشرة الشهرية</span></h1>
   </div></div>
   <div class="band"><div class="wrap two-col">
     <div class="prose">
-      <h2>عن النشرة</h2>
+      <h2>عن النشرة الشهرية</h2>
       <p><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ ⵏ ⵜⵎⴰⵢⵏⵓⵜ</span> نشرة رقمية شهرية (PDF) يصدرها فرع تمنار احاحان، تصل في كل عدد بأبواب ثابتة تغطي الكلمة الافتتاحية والمقالات والإبداع وسلسلة وجوه والأدب الشفوي والمعجم الأمازيغي.</p>
-      <h2>أبواب النشرة</h2>
+      <h2>أبواب النشرة الشهرية</h2>
       <ul style="margin-top:.4rem">
         <li style="display:flex;justify-content:space-between;align-items:baseline;padding:.85rem 0;border-top:1px solid var(--line)"><span class="tz" lang="zgh">ⴰⵏⵓⵕⵥⵎ</span><span class="ar" style="color:var(--muted);font-family:var(--f-head);font-size:.92rem">كلمة العدد</span></li>
         <li style="display:flex;justify-content:space-between;align-items:baseline;padding:.85rem 0;border-top:1px solid var(--line)"><span class="tz" lang="zgh">ⵉⵎⴰⴳⵔⴰⴷⵏ</span><span class="ar" style="color:var(--muted);font-family:var(--f-head);font-size:.92rem">مقالات</span></li>
@@ -698,7 +696,7 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
           <li><a href="#goals">أهدافنا</a></li>
           <li><a href="#activities">أنشطة</a></li>
           <li><a href="#faces">وجوه</a></li>
-          <li><a href="#newsletter">النشرة</a></li>
+          <li><a href="#newsletter">النشرة الشهرية</a></li>
           <li><a href="#news">أخبار</a></li>
         </ul>
       </div>
@@ -749,7 +747,7 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
     });
     closeMenu();
     document.title=page.id==='home'?base:page.dataset.title+' | '+base;
-    if(el===page){window.scrollTo(0,0);}
+    if(el===page){requestAnimationFrame(function(){window.scrollTo(0,0);});}
     else{requestAnimationFrame(function(){el.scrollIntoView();});}
   }
   window.addEventListener('hashchange',route);
