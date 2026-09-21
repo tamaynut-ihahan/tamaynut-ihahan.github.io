@@ -213,7 +213,7 @@ ul{margin:0;padding:0;list-style:none}
 .pane-tz{font-family:var(--f-tz);direction:ltr;text-align:left;line-height:2;font-size:1.08rem}
 
 /* faces page */
-.faces-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2rem}
+.faces-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2rem;align-items:start}
 .faces-list figure{margin:0}
 .faces-list button{padding:0;border:0;background:none;cursor:zoom-in;width:100%}
 .faces-list figcaption{font-size:1.25rem;margin-top:.7rem;text-align:right}
@@ -349,11 +349,11 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
           <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
           <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
         </div>
-        <span class="tz face-name" lang="zgh">ⵚⴰⵍⵃ ⵍⴱⴰⵛⴰ</span>
+        <span class="tz face-name" lang="zgh">ⵎⵓⵃⵎⵎⴰⴷ ⵓⵙⵓⵙ</span>
         <a class="btn btn-line" href="#faces">كل الوجوه</a>
       </div>
-      <button class="face-card zoom" data-zoom="udm-albacha.jpg" style="padding:0;border:0;background:none" aria-label="تكبير بطاقة الفنان صالح الباشا">
-        <img src="udm-albacha.jpg" alt="بطاقة وجوه: الفنان صالح الباشا" loading="lazy" width="962" height="1350">
+      <button class="face-card zoom" data-zoom="udm-oussous.webp" style="padding:0;border:0;background:none" aria-label="تكبير بطاقة الكاتب محمد أوسوس">
+        <img src="udm-oussous.webp" alt="بطاقة وجوه: الكاتب محمد أوسوس" loading="lazy" width="1080" height="1725">
       </button>
     </div>
   </div>
@@ -561,6 +561,10 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
           <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
         </div>
     <div class="faces-list">
+      <figure>
+        <button class="zoom" data-zoom="udm-oussous.webp" aria-label="تكبير بطاقة الكاتب محمد أوسوس"><img src="udm-oussous.webp" alt="بطاقة وجوه: الكاتب محمد أوسوس" loading="lazy" width="1080" height="1725"></button>
+        <figcaption class="tz" lang="zgh">ⵎⵓⵃⵎⵎⴰⴷ ⵓⵙⵓⵙ</figcaption>
+      </figure>
       <figure>
         <button class="zoom" data-zoom="udm-albacha.jpg" aria-label="تكبير بطاقة الفنان صالح الباشا"><img src="udm-albacha.jpg" alt="بطاقة وجوه: الفنان صالح الباشا" loading="lazy" width="962" height="1350"></button>
         <figcaption class="tz" lang="zgh">ⵚⴰⵍⵃ ⵍⴱⴰⵛⴰ</figcaption>
