@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="{{ '/' | relative_url }}"><img src="{{ '/assets/img/logo.png' | relative_url }}" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" loading="lazy" width="815" height="367"></a>
+        <p class="foot-slogan">{{ site.slogan }}</p>
+      </div>
+      <div>
+        <h2>الموقع</h2>
+        <ul>
+          <li><a href="{{ '/about/' | relative_url }}">من نحن</a></li>
+          <li><a href="{{ '/goals/' | relative_url }}">أهدافنا</a></li>
+          <li><a href="{{ '/activities/' | relative_url }}">أنشطة</a></li>
+          <li><a href="{{ '/faces/' | relative_url }}">وجوه</a></li>
+          <li><a href="{{ '/newsletter/' | relative_url }}">ⴰⵖⵎⵉⵙ – إصدارات</a></li>
+          <li><a href="{{ '/news/' | relative_url }}">أخبار</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>تواصل</h2>
+        <ul>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li>{{ site.address_street }}، {{ site.address_city }} – {{ site.address_region }}</li>
+        </ul>
+        <a class="foot-fb" href="{{ site.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="صفحة الفرع على فيسبوك، تفتح في نافذة جديدة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+          <span><strong>صفحتنا على فيسبوك</strong><small>تابعوا أنشطة الفرع وأخباره أولا بأول</small></span>
+        </a>
+      </div>
+    </div>
+    <p class="copy">© <span id="year">{{ site.time | date: "%Y" }}</span> {{ site.title }}</p>
+  </div>
+</footer>

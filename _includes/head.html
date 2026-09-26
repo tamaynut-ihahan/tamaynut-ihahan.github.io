@@ -1,0 +1,44 @@
+{%- if page.title and page.url != "/" -%}
+  {%- assign full_title = page.title | append: " | " | append: site.title -%}
+{%- else -%}
+  {%- assign full_title = site.title -%}
+{%- endif -%}
+{%- assign desc = page.description | default: site.description | strip_html | normalize_whitespace -%}
+{%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
+{%- assign og_image = page.og_image | default: site.default_image | absolute_url -%}
+{%- if page.collection == "activities" or page.collection == "news" -%}{%- assign og_type = "article" -%}{%- else -%}{%- assign og_type = "website" -%}{%- endif -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ desc | escape }}">
+{%- if page.noindex %}
+<meta name="robots" content="noindex">
+{%- else %}
+<link rel="canonical" href="{{ canonical }}">
+{%- endif %}
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+<meta property="og:description" content="{{ desc | escape }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:secure_url" content="{{ og_image }}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ page.title | default: site.title | escape }}">
+{%- if og_type == "article" %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
+<meta name="twitter:description" content="{{ desc | escape }}">
+<meta name="twitter:image" content="{{ og_image }}">
+<meta name="theme-color" content="#0059C3">
+<link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh&family=Noto+Kufi+Arabic:wght@500;700;800&family=Noto+Naskh+Arabic:wght@400;600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% include jsonld.html canonical=canonical desc=desc og_image=og_image %}

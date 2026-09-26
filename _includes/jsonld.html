@@ -1,0 +1,73 @@
+{%- assign org_id = "/#organization" | absolute_url -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": {{ org_id | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": [{{ site.title_tz | jsonify }}, "Tamaynut – Tamanar Ihahan"],
+      "url": {{ "/" | absolute_url | jsonify }},
+      "logo": {{ "/assets/img/logo.png" | absolute_url | jsonify }},
+      "image": {{ site.default_image | absolute_url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "slogan": {{ site.slogan | jsonify }},
+      "email": {{ site.email | jsonify }},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": {{ site.address_street | jsonify }},
+        "addressLocality": {{ site.address_city | jsonify }},
+        "addressRegion": {{ site.address_region | jsonify }},
+        "addressCountry": "MA"
+      },
+      "parentOrganization": {
+        "@type": "NGO",
+        "name": "منظمة تاماينوت",
+        "alternateName": "ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ",
+        "foundingDate": "1978-10-16",
+        "address": { "@type": "PostalAddress", "addressLocality": "إنزكان", "addressCountry": "MA" }
+      },
+      "sameAs": [{{ site.facebook | jsonify }}]
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ "/#website" | absolute_url | jsonify }},
+      "url": {{ "/" | absolute_url | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "inLanguage": ["ar", "zgh"],
+      "publisher": { "@id": {{ org_id | jsonify }} }
+    }
+{%- if page.collection == "activities" %},
+    {
+      "@type": "Event",
+      "name": {{ page.title | jsonify }},
+      "description": {{ include.desc | jsonify }},
+      "startDate": {{ page.date | date: "%Y-%m-%d" | jsonify }},
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": {{ page.place | default: "تمنار احاحان" | jsonify }},
+        "address": { "@type": "PostalAddress", "addressLocality": {{ site.address_city | jsonify }}, "addressRegion": {{ site.address_region | jsonify }}, "addressCountry": "MA" }
+      },
+      "image": [{{ include.og_image | jsonify }}],
+      "url": {{ include.canonical | jsonify }},
+      "organizer": { "@id": {{ org_id | jsonify }} }
+    }
+{%- elsif page.collection == "news" %},
+    {
+      "@type": "NewsArticle",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ include.desc | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "image": [{{ include.og_image | jsonify }}],
+      "mainEntityOfPage": {{ include.canonical | jsonify }},
+      "inLanguage": "ar",
+      "author": { "@id": {{ org_id | jsonify }} },
+      "publisher": { "@id": {{ org_id | jsonify }} }
+    }
+{%- endif %}
+  ]
+}
+</script>

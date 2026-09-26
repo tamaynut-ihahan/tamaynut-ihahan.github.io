@@ -1,0 +1,17 @@
+{%- comment -%} نص طويل بلغتين مع أزرار التبديل: include bilingual.html ar=content tz=page.tz {%- endcomment -%}
+{%- if include.tz -%}
+<div class="bi" data-show="ar">
+  <div class="tabs" role="tablist" aria-label="لغة النص">
+    <button role="tab" data-l="ar" aria-selected="true">العربية</button>
+    <button role="tab" class="t-tz" data-l="tz" aria-selected="false" lang="zgh">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+  </div>
+  <div class="pane-ar">
+{{ include.ar }}
+  </div>
+  <div class="pane-tz" lang="zgh">
+{{ include.tz | markdownify }}
+  </div>
+</div>
+{%- else -%}
+{{ include.ar }}
+{%- endif -%}

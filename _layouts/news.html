@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div class="page-head"><div class="wrap">
+  <a class="bh" href="{{ '/news/' | relative_url }}"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></a>
+</div></div>
+<div class="wrap single">
+  <article class="news-item">
+    {%- if page.image %}
+    <button class="zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' }}"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" width="{{ page.image_width }}" height="{{ page.image_height }}"></button>
+    {%- endif %}
+    <div>
+      <span class="date">{% include date.html date=page.date precision=page.date_precision %}</span>
+      <h1>{{ page.title }}</h1>
+      {% include bilingual.html ar=content tz=page.tz %}
+      {% include share.html %}
+    </div>
+  </article>
+  {% include pager.html label="أخبار أخرى" newer="خبر أحدث" older="خبر أقدم" %}
+</div>

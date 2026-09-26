@@ -1,0 +1,9 @@
+# القائمة الرئيسية: tz = تيفيناغ (فوق)، ar = العربية (تحت)
+- { id: home,       url: /,            tz: "ⴰⵙⵏⵓⴱⴳ",             ar: "الرئيسية" }
+- { id: about,      url: /about/,      tz: "ⵎⴰⴷ ⵏⴳⴰ?",           ar: "من نحن" }
+- { id: goals,      url: /goals/,      tz: "ⵉⵡⵜⵜⴰⵙⵏ ⵏⵏⵖ",         ar: "أهدافنا" }
+- { id: activities, url: /activities/, tz: "ⵉⵎⵓⵙⵙⵓⵜⵏ",           ar: "أنشطة" }
+- { id: faces,      url: /faces/,      tz: "ⵓⴷⵎⴰⵡⵏ",             ar: "وجوه" }
+- { id: newsletter, url: /newsletter/, tz: "ⴰⵖⵎⵉⵙ",              ar: "إصدارات" }
+- { id: news,       url: /news/,       tz: "ⵉⵏⵖⵎⵉⵙⵏ",            ar: "أخبار" }
+- { id: join,       url: /join/,       tz: "ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ",   ar: "انخراط وتواصل" }

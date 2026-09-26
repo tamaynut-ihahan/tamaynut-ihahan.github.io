@@ -1,0 +1,14 @@
+{%- assign current = page.section | default: page.nav -%}
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}، الرئيسية"><img src="{{ '/assets/img/logo.png' | relative_url }}" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" width="815" height="367"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="main-nav"><i aria-hidden="true"></i>القائمة</button>
+    <nav class="main-nav" id="main-nav" aria-label="القائمة الرئيسية">
+      <ul>
+        {%- for item in site.data.nav %}
+        <li><a href="{{ item.url | relative_url }}"{% if item.id == current %} aria-current="page"{% endif %}><span class="tz" lang="zgh">{{ item.tz }}</span><span class="ar">{{ item.ar }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

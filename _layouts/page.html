@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="page-head"><div class="wrap">
+  {%- if page.head_logo %}
+  <h1 class="bh bh-logo">{% include aghmis-logo.svg id="head" %}<span class="ar">{{ page.head_ar }}</span></h1>
+  {%- else %}
+  <h1 class="bh"><span class="tz" lang="zgh">{{ page.head_tz }}</span><span class="ar">{{ page.head_ar | default: page.title }}</span></h1>
+  {%- endif %}
+</div></div>
+{{ content }}
