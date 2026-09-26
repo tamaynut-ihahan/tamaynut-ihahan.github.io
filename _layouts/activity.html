@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<div class="page-head"><div class="wrap">
+  <a class="bh" href="{{ '/activities/' | relative_url }}"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">أنشطة</span></a>
+</div></div>
+<div class="wrap single">
+  <article class="activity">
+    <div>
+      <span class="date">{% include date.html date=page.date weekday=true %}{% if page.place %} – {{ page.place }}{% endif %}</span>
+      <h1>{{ page.title }}</h1>
+      {% include bilingual.html ar=content tz=page.tz %}
+      {% include share.html %}
+    </div>
+    {%- if page.image %}
+    <button class="lead-media {{ page.image_shape | default: 'landscape' }} zoom" data-zoom="{{ page.image | relative_url }}" style="padding:0;border:0;background:none" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' }}">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
+    </button>
+    {%- endif %}
+    {%- if page.gallery %}
+    <div class="gallery">
+      {%- for g in page.gallery %}
+      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{{ g.src | relative_url }}" alt="{{ g.alt }}" loading="lazy"></button>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </article>
+  {% include pager.html label="أنشطة أخرى" newer="نشاط أحدث" older="نشاط أقدم" %}
+</div>

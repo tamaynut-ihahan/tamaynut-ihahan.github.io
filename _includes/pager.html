@@ -1,0 +1,11 @@
+{%- comment -%} التنقل بين العناصر: الأحدث / الأقدم {%- endcomment -%}
+{%- if page.next or page.previous -%}
+<nav class="pager" aria-label="{{ include.label }}">
+  {%- if page.next %}
+  <a class="prev" href="{{ page.next.url | relative_url }}"><small>{{ include.newer }}</small><strong>{{ page.next.title }}</strong></a>
+  {%- else %}<span></span>{% endif %}
+  {%- if page.previous %}
+  <a class="next" href="{{ page.previous.url | relative_url }}"><small>{{ include.older }}</small><strong>{{ page.previous.title }}</strong></a>
+  {%- endif %}
+</nav>
+{%- endif -%}

@@ -1,0 +1,9 @@
+{%- comment -%} تاريخ بالعربية على الطريقة المغربية: include date.html date=... precision="month" weekday=true {%- endcomment -%}
+{%- assign d = include.date -%}
+{%- assign m = d | date: "%-m" | minus: 1 -%}
+{%- if include.precision == "month" -%}
+{{ site.data.dates.months[m] }} {{ d | date: "%Y" }}
+{%- else -%}
+{%- if include.weekday -%}{%- assign w = d | date: "%w" | plus: 0 -%}{{ site.data.dates.days[w] }} {% endif -%}
+{{ d | date: "%-d" }} {{ site.data.dates.months[m] }} {{ d | date: "%Y" }}
+{%- endif -%}

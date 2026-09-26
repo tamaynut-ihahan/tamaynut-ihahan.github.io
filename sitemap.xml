@@ -1,0 +1,22 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in site.html_pages %}{% unless p.sitemap == false or p.noindex %}
+  <url>
+    <loc>{{ p.url | replace: "index.html", "" | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
+    <priority>{% if p.url == "/" %}1.0{% else %}0.8{% endif %}</priority>
+  </url>
+{%- endunless %}{% endfor %}
+{%- assign items = site.activities | concat: site.news %}
+{%- for d in items %}
+  <url>
+    <loc>{{ d.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ d.last_modified_at | default: d.date | date: "%Y-%m-%d" }}</lastmod>
+    <priority>0.7</priority>
+  </url>
+{%- endfor %}
+</urlset>

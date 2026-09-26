@@ -1,0 +1,47 @@
+# إعدادات موقع منظمة تاماينوت – فرع تمنار احاحان
+title: "منظمة تاماينوت – فرع تمنار احاحان"
+title_tz: "ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ – ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ"
+description: "الموقع الرسمي لفرع منظمة تاماينوت بتمنار احاحان: من نحن، أهدافنا، أنشطة الفرع، سلسلة وجوه، والأخبار."
+slogan: "حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم"
+url: "https://tamaynut-ihahan.org"
+baseurl: ""
+lang: ar
+locale: ar_MA
+timezone: Africa/Casablanca
+
+email: tamaynut44200@gmail.com
+address_street: "شارع المقاومة"
+address_city: "تمنار"
+address_region: "إقليم الصويرة"
+facebook: "https://www.facebook.com/profile.php?id=61573979400539"
+default_image: /assets/og/default.jpg
+
+# بدون قالب جاهز: التصميم كله في assets/css/main.css
+theme: null
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: false
+
+collections:
+  activities:
+    output: true
+    permalink: /activities/:name/
+  news:
+    output: true
+    permalink: /news/:name/
+
+defaults:
+  - scope: { path: "", type: activities }
+    values: { layout: activity, section: activities }
+  - scope: { path: "", type: news }
+    values: { layout: news, section: news }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - tools/
+  - vendor/
+  - node_modules/

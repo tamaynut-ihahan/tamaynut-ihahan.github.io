@@ -1,0 +1,16 @@
+---
+layout: page
+title: أخبار
+nav: news
+head_tz: "ⵉⵏⵖⵎⵉⵙⵏ"
+description: "أخبار فرع منظمة تاماينوت بتمنار احاحان: تهاني وتعازي وبلاغات."
+---
+{%- assign items = site.news | sort: "date" | reverse %}
+<div class="band"><div class="wrap">
+  <ul class="news-list">
+    {%- for n in items %}
+    <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ n.image | relative_url }}" alt="" loading="lazy"></a>
+      <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h2>{{ n.list_title | default: n.title }}</h2></a></li>
+    {%- endfor %}
+  </ul>
+</div></div>

@@ -1,0 +1,21 @@
+# سلسلة «وجوه» – أول عنصر يظهر في الصفحة الرئيسية
+- name_tz: "ⴼⴰⴹⵎⴰ ⴼⴰⵔⵔⴰⵙ"
+  label: "الكاتبة فاضمة فراس"
+  image: /assets/img/udm-farras.webp
+  width: 1080
+  height: 1837
+- name_tz: "ⵎⵓⵃⵎⵎⴰⴷ ⵓⵙⵓⵙ"
+  label: "الكاتب محمد أوسوس"
+  image: /assets/img/udm-oussous.webp
+  width: 1080
+  height: 1725
+- name_tz: "ⵚⴰⵍⵃ ⵍⴱⴰⵛⴰ"
+  label: "الفنان صالح الباشا"
+  image: /assets/img/udm-albacha.jpg
+  width: 962
+  height: 1350
+- name_tz: "ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ"
+  label: "الأستاذ محمد اكوناض"
+  image: /assets/img/udm-akounad.jpg
+  width: 991
+  height: 1350
