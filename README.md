@@ -26,3 +26,7 @@ bundle exec jekyll serve
 ```
 
 `sitemap.xml` و`robots.txt` وصفحة `404.html` تُولَّد تلقائيا.
+
+## الأمان
+- الخطوط مستضافة داخل الموقع (`assets/fonts`)، فلا يطلب الموقع أي ملف من خارج النطاق.
+- سياسة أمان المحتوى (CSP) في `_includes/head.html` تمنع أي سكربت أو نمط غير صادر عن الموقع. لذلك لا تستعمل `style="…"` ولا `<script>` داخل الصفحات: أضف الأنماط إلى `assets/css/main.css` والسكربت إلى `assets/js/main.js`.

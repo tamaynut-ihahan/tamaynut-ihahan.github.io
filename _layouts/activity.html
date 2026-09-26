@@ -8,19 +8,19 @@ layout: default
   <article class="activity">
     <div>
       <span class="date">{% include date.html date=page.date weekday=true %}{% if page.place %} – {{ page.place }}{% endif %}</span>
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       {% include bilingual.html ar=content tz=page.tz %}
       {% include share.html %}
     </div>
     {%- if page.image %}
-    <button class="lead-media {{ page.image_shape | default: 'landscape' }} zoom" data-zoom="{{ page.image | relative_url }}" style="padding:0;border:0;background:none" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' }}">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
+    <button class="lead-media {{ page.image_shape | default: 'landscape' }} zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' | escape }}">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
     </button>
     {%- endif %}
     {%- if page.gallery %}
     <div class="gallery">
       {%- for g in page.gallery %}
-      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{{ g.src | relative_url }}" alt="{{ g.alt }}" loading="lazy"></button>
+      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{{ g.src | relative_url }}" alt="{{ g.alt | escape }}" loading="lazy"></button>
       {%- endfor %}
     </div>
     {%- endif %}

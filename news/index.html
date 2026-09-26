@@ -10,7 +10,7 @@ description: "أخبار فرع منظمة تاماينوت بتمنار احا�
   <ul class="news-list">
     {%- for n in items %}
     <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ n.image | relative_url }}" alt="" loading="lazy"></a>
-      <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h2>{{ n.list_title | default: n.title }}</h2></a></li>
+      <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h2>{{ n.list_title | default: n.title | escape }}</h2></a></li>
     {%- endfor %}
   </ul>
 </div></div>

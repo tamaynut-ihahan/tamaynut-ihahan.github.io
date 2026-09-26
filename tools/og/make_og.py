@@ -9,9 +9,9 @@
   og_image   مسار الصورة الناتجة (مثلا /assets/og/act-....jpg)
   og_source  الصورة المستعملة داخل البطاقة (اختياري، وإلا card_image ثم image)
   og_title   عنوان مختصر للبطاقة (اختياري، وإلا title)
-يحتاج: python3 + PyYAML، و node + playwright (مع Chromium).
+يحتاج: python3 + PyYAML، و node + playwright (مع Chromium). لا يحتاج اتصالا بالإنترنت.
 """
-import datetime, html, json, os, re, subprocess, sys, tempfile, urllib.request
+import datetime, html, json, os, subprocess, sys, tempfile
 import yaml
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -23,21 +23,11 @@ SECTIONS = {
     'news': ('ⵉⵏⵖⵎⵉⵙⵏ', 'أخبار'),
 }
 FONT_CSS = ''
-FONTS = ('https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh'
-         '&family=Noto+Kufi+Arabic:wght@500;700;800&family=Noto+Naskh+Arabic:wght@400;600&display=block')
 
-
-def local_fonts(tmp):
-    """ينزّل خطوط Google محليا حتى تعمل داخل Chromium حتى خلف وكيل (proxy)."""
-    ua = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140 Safari/537.36'}
-    css = urllib.request.urlopen(urllib.request.Request(FONTS, headers=ua)).read().decode()
-    def fetch(m):
-        url = m.group(1)
-        dest = os.path.join(tmp, re.sub(r'[^A-Za-z0-9._-]', '_', url.split('/s/')[-1]))
-        if not os.path.exists(dest):
-            open(dest, 'wb').write(urllib.request.urlopen(urllib.request.Request(url, headers=ua)).read())
-        return 'url(file://' + dest + ')'
-    return re.sub(r'url\((https://[^)]+)\)', fetch, css)
+def local_fonts():
+    """خطوط الموقع نفسها (assets/fonts) بمسارات file:// ليستعملها Chromium."""
+    css = open(os.path.join(ROOT, 'assets', 'css', 'fonts.css'), encoding='utf-8').read()
+    return css.replace('url(../fonts/', 'url(file://' + os.path.join(ROOT, 'assets', 'fonts') + '/')
 
 
 def front_matter(path):
@@ -143,7 +133,7 @@ def main():
     regenerate_all = '--all' in sys.argv
     tmp = tempfile.mkdtemp(prefix='og-')
     global FONT_CSS
-    FONT_CSS = local_fonts(tmp)
+    FONT_CSS = local_fonts()
     jobs = []
 
     def add(name, out_url, markup):
