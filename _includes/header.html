@@ -1,7 +1,7 @@
 {%- assign current = page.section | default: page.nav -%}
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }}، الرئيسية"><img src="{{ '/assets/img/logo.png' | relative_url }}" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" width="815" height="367"></a>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title | escape }}، الرئيسية"><img src="{{ '/assets/img/logo.png' | relative_url }}" alt="شعار منظمة تاماينوت، فرع تمنار احاحان" width="815" height="367"></a>
     <button class="menu-btn" aria-expanded="false" aria-controls="main-nav"><i aria-hidden="true"></i>القائمة</button>
     <nav class="main-nav" id="main-nav" aria-label="القائمة الرئيسية">
       <ul>

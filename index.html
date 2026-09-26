@@ -45,9 +45,9 @@ og_image: /assets/og/default.jpg
     <div class="cards">
       {%- for a in latest_activities %}
       <a class="card" href="{{ a.url | relative_url }}">
-        <div class="thumb"><img src="{{ a.card_image | default: a.image | relative_url }}" alt="{{ a.card_alt | default: a.image_alt }}" loading="lazy"></div>
+        <div class="thumb"><img src="{{ a.card_image | default: a.image | relative_url }}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy"></div>
         <span class="date">{% include date.html date=a.date weekday=true %}</span>
-        <h3>{{ a.title }}</h3>
+        <h3>{{ a.title | escape }}</h3>
       </a>
       {%- endfor %}
     </div>
@@ -66,8 +66,8 @@ og_image: /assets/og/default.jpg
       <span class="tz face-name" lang="zgh">{{ face.name_tz }}</span>
       <a class="btn btn-line" href="{{ '/faces/' | relative_url }}">كل الوجوه</a>
     </div>
-    <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" style="padding:0;border:0;background:none" aria-label="تكبير بطاقة {{ face.label }}">
-      <img src="{{ face.image | relative_url }}" alt="بطاقة وجوه: {{ face.label }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
+    <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | escape }}">
+      <img src="{{ face.image | relative_url }}" alt="بطاقة وجوه: {{ face.label | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
     </button>
   </div>
 </div>
@@ -92,7 +92,7 @@ og_image: /assets/og/default.jpg
     <ul class="news-list">
       {%- for n in latest_news %}
       <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ n.image | relative_url }}" alt="" loading="lazy"></a>
-        <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h3>{{ n.list_title | default: n.title }}</h3></a></li>
+        <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h3>{{ n.list_title | default: n.title | escape }}</h3></a></li>
       {%- endfor %}
     </ul>
   </div>

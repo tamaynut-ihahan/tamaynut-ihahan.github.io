@@ -6,14 +6,14 @@ head_tz: "ⵓⴷⵎⴰⵡⵏ"
 description: "«وجوه»: مشروع رقمي لفرع تاماينوت تمنار احاحان للتعريف بشخصيات احاحان من كتاب وفنانين ومبدعين."
 ---
 <div class="band"><div class="wrap">
-  <div class="faces-intro prose" style="margin-bottom:2.4rem">
+  <div class="faces-intro prose faces-page-intro">
     <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
     <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
   </div>
   <div class="faces-list">
     {%- for f in site.data.faces %}
     <figure>
-      <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label }}"><img src="{{ f.image | relative_url }}" alt="بطاقة وجوه: {{ f.label }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
+      <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | escape }}"><img src="{{ f.image | relative_url }}" alt="بطاقة وجوه: {{ f.label | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
       <figcaption class="tz" lang="zgh">{{ f.name_tz }}</figcaption>
     </figure>
     {%- endfor %}

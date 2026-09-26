@@ -278,3 +278,10 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 /* 404 */
 .notfound{text-align:right}
 .notfound .code{font-family:var(--f-head);font-weight:800;font-size:clamp(4rem,14vw,8rem);line-height:1;color:var(--gold);margin-bottom:1rem}
+
+/* utility classes (no inline styles, so the Content-Security-Policy can forbid them) */
+.face-card,.lead-media{padding:0;border:0;background:none}
+.intro-note{margin-bottom:2.6rem}
+.faces-page-intro{margin-bottom:2.4rem}
+.notfound .btn-row{margin-top:1.6rem}
+.muted{color:var(--muted)}
