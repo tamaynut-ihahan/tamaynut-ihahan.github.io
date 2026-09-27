@@ -7,7 +7,7 @@ og_image: /assets/og/default.jpg
 {%- assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 -%}
 {%- assign face = site.data.faces | first -%}
 <div class="hero">
-  <img src="{{ '/assets/img/hero.jpg' | relative_url }}" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
+  <img src="{{ '/assets/img/hero.webp' | relative_url }}" srcset="{{ '/assets/img/sm/hero.webp' | relative_url }} 640w, {{ '/assets/img/hero.webp' | relative_url }} 1080w" sizes="100vw" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
   <div class="wrap hero-inner">
     <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
     <span class="tz hero-branch" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span>
@@ -45,7 +45,7 @@ og_image: /assets/og/default.jpg
     <div class="cards">
       {%- for a in latest_activities %}
       <a class="card" href="{{ a.url | relative_url }}">
-        <div class="thumb"><img src="{{ a.card_image | default: a.image | relative_url }}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy"></div>
+        <div class="thumb">{%- assign card_src = a.card_image | default: a.image %}<img src="{% include img.html src=card_src size="sm" %}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy" width="640" height="400"></div>
         <span class="date">{% include date.html date=a.date weekday=true %}</span>
         <h3>{{ a.title | escape }}</h3>
       </a>
@@ -67,7 +67,7 @@ og_image: /assets/og/default.jpg
       <a class="btn btn-line" href="{{ '/faces/' | relative_url }}">كل الوجوه</a>
     </div>
     <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | escape }}">
-      <img src="{{ face.image | relative_url }}" alt="بطاقة وجوه: {{ face.label | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
+      <img src="{% include img.html src=face.image size="sm" %}" alt="بطاقة وجوه: {{ face.label | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
     </button>
   </div>
 </div>
@@ -91,7 +91,7 @@ og_image: /assets/og/default.jpg
     <h2 class="bh"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></h2>
     <ul class="news-list">
       {%- for n in latest_news %}
-      <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ n.image | relative_url }}" alt="" loading="lazy"></a>
+      <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{% include img.html src=n.image size="xs" %}" alt="" loading="lazy" width="240" height="320"></a>
         <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h3>{{ n.list_title | default: n.title | escape }}</h3></a></li>
       {%- endfor %}
     </ul>

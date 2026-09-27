@@ -13,7 +13,7 @@ description: "«وجوه»: مشروع رقمي لفرع تاماينوت تمن
   <div class="faces-list">
     {%- for f in site.data.faces %}
     <figure>
-      <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | escape }}"><img src="{{ f.image | relative_url }}" alt="بطاقة وجوه: {{ f.label | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
+      <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | escape }}"><img src="{% include img.html src=f.image size="sm" %}" alt="بطاقة وجوه: {{ f.label | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
       <figcaption class="tz" lang="zgh">{{ f.name_tz }}</figcaption>
     </figure>
     {%- endfor %}

@@ -7,7 +7,7 @@ layout: default
 <div class="wrap single">
   <article class="news-item">
     {%- if page.image %}
-    <button class="zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' | escape }}"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}"></button>
+    <button class="zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' | escape }}"><img src="{% include img.html src=page.image size="sm" %}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}"></button>
     {%- endif %}
     <div>
       <span class="date">{% include date.html date=page.date precision=page.date_precision %}</span>

@@ -9,7 +9,7 @@
 {%- if page.collection == "activities" or page.collection == "news" -%}{%- assign og_type = "article" -%}{%- else -%}{%- assign og_type = "website" -%}{%- endif -%}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{{ full_title }}</title>
 <meta name="description" content="{{ desc | escape }}">
@@ -39,6 +39,7 @@
 <meta name="twitter:image" content="{{ og_image }}">
 <meta name="theme-color" content="#0059C3">
 <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{%- comment -%} CSS is inlined so the first paint doesn't wait for extra requests. Edit _includes/css/*.css {%- endcomment -%}
+{%- capture css %}{% include css/fonts.css %}{% include css/main.css %}{% endcapture %}
+<style>{{ css | scssify }}</style>
 {% include jsonld.html canonical=canonical desc=desc og_image=og_image %}
