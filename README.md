@@ -3,7 +3,8 @@
 موقع Jekyll يُبنى وينشر مجانا على GitHub Pages بالنطاق `tamaynut-ihahan.org`.
 
 ## إضافة نشاط جديد
-1. ارفع الصور إلى `assets/img/`.
+1. ارفع الصور إلى `assets/img/` ثم ولّد نسخها الخفيفة (WebP) التي تعرضها الصفحات:
+   `pip install pillow && python3 tools/make_images.py`
 2. أنشئ ملفا في `_activities/` باسم مثل `2026-10-12-slug.md` (يصبح الرابط `/activities/2026-10-12-slug/`).
 3. انسخ رأس ملف نشاط موجود وعدّل الحقول: `title`، `date`، `place`، `description`، `image`، `gallery`، `og_image`… النص العربي تحت الرأس، والنص بتيفيناغ في الحقل `tz`.
 
@@ -27,6 +28,10 @@ bundle exec jekyll serve
 
 `sitemap.xml` و`robots.txt` وصفحة `404.html` تُولَّد تلقائيا.
 
+## السرعة
+- الأنماط (`_includes/css/`) تُدمج مضغوطة داخل `<head>` فلا تؤخر أول عرض للصفحة.
+- الصفحات تعرض نسخ WebP مصغرة (`assets/img/sm` و`assets/img/xs`)، والصور الأصلية تُستعمل للتكبير فقط.
+
 ## الأمان
 - الخطوط مستضافة داخل الموقع (`assets/fonts`)، فلا يطلب الموقع أي ملف من خارج النطاق.
-- سياسة أمان المحتوى (CSP) في `_includes/head.html` تمنع أي سكربت أو نمط غير صادر عن الموقع. لذلك لا تستعمل `style="…"` ولا `<script>` داخل الصفحات: أضف الأنماط إلى `assets/css/main.css` والسكربت إلى `assets/js/main.js`.
+- سياسة أمان المحتوى (CSP) في `_includes/head.html` تمنع أي سكربت غير صادر عن الموقع. لذلك لا تستعمل `style="…"` ولا `<script>` داخل الصفحات: أضف الأنماط إلى `_includes/css/main.css` والسكربت إلى `assets/js/main.js`.

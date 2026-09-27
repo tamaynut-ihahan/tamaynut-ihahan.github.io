@@ -14,13 +14,13 @@ layout: default
     </div>
     {%- if page.image %}
     <button class="lead-media {{ page.image_shape | default: 'landscape' }} zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ page.image_zoom_label | default: 'تكبير الصورة' | escape }}">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
+      <img src="{% include img.html src=page.image size="sm" %}" srcset="{% include img.html src=page.image size="sm" %} 640w, {{ page.image | relative_url }} {{ page.image_width }}w" sizes="(max-width: 820px) 100vw, 50vw" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
     </button>
     {%- endif %}
     {%- if page.gallery %}
     <div class="gallery">
       {%- for g in page.gallery %}
-      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{{ g.src | relative_url }}" alt="{{ g.alt | escape }}" loading="lazy"></button>
+      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{% include img.html src=g.src size="sm" %}" alt="{{ g.alt | escape }}" loading="lazy"></button>
       {%- endfor %}
     </div>
     {%- endif %}

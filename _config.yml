@@ -45,3 +45,7 @@ exclude:
   - tools/
   - vendor/
   - node_modules/
+
+# CSS inlined in <head> (_includes/head.html) is minified
+sass:
+  style: compressed
