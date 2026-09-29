@@ -10,7 +10,7 @@ description: "«وجوه»: مشروع رقمي لفرع تاماينوت تمن
     <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
     <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
   </div>
-  <div class="faces-list">
+  <div class="faces-list" data-gallery>
     {%- for f in site.data.faces %}
     <figure>
       <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | default: f.name_tz | escape }}"><img src="{% include img.html src=f.image size="sm" %}" alt="بطاقة وجوه: {{ f.label | default: f.name_tz | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
