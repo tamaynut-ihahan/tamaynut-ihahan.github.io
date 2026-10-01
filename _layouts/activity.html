@@ -5,7 +5,7 @@ layout: default
   <a class="bh" href="{{ '/activities/' | relative_url }}"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">أنشطة</span></a>
 </div></div>
 <div class="wrap single">
-  <article class="activity">
+  <article class="activity" data-gallery>
     <div>
       <span class="date">{% include date.html date=page.date weekday=true %}{% if page.place %} – {{ page.place }}{% endif %}</span>
       <h1>{{ page.title | escape }}</h1>

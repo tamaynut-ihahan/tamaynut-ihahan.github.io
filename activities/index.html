@@ -10,7 +10,7 @@ description: "أنشطة فرع منظمة تاماينوت بتمنار احا�
   <div class="cards">
     {%- for a in items %}
     <a class="card" href="{{ a.url | relative_url }}">
-      <div class="thumb"><img src="{{ a.card_image | default: a.image | relative_url }}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy"></div>
+      <div class="thumb">{%- assign card_src = a.card_image | default: a.image %}<img src="{% include img.html src=card_src size="sm" %}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy" width="640" height="400"></div>
       <span class="date">{% include date.html date=a.date weekday=true %}</span>
       <h2>{{ a.title | escape }}</h2>
     </a>

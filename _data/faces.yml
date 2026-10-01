@@ -19,11 +19,11 @@
   height: 1725
 - name_tz: "ⵚⴰⵍⵃ ⵍⴱⴰⵛⴰ"
   label: "الفنان صالح الباشا"
-  image: /assets/img/udm-albacha.jpg
+  image: /assets/img/udm-albacha.webp
   width: 962
   height: 1350
 - name_tz: "ⵎⴰⵙⵙ ⵎⵓⵃⵎⵎⴰⴷ ⴰⴽⵓⵏⴰⴹ"
   label: "الأستاذ محمد اكوناض"
-  image: /assets/img/udm-akounad.jpg
+  image: /assets/img/udm-akounad.webp
   width: 991
   height: 1350
