@@ -1,0 +1,11 @@
+{
+  "name": "aghmis-launch-video",
+  "private": true,
+  "scripts": {
+    "music": "python3 music.py",
+    "qa": "node render.js --qa",
+    "stills": "node render.js --stills",
+    "video": "node render.js"
+  },
+  "dependencies": { "playwright": "^1.56.1" }
+}
