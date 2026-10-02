@@ -43,6 +43,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - tools/
+  - brand/
   - vendor/
   - node_modules/
 
