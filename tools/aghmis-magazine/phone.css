@@ -25,7 +25,7 @@
 /* بلا مسافة بادئة: أول فقرة في المادة، وبعد عنوان فرعي أو اقتباس أو صورة أو لائحة،
    والفقرة المكمّلة من الصفحة السابقة، والعناصر غير المتنية */
 .phone .body p.drop,.phone .body p.cont,.phone .body p.h,.phone .body p.pt,.phone .body p.li,
-.phone .body p.sig,.phone .body p.dlg,.phone .body p.note,.phone .body p.nrule,
+.phone .body p.sig,.phone .body p.dlg,.phone .body p.note,.phone .body p.nrule,.phone .body p.lx,.phone .body p.prv,
 .phone .body p.h+p,.phone .body p.pt+p,.phone .body .pull+p,.phone .body .fig+p,.phone .body p.li+p,
 .phone .hdr+.contwrap .flow>p:first-child{text-indent:0}
 /* الحوار: سطر لكل متكلم، بإزاحة خفيفة، ومسافة صغيرة قبل الكتلة وبعدها */
@@ -48,6 +48,14 @@
 .phone .fnbox p.note{font-size:8.5pt;line-height:1.5;text-align:justify;text-align-last:left;text-indent:0}
 .phone .fnbox p.note.split{text-align-last:justify}
 .phone .fnbox .fnrule{margin:3mm 0 1.5mm}
+
+/* الأمثال: بطاقة لكل مثل، عمود واحد */
+.phone .body p.prv{font-size:13pt;line-height:1.5;padding:8mm 5mm 5mm;margin:0 0 4mm}
+.phone .body p.prv::before{top:2mm;left:4.5mm;font-size:22pt}
+/* المعجم: الكلمة يساراً ومقابلها يميناً */
+.phone .body p.lx{padding:1.7mm 0;line-height:1.35}
+.phone .body p.lx b{font-size:12pt}
+.phone .body p.lx .fr{font-size:9.5pt}
 
 /* رؤوس المواد */
 .phone .gbar{width:16mm;height:2mm;margin-bottom:3.5mm}

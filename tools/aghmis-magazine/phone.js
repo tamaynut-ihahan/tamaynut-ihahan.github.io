@@ -28,7 +28,7 @@
      - لا سطر يتيم في أسفل الصفحة (orphan): يبقى سطران على الأقل أو تنتقل الفقرة كلها
      - لا سطر أرمل في أعلى الصفحة التالية (widow): ينتقل سطران على الأقل
      النص نفسه لا يتغير: تُقسَّم الفقرة بين الكلمات فقط. */
-  const ATOMIC = ['sig', 'nrule', 'h', 'pull', 'fig'];
+  const ATOMIC = ['sig', 'nrule', 'h', 'pull', 'fig', 'lx', 'prv'];   // lx: مدخل معجم، prv: بطاقة مثل
   const lines = el => {
     const lh = parseFloat(getComputedStyle(el).lineHeight) || 1;
     return Math.round(el.getBoundingClientRect().height / lh);

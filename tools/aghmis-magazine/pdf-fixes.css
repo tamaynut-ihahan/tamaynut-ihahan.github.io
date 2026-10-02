@@ -4,3 +4,8 @@
 .cover .ctitle{-webkit-text-stroke:0!important;
   text-shadow:.14mm 0 0 #1F56C0,-.14mm 0 0 #1F56C0,0 .14mm 0 #1F56C0,0 -.14mm 0 #1F56C0,
               .1mm .1mm 0 #1F56C0,-.1mm -.1mm 0 #1F56C0,.1mm -.1mm 0 #1F56C0,-.1mm .1mm 0 #1F56C0}
+
+/* لا تعريض ولا إمالة اصطناعية: خط Adlis له وزن واحد، وتيفيناغ داخل نص عريض كان يُضمَّن كخط Type 3.
+   الاستثناء الوحيد: الأسماء العلمية في المعجم (Tajawal مائل، يبقى TrueType). */
+*{font-synthesis:none}
+.body p.lx .fr i{font-synthesis:style}
