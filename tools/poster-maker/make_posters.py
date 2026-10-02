@@ -97,7 +97,7 @@ def kicker(post):
 def footer(post):
     aghmis = ''
     if post.get('aghmis'):
-        aghmis = f'<span class="sep"></span><img class="aghmis" src="{file_url("/brand/logos/aghmis.svg")}" alt="">'
+        aghmis = f'<span class="sep"></span><img class="aghmis" src="{file_url("/brand/logos/aghmis.png")}" alt="">'
     site = CONFIG['url'].split('//')[1]
     return f"""<footer>
   <div class="logos"><img class="org" src="{file_url('/brand/logos/tamaynut.png')}" alt="">{aghmis}</div>

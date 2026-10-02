@@ -11,6 +11,7 @@
 #   image_position   مكان القص: center | top | bottom | "50% 30%"
 #   aghmis     true لإضافة شعار ⴰⵖⵎⵉⵙ بجانب شعار المنظمة
 # أي نص بتيفيناغ يُكتب تلقائياً بخط Adlis، حتى داخل نص عربي.
+# لا تكتب نصاً بالأمازيغية لم يرسله أصحابه (brand/identity-guide.html، القسم 1).
 
 - name: imla-masari
   template: announce
@@ -37,9 +38,9 @@
   author: "منظمة تاماينوت"
   role: "فرع تمنار احاحان"
 
-- name: yennayer
+- name: eid
   template: greeting
   theme: cream
-  title_tz: "ⴰⵙⴳⴳⵯⴰⵙ ⴰⵎⴰⵢⵏⵓ ⵉⵖⵓⴷⴰⵏ"
-  title: "سنة أمازيغية سعيدة 2977"
-  text: "منظمة تاماينوت فرع تمنار احاحان تهنئكم بحلول السنة الأمازيغية الجديدة"
+  title_tz: "ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ"   # من _config.yml، لا نص جديد
+  title: "عيد مبارك سعيد"
+  text: "منظمة تاماينوت فرع تمنار احاحان تتمنى لكم عيداً سعيداً"

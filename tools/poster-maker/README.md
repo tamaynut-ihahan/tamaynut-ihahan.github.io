@@ -19,7 +19,7 @@ python3 tools/poster-maker/make_posters.py my_posts.yml        # ملف آخر
 | `announce` | إعلان نشاط | `title`، `subtitle`، `date`، `time`، `place`، `speaker`، `image` |
 | `news` | خبر، تهنئة، تعزية | `title`، `subtitle`، `date`، `image` |
 | `quote` | اقتباس أو قول (لسلسلة «وجوه» مثلاً) | `quote`، `author`، `role`، `image` (صورة دائرية) |
-| `greeting` | تهنئة بمناسبة (ⵉⴹ ⵢⵏⵏⴰⵢⵔ...) | `title_tz`، `title`، `text` |
+| `greeting` | تهنئة بمناسبة (عيد، رأس السنة الأمازيغية...) | `title_tz`، `title`، `text` |
 
 حقول مشتركة: `name` (اسم الملف)، و`sizes`، و`theme` (`night` أو `cream`)، و`kicker_tz` و`kicker_ar` (عنوان القسم)، و`image_position`، و`aghmis: true` لإضافة شعار ⴰⵖⵎⵉⵙ. الأمثلة الكاملة في `posts.yml`.
 
