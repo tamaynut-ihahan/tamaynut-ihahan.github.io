@@ -53,20 +53,6 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
   </section>
   {%- endif %}
 
-  <section class="wrap ag-doors" aria-labelledby="ag-doors-h">
-    <div class="ag-gbar" aria-hidden="true"></div>
-    <h2 class="ag-h" id="ag-doors-h"><span class="ag-ar">مجالات <span class="ag-tf" lang="zgh">ⴰⵖⵎⵉⵙ</span></span></h2>
-    <p class="ag-muted">يجمع كل إصدار ما اكتمل من هذه المجالات، ولا يُضاف باب لملء فراغ.</p>
-    <ol class="ag-grid">
-      <li><span class="ag-tf" lang="zgh">ⵜⴰⵕⵥⵥⵓⵎⵜ</span><span class="ag-ar">الافتتاحية</span></li>
-      <li><span class="ag-tf" lang="zgh">ⵉⵎⴰⴳⵔⴰⴷⵏ</span><span class="ag-ar">مقالات وقراءات</span></li>
-      <li><span class="ag-tf" lang="zgh">ⴰⵙⵏⴼⵍⵓⵍ</span><span class="ag-ar">إبداع: شعر وقصة</span></li>
-      <li><span class="ag-tf" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ag-ar">وجوه</span></li>
-      <li><span class="ag-tf" lang="zgh">ⵜⴰⵙⴽⵍⴰ ⵜⴰⵎⵉⵡⴰⵏⵜ</span><span class="ag-ar">الأدب الشفوي</span></li>
-      <li><span class="ag-tf" lang="zgh">ⴰⵎⴰⵡⴰⵍ</span><span class="ag-ar">معجم</span></li>
-    </ol>
-  </section>
-
   {%- assign shown = 0 -%}
   {%- for it in earlier -%}{%- if it.title_tz != latest.title_tz -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endfor -%}
   {%- if shown > 0 %}

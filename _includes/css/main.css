@@ -309,7 +309,7 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 .ag-lead{max-width:62ch;font-size:1.2rem;line-height:1.95}
 .ag-desc{direction:ltr;text-align:right;color:var(--ag-soft);font-size:1.05rem;margin-bottom:.6rem}
 /* الإصدار الأحدث: بطاقة على شكل الغلاف */
-.ag-issue{position:relative;display:grid;justify-items:center;padding-block:clamp(1.5rem,4vw,2.5rem) 0}
+.ag-issue{position:relative;display:grid;justify-items:center;padding-block:clamp(1.5rem,4vw,2.5rem) clamp(2.2rem,5vw,3.4rem)}
 .ag-issue.is-out{grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center;gap:clamp(1.6rem,5vw,3.5rem);justify-items:stretch}
 .ag-card{background:var(--ag-card);border-top:5px solid var(--ag-gold);width:min(100%,640px);padding:clamp(1.8rem,5vw,3rem) clamp(1.2rem,5vw,3rem);text-align:center;box-shadow:0 10px 30px rgba(26,43,94,.12)}
 .ag-title{font-size:clamp(2.6rem,9vw,4.4rem);line-height:1.15;color:var(--ag-head);margin:.9rem 0 .5rem;font-weight:400}
@@ -334,16 +334,8 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 .ag-roots path{stroke:var(--ag-head);stroke-opacity:.5;stroke-width:.42}
 .ag-roots .ag-root-d{fill:var(--ag-gold);stroke:none}
 .ag-issue.is-out .ag-roots{display:none}
-/* المجالات */
-.ag-doors{padding-block:clamp(2.2rem,5vw,3.2rem)}
-.ag-grid{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ag-line);border:1px solid var(--ag-line);counter-reset:door}
-.ag-grid li{counter-increment:door;background:var(--ag-bg);padding:1.2rem 1.3rem 1.1rem;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem}
-.ag-grid li::before{content:counter(door,decimal-leading-zero);font-family:var(--f-head);font-weight:700;color:var(--ag-gold);font-size:.95rem;direction:ltr}
-.ag-grid .ag-tf{font-size:1.45rem;color:var(--ag-head);line-height:1.4}
-.ag-grid .ag-ar{font-family:var(--f-head);font-size:.95rem;color:var(--ag-soft)}
 /* إصدارات سابقة */
 .ag-past{padding-bottom:clamp(2.2rem,5vw,3.2rem)}
 .ag-list li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--ag-line)}
 .ag-list a{text-decoration:none;color:var(--ag-head);font-size:1.35rem}
-@media (max-width:860px){.ag-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:700px){.ag-issue.is-out{grid-template-columns:1fr}.ag-cover{max-width:240px;margin-inline:auto}}
