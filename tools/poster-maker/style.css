@@ -1,7 +1,9 @@
 /* هوية المنظمة: الألوان والخطوط من brand/ */
-@font-face{font-family:Adlis;src:url(FONTS/Adlis_otf.ttf) format("truetype")}
+@font-face{font-family:Adlis;src:url(FONTS/Adlis-tt.ttf) format("truetype")}
 @font-face{font-family:Tajawal;font-weight:400;src:url(FONTS/Tajawal-Regular.ttf) format("truetype")}
+@font-face{font-family:Tajawal;font-weight:500;src:url(FONTS/Tajawal-Medium.ttf) format("truetype")}
 @font-face{font-family:Tajawal;font-weight:700;src:url(FONTS/Tajawal-Bold.ttf) format("truetype")}
+@font-face{font-family:Tajawal;font-weight:900;src:url(FONTS/Tajawal-Black.ttf) format("truetype")}
 
 :root{--night:#1A2B5E;--blue:#1F56C0;--gold:#E9B84A;--red:#C9443A;--cream:#F3EEE3;
   --bg:var(--night);--ink:var(--cream);--soft:rgba(243,238,227,.78);--accent:var(--gold);--pad:72px}
@@ -63,7 +65,7 @@ blockquote .qm{color:var(--accent);font-size:1.25em;padding:0 .08em}
 
 /* التذييل: الشعار والموقع وفيسبوك */
 footer{flex:none;display:flex;flex-direction:column;align-items:center;gap:20px;padding:0 var(--pad) 52px}
-.logos{background:var(--cream);border-radius:24px;padding:20px 34px;display:flex;align-items:center;gap:30px;
+.logos{direction:ltr;background:var(--cream);border-radius:24px;padding:20px 34px;display:flex;align-items:center;gap:30px;
   box-shadow:0 12px 36px rgba(0,0,0,.28)}
 .cream .logos{background:#fff}
 .logos .org{height:118px;display:block}
