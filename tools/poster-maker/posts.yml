@@ -1,0 +1,45 @@
+# أمثلة من محتوى الموقع. انسخ مثالاً وغيّر حقوله، ثم:
+#   python3 tools/poster-maker/make_posters.py --only <name>
+#
+# الحقول المشتركة:
+#   name       اسم الملف الناتج (بالحروف اللاتينية، دون مسافات)
+#   template   announce (إعلان) | news (خبر) | quote (اقتباس) | greeting (تهنئة)
+#   sizes      [square, post, story]  (الافتراضي: الثلاثة)
+#   theme      night (أزرق ليلي، الافتراضي) | cream (فاتح)
+#   kicker_tz / kicker_ar   عنوان القسم فوق العنوان (لكل قالب قيمة افتراضية)
+#   image      صورة من الموقع (/assets/img/...) أو أي مسار على الجهاز
+#   image_position   مكان القص: center | top | bottom | "50% 30%"
+#   aghmis     true لإضافة شعار ⴰⵖⵎⵉⵙ بجانب شعار المنظمة
+# أي نص بتيفيناغ يُكتب تلقائياً بخط Adlis، حتى داخل نص عربي.
+
+- name: imla-masari
+  template: announce
+  title: "ورشة في الإملائية الأمازيغية، وتقديم وتوقيع كتاب «مساري»"
+  date: 2026-05-31            # يكتب تلقائياً: الأحد 31 ماي 2026
+  # time: "العاشرة صباحاً"
+  place: "مقر الفرع بتمنار"
+  speaker: "ذ. حسن بوتسعيد · ذ. محمد اكوناض"
+  image: /assets/img/a2026-session.jpg
+
+- name: award
+  template: news
+  title: "تهنئة للكاتب محمد اخصاصي"
+  subtitle: "بفوزه بالمرتبة الأولى في المسابقة الوطنية للمبدعين الشباب، في مجال السرد الأمازيغي"
+  date: "ماي 2026"
+  image: /assets/img/n2026-award.jpg
+  image_position: "50% 25%"
+
+- name: slogan
+  template: quote
+  kicker_tz: ⵜⴰⵎⴰⵢⵏⵓⵜ
+  kicker_ar: شعارنا
+  quote: "حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم"
+  author: "منظمة تاماينوت"
+  role: "فرع تمنار احاحان"
+
+- name: yennayer
+  template: greeting
+  theme: cream
+  title_tz: "ⴰⵙⴳⴳⵯⴰⵙ ⴰⵎⴰⵢⵏⵓ ⵉⵖⵓⴷⴰⵏ"
+  title: "سنة أمازيغية سعيدة 2977"
+  text: "منظمة تاماينوت فرع تمنار احاحان تهنئكم بحلول السنة الأمازيغية الجديدة"
