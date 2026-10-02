@@ -11,17 +11,42 @@
 .phone .even .folio{left:8mm}.phone .odd .folio{right:8mm}
 .phone .band.foot{height:3.5mm}
 
-/* المتن: عمود واحد بخط أكبر، محاذاة يسرى (لا فراغات واسعة بين الكلمات في عمود ضيق) */
+/* المتن: عمود واحد، مضبوط من الطرفين، بقواعد الإخراج المحترف */
 .phone .hdr{flex:none}
 .phone .contwrap{flex:1;min-height:0;height:auto;display:flex;flex-direction:column}
-.phone .flow.cols2,.phone .flow{column-count:1;flex:1;min-height:0}
-.phone .body{font-size:12.5pt;line-height:1.72;text-align:left}
-.phone .body p.split,.phone .body p.note.split{text-align-last:auto}
-.phone .body p.drop::first-letter{font-size:34pt;line-height:.82;margin:.8mm 2mm 0 0}
-.phone .body p.h{font-size:13pt}
-.phone .flow .pull,.phone .flow.cols2 .pull.span-pull{font-size:12.5pt;padding:4.5mm 0 1mm 4mm;margin:3mm 0 3.5mm}
+.phone .flow.cols2,.phone .flow{column-count:auto;column-width:auto;columns:auto;flex:1;min-height:0}
+.phone .body{font-size:12.5pt;line-height:1.72;text-align:justify;text-align-last:left;hyphens:none;
+  font-kerning:normal;text-rendering:optimizeLegibility;orphans:2;widows:2}
+/* فقرة تكمل في الصفحة التالية: سطرها الأخير مضبوط أيضاً حتى لا تبدو منتهية */
+.phone .body p.split{text-align-last:justify}
+/* المسافة البادئة بدل الفراغ بين الفقرات */
+.phone .body p{text-indent:1.4em}
+.phone .body p+p{margin-top:0}
+/* بلا مسافة بادئة: أول فقرة في المادة، وبعد عنوان فرعي أو اقتباس أو صورة أو لائحة،
+   والفقرة المكمّلة من الصفحة السابقة، والعناصر غير المتنية */
+.phone .body p.drop,.phone .body p.cont,.phone .body p.h,.phone .body p.pt,.phone .body p.li,
+.phone .body p.sig,.phone .body p.dlg,.phone .body p.note,.phone .body p.nrule,
+.phone .body p.h+p,.phone .body p.pt+p,.phone .body .pull+p,.phone .body .fig+p,.phone .body p.li+p,
+.phone .hdr+.contwrap .flow>p:first-child{text-indent:0}
+/* الحوار: سطر لكل متكلم، بإزاحة خفيفة، ومسافة صغيرة قبل الكتلة وبعدها */
+.phone .body p.dlg{padding-left:4mm}
+.phone .body p:not(.dlg)+p.dlg{margin-top:.35em}
+.phone .body p.dlg+p:not(.dlg){margin-top:.35em}
+/* العناوين الفرعية والفقرات المعنونة واللوائح */
+.phone .body p.h{font-size:13pt;line-height:1.4;margin-top:1.15em;margin-bottom:.35em;text-align:left;text-align-last:left}
+.phone .body p.pt{margin-top:.9em;text-align:left}
+.phone .body p:not(.li)+p.li{margin-top:.5em}
+.phone .body p.li+p:not(.li){margin-top:.5em}
+.phone .body p.sig{margin-top:1.2em;text-align:right;text-align-last:right}
+/* الحرف الاستهلالي على ثلاثة أسطر بالضبط */
+.phone .body p.drop::first-letter{font-size:52pt;line-height:.8;margin:1.1mm 2.4mm 0 0;padding:0}
+/* الاقتباس البارز */
+.phone .flow .pull,.phone .flow.cols2 .pull.span-pull{font-size:12.5pt;line-height:1.55;padding:4.5mm 0 1mm 4mm;margin:4mm 0 4.5mm;text-align:left}
 .phone .span-pull{padding-right:0}
-.phone .fnbox p.note{font-size:8.5pt;line-height:1.5}
+.phone .flow .fig{margin:3.5mm 0 4mm}
+/* الإحالات: مضبوطة، والرقم بارز */
+.phone .fnbox p.note{font-size:8.5pt;line-height:1.5;text-align:justify;text-align-last:left;text-indent:0}
+.phone .fnbox p.note.split{text-align-last:justify}
 .phone .fnbox .fnrule{margin:3mm 0 1.5mm}
 
 /* رؤوس المواد */
