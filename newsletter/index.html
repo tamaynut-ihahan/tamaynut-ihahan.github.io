@@ -6,14 +6,66 @@ head_logo: true
 head_ar: إصدارات ثقافية
 description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي."
 ---
-<div class="band"><div class="wrap two-col">
-  <div class="prose">
-    <h2>عن <span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ</span></h2>
-    <p>إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
-    <p class="muted">الإشراف: مكتب الفرع</p>
+{%- comment -%}
+  قسم ⴰⵖⵎⵉⵙ: داخل إطار الموقع (الرأس والقائمة والتذييل)، والمتن بهوية الإصدارات
+  (brand/identity-guide.html): ورق كريمي، خط Adlis لتيفيناغ، شريط المعيّنات، الشريط الذهبي القصير.
+  الإصدارات من _data/aghmis.yml. لا رقم عدد ولا وتيرة صدور.
+{%- endcomment -%}
+{%- assign issues = site.data.aghmis.issues -%}
+{%- assign latest = issues | first -%}
+{%- assign earlier = issues | where: "status", "published" -%}
+<div class="ag">
+  <div class="ag-band" aria-hidden="true"></div>
+
+  <div class="wrap ag-intro">
+    <div class="ag-gbar" aria-hidden="true"></div>
+    <h2 class="ag-h"><span class="ag-tf" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ</span><span class="ag-ar">عن <span class="ag-tf" lang="zgh">ⴰⵖⵎⵉⵙ</span></span></h2>
+    <p class="ag-lead">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
+    <p class="ag-desc"><span class="ag-tf" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span></p>
+    <p class="ag-muted">الإشراف: مكتب الفرع</p>
   </div>
-  <aside class="infobox">
-    <h3><span class="tz" lang="zgh">ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ</span></h3>
-    <p>قيد الإعداد. سيتوفر رابط القراءة والتحميل هنا فور الصدور.</p>
-  </aside>
-</div></div>
+
+  {%- if latest %}
+  <section class="wrap ag-issue{% if latest.status == 'published' %} is-out{% endif %}" aria-labelledby="ag-latest">
+    {%- if latest.status == "published" and latest.cover %}
+    <a class="ag-cover" href="{{ latest.pdf_phone | default: latest.pdf_a4 | relative_url }}"><img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" loading="lazy"></a>
+    {%- endif %}
+    <div class="ag-card">
+      <div class="ag-sub" aria-hidden="true"><i></i><b></b><i></i></div>
+      <h3 class="ag-title" id="ag-latest"><span class="ag-tf" lang="zgh">{{ latest.title_tz }}</span></h3>
+      <p class="ag-kind"><span class="ag-tf" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ</span><span>إصدارات ثقافية</span></p>
+      <div class="ag-sub" aria-hidden="true"><i></i><b></b><i></i></div>
+      {%- if latest.status == "published" %}
+      <p class="ag-date"><span class="ag-tf" lang="zgh">{{ latest.year_tz }}</span><b aria-hidden="true"></b><span>{% include date.html date=latest.date precision="month" %}</span></p>
+      <div class="ag-dl">
+        {%- if latest.pdf_phone %}
+        <a class="btn ag-btn" href="{{ latest.pdf_phone | relative_url }}" download>للقراءة على الهاتف<small>PDF{% if latest.size_phone %} · {{ latest.size_phone }}{% endif %}</small></a>
+        {%- endif %}
+        {%- if latest.pdf_a4 %}
+        <a class="btn ag-btn ag-btn-2" href="{{ latest.pdf_a4 | relative_url }}" download>للطباعة A4<small>PDF{% if latest.size_a4 %} · {{ latest.size_a4 }}{% endif %}</small></a>
+        {%- endif %}
+      </div>
+      {%- else %}
+      <p class="ag-state">{{ latest.note }}</p>
+      {%- endif %}
+    </div>
+    <svg class="ag-roots" viewBox="0 0 210 54" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M8.75,0 C8.75,21.77 71.31,34.68 102.11,49.40"/><path d="M26.25,0 C26.25,20.73 77.44,34.68 102.64,49.40"/><path d="M43.75,0 C43.75,19.68 83.56,34.68 103.16,49.40"/><path d="M61.25,0 C61.25,18.62 89.69,34.68 103.69,49.40"/><path d="M78.75,0 C78.75,17.57 95.81,34.68 104.21,49.40"/><path d="M96.25,0 C96.25,16.52 101.94,34.68 104.74,49.40"/><path d="M113.75,0 C113.75,16.52 108.06,34.68 105.26,49.40"/><path d="M131.25,0 C131.25,17.57 114.19,34.68 105.79,49.40"/><path d="M148.75,0 C148.75,18.62 120.31,34.68 106.31,49.40"/><path d="M166.25,0 C166.25,19.68 126.44,34.68 106.84,49.40"/><path d="M183.75,0 C183.75,20.73 132.56,34.68 107.36,49.40"/><path d="M201.25,0 C201.25,21.77 138.69,34.68 107.89,49.40"/></g><path class="ag-root-d" d="M105,48.8 L107.2,51 L105,53.2 L102.8,51Z"/></svg>
+  </section>
+  {%- endif %}
+
+  {%- assign shown = 0 -%}
+  {%- for it in earlier -%}{%- if it.title_tz != latest.title_tz -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endfor -%}
+  {%- if shown > 0 %}
+  <section class="wrap ag-past" aria-labelledby="ag-past-h">
+    <div class="ag-gbar" aria-hidden="true"></div>
+    <h2 class="ag-h" id="ag-past-h"><span class="ag-ar">إصدارات سابقة</span></h2>
+    <ul class="ag-list">
+      {%- for it in earlier -%}{%- if it.title_tz != latest.title_tz %}
+      <li><a href="{{ it.pdf_phone | default: it.pdf_a4 | relative_url }}"><span class="ag-tf" lang="zgh">{{ it.title_tz }}</span></a><span class="ag-muted">{% include date.html date=it.date precision="month" %}</span></li>
+      {%- endif -%}{%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
+  <div class="ag-band" aria-hidden="true"></div>
+</div>
