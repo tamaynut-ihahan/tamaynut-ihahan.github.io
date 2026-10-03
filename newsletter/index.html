@@ -2,12 +2,13 @@
 layout: page
 title: "ⴰⵖⵎⵉⵙ – إصدارات ثقافية"
 nav: newsletter
-head_tz: "ⴰⵖⵎⵉⵙ"
+head_logo: true
 head_ar: إصدارات ثقافية
 description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي."
 ---
 {%- comment -%}
-  قسم ⴰⵖⵎⵉⵙ بهوية الموقع (مثل باقي الصفحات). هوية المجلة الكاملة في الإصدارات نفسها (PDF والغلاف).
+  قسم ⴰⵖⵎⵉⵙ بهوية الموقع، مع استثناءين ثابتين بطلب صاحب المستودع (لا يُغيَّران):
+  شعار ⴰⵖⵎⵉⵙ في رأس الصفحة (head_logo)، وعنوان الإصدار بخط Adlis. هوية المجلة الكاملة في الإصدارات نفسها.
   التعريف بتيفيناغ وبالعربية بنفس الحجم. الإصدارات من _data/aghmis.yml. لا رقم عدد ولا وتيرة صدور.
 {%- endcomment -%}
 {%- assign issues = site.data.aghmis.issues -%}
@@ -25,7 +26,7 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
       {%- if latest.status == "published" and latest.cover %}
       <a class="ag-cover" href="{{ latest.pdf_phone | default: latest.pdf_a4 | relative_url }}"><img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" loading="lazy"></a>
       {%- endif %}
-      <p class="ag-title tz" id="ag-latest" lang="zgh">{{ latest.title_tz }}</p>
+      <p class="ag-title" id="ag-latest" lang="zgh">{{ latest.title_tz }}</p>
       {%- if latest.status == "published" %}
       <span class="date">{% include date.html date=latest.date precision="month" %}</span>
       <div class="ag-dl">
