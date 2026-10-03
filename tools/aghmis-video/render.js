@@ -4,6 +4,8 @@
 //   node render.js --stills      → out/stills/still_XXs.png (2، 7، 12، 18، 24، 28 ث) + out/poster.png
 //   node render.js --qa          → فحص المنطقة الآمنة، ظهور الموقع، وتحميل الخطوط
 //   node render.js --at 12.5     → out/stills/at_12.50s.png
+//   أضف --format 4x5 لأي أمر أعلاه لنسخة 1080×1350 (منشورات فيسبوك وواتساب):
+//   out/aghmis_launch_30s_4x5.mp4، out/stills_4x5/، out/poster_4x5.png
 //
 // يحتاج playwright (npm i، أو NODE_PATH=$(npm root -g)) و ffmpeg.
 const http = require('http');
@@ -13,8 +15,14 @@ const { spawn } = require('child_process');
 const { chromium } = require('playwright');
 
 const ROOT = __dirname;
+const REPO = path.resolve(__dirname, '../..');   // يُخدَم المستودع كله لأن الخطوط والشعارات في brand/
 const OUT = path.join(ROOT, 'out');
-const FPS = 30, DURATION = 30, W = 1080, H = 1920;
+const ARGS = process.argv.slice(2);
+const FORMAT = ARGS.includes('--format') && ARGS[ARGS.indexOf('--format') + 1] === '4x5' ? '4x5' : '9x16';
+const SUFFIX = FORMAT === '4x5' ? '_4x5' : '';
+const FPS = 30, DURATION = 30, W = 1080, H = FORMAT === '4x5' ? 1350 : 1920;
+// المنطقة الآمنة: واجهة Reels تغطي الأطراف في 9:16؛ في 4:5 هامش 60px من كل جهة
+const SAFE = FORMAT === '4x5' ? { left: 60, right: W - 60, top: 60, bottom: H - 60 } : { left: 60, right: W - 120, top: 250, bottom: H - 400 };
 const STILLS = [2, 7, 12, 18, 24, 28];
 const POSTER_T = 28;
 
@@ -22,8 +30,8 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.png': 'image/png', '.svg':
 function serve() {
   return new Promise(resolve => {
     const srv = http.createServer((req, res) => {
-      const f = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
-      if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
+      const f = path.join(REPO, decodeURIComponent(req.url.split('?')[0]));
+      if (!f.startsWith(REPO) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
       res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream' });
       fs.createReadStream(f).pipe(res);
     }).listen(0, '127.0.0.1', () => resolve(srv));
@@ -35,7 +43,8 @@ async function open() {
   const browser = await chromium.launch({ args: ['--font-render-hinting=none', '--disable-lcd-text'] });
   const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   page.on('pageerror', e => { console.error('page error:', e.message); process.exitCode = 1; });
-  await page.goto(`http://127.0.0.1:${srv.address().port}/index.html`);
+  page.setDefaultTimeout(60000);
+  await page.goto(`http://127.0.0.1:${srv.address().port}/tools/aghmis-video/index.html?format=${FORMAT}`);
   const info = await page.evaluate(() => window.ready);
   if (![...info.adlis, ...info.tajawal].every(s => s === 'loaded') || !info.adlis.length)
     throw new Error('fonts not loaded: ' + JSON.stringify(info));
@@ -48,16 +57,16 @@ const shot = async (page, t, file) => {
 };
 
 async function stills(page, times) {
-  fs.mkdirSync(path.join(OUT, 'stills'), { recursive: true });
+  const dir = path.join(OUT, 'stills' + SUFFIX);
+  fs.mkdirSync(dir, { recursive: true });
   for (const t of times) {
-    const f = path.join(OUT, 'stills', Number.isInteger(t) ? `still_${String(t).padStart(2, '0')}s.png` : `at_${t.toFixed(2)}s.png`);
+    const f = path.join(dir, Number.isInteger(t) ? `still_${String(t).padStart(2, '0')}s.png` : `at_${t.toFixed(2)}s.png`);
     await shot(page, t, f); console.log(f);
   }
 }
 
 // فحص كل إطار (كل 1/30 ث): النصوص الظاهرة داخل المنطقة الآمنة، والموقع ظاهر.
 async function qa(page) {
-  const SAFE = { left: 60, right: W - 120, top: 250, bottom: H - 400 };
   const problems = [];
   for (let i = 0; i < FPS * DURATION; i++) {
     const t = i / FPS;
@@ -86,7 +95,7 @@ async function qa(page) {
 async function video(page) {
   const music = path.join(OUT, 'music.wav');
   if (!fs.existsSync(music)) throw new Error('out/music.wav missing — run: python3 music.py');
-  const dst = path.join(OUT, 'aghmis_launch_30s.mp4');
+  const dst = path.join(OUT, `aghmis_launch_30s${SUFFIX}.mp4`);
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error',
     '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', '-',
     '-i', music,
@@ -110,11 +119,11 @@ async function video(page) {
 }
 
 (async () => {
-  const args = process.argv.slice(2);
+  const args = ARGS;
   const { page, close } = await open();
   try {
     if (args.includes('--qa')) await qa(page);
-    else if (args.includes('--stills')) { await stills(page, STILLS); await shot(page, POSTER_T, path.join(OUT, 'poster.png')); console.log(path.join(OUT, 'poster.png')); }
+    else if (args.includes('--stills')) { await stills(page, STILLS); const pf = path.join(OUT, `poster${SUFFIX}.png`); await shot(page, POSTER_T, pf); console.log(pf); }
     else if (args.includes('--at')) await stills(page, args.slice(args.indexOf('--at') + 1).map(Number).filter(n => !isNaN(n)));
     else await video(page);
   } finally { await close(); }
