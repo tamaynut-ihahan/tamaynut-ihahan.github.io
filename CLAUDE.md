@@ -36,5 +36,6 @@
 
 - إضافة نشاط أو خبر، والمعاينة المحلية، وقواعد السرعة والأمان (CSP: لا `style="…"` ولا `<script>` داخل الصفحات): كلها في `README.md`.
 - الصور الجديدة توضع في `assets/img/`، ثم يُشغَّل `tools/make_images.py`، ثم `tools/og/make_og.py` لصورة المشاركة.
-- **الخطوط في الموقع هي خطوط الموقع وحدها** (Noto Kufi Arabic وNoto Naskh Arabic وNoto Sans Tifinagh)، في كل الصفحات بما فيها قسم ⴰⵖⵎⵉⵙ (`/newsletter/`). خطا Adlis وTajawal للإصدارات والصور والفيديو فقط (في `tamaynut-tools`).
+- **الخطوط في الموقع هي خطوط الموقع وحدها** (Noto Kufi Arabic وNoto Naskh Arabic وNoto Sans Tifinagh)، في كل الصفحات. **الاستثناء الوحيد**: عنوان إصدار ⴰⵖⵎⵉⵙ في `/newsletter/` بخط Adlis (`assets/fonts/adlis-tifinagh.woff2`، حروف تيفيناغ فقط). Tajawal للإصدارات والصور والفيديو فقط (في `tamaynut-tools`).
+- **قسم ⴰⵖⵎⵉⵙ (`/newsletter/`)**: بهوية الموقع، مع شعار ⴰⵖⵎⵉⵙ في رأس الصفحة (`head_logo: true`) وعنوان الإصدار بخط Adlis. **هذان ثابتان بقرار صاحب المستودع: لا تغيّرهما.**
 - **الأمازيغية لا تُهمَّش**: النص بتيفيناغ يأخذ نفس حجم النص العربي ومكانته، لا سطراً صغيراً باهتاً.
