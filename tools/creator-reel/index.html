@@ -10,10 +10,8 @@
   - التوقيت: الكائن TL.
 -->
 <style>
-@font-face{font-family:Tajawal;font-weight:500;src:url(../../brand/fonts/Tajawal-Medium.ttf) format("truetype");}
-@font-face{font-family:Tajawal;font-weight:900;src:url(../../brand/fonts/Tajawal-Black.ttf) format("truetype");}
 
-:root{--navy:#1A2B5E;--blue:#1F56C0;--gold:#E9B84A;--cream:#FBF7EE}
+:root{--accent:#fff;--text:#fff}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden}
@@ -29,23 +27,17 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 /* الاسم في البداية: أسفل الشاشة فوق تعتيم خفيف */
 #lowShade{left:0;right:0;bottom:0;height:760px;
   background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.55) 55%,rgba(0,0,0,.75))}
-#intro{left:0;width:1080px;top:1500px;text-align:center;color:var(--cream)}
-.name{font:900 120px/1.05 Tajawal;direction:ltr;letter-spacing:.01em;text-shadow:0 4px 26px rgba(0,0,0,.6);white-space:nowrap}
-.orn{display:flex;align-items:center;justify-content:center;gap:20px;margin:22px auto 0;width:380px}
-.orn i{flex:1;height:3px;background:var(--gold)}
-.orn img{width:24px;height:24px}
+#intro{left:0;width:1080px;top:1500px;text-align:center;color:var(--text)}
+.name{font:700 112px/1.1 "DejaVu Sans";direction:ltr;letter-spacing:.01em;text-shadow:0 4px 26px rgba(0,0,0,.6);white-space:nowrap}
+.orn{margin:24px auto 0;width:160px;height:4px;border-radius:2px;background:var(--accent);opacity:.85}
 .handle{display:flex;justify-content:center;align-items:center;gap:14px;direction:ltr;margin-top:24px;
-  font:500 42px/1 Tajawal;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+  font:500 42px/1 "DejaVu Sans";text-shadow:0 2px 14px rgba(0,0,0,.7)}
 .handle svg{width:48px;height:48px;flex:none}
 
 /* بطاقة الختام */
-#endShade{inset:0;background:rgba(14,22,50,.78)}
-#end{left:0;width:1080px;top:0;text-align:center;color:var(--cream)}
+#endShade{inset:0;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.45) 45%,rgba(0,0,0,.25))}
+#end{left:0;width:1080px;top:0;text-align:center;color:var(--text)}
 #end .name{font-size:132px}
-#credit{left:0;width:1080px;bottom:120px;display:flex;flex-direction:column;align-items:center;gap:22px}
-#credit .logo{background:var(--cream);border-radius:20px;padding:12px 16px}
-#credit .logo img{display:block;width:250px}
-#credit .site{font:500 34px/1 Tajawal;direction:ltr;color:var(--cream);letter-spacing:.02em}
 
 #fade{inset:0;background:#000;opacity:0}
 </style>
@@ -57,19 +49,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   <div id="lowShade" class="abs"></div>
   <div id="intro" class="abs">
     <div class="name"></div>
-    <div class="orn"><i></i><img src="../../brand/motifs/diamond.svg" alt=""><i></i></div>
+    <div class="orn"></div>
     <div class="handle"></div>
   </div>
 
   <div id="endShade" class="abs"></div>
   <div id="end" class="abs">
     <div class="name"></div>
-    <div class="orn"><i></i><img src="../../brand/motifs/diamond.svg" alt=""><i></i></div>
+    <div class="orn"></div>
     <div class="handle"></div>
-  </div>
-  <div id="credit" class="abs">
-    <div class="logo"><img src="../../brand/logos/tamaynut.png" alt="Tamaynut"></div>
-    <div class="site">tamaynut-ihahan.org</div>
   </div>
 
   <div id="fade" class="abs"></div>
@@ -77,7 +65,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 
 <script>
 /* ═══════════ الإعدادات (من config.json عبر render.js) ═══════════ */
-const CFG = Object.assign({ list: [], duration: 40, creator: '', handle: '', brand: true, fit: 'auto' },
+const CFG = Object.assign({ list: [], duration: 40, creator: '', tagline: '', cta: '', fit: 'auto' },
   window.__CFG__ || {});
 
 /* ═══════════ التوقيت (ثوانٍ) ═══════════ */
@@ -101,13 +89,13 @@ const FB = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50
   '<path d="M55 100V61h13l2-15H55v-9c0-4 1-7 7-7h8V17c-1 0-6-1-12-1-12 0-19 7-19 20v10H26v15h13v39z" fill="#fff"/></svg>';
 
 /* ═══════════ بناء العناصر ═══════════ */
-for (const box of [$('intro'), $('end')]) {
+// النص تحت الاسم: tagline في البداية، وcta (مع أيقونة فيسبوك) في بطاقة الختام
+for (const [box, txt, icon] of [[$('intro'), CFG.tagline, false], [$('end'), CFG.cta, true]]) {
   box.querySelector('.name').textContent = CFG.creator;
   const h = box.querySelector('.handle');
-  if (CFG.handle) { h.innerHTML = FB; h.append(Object.assign(document.createElement('span'), { textContent: CFG.handle })); }
+  if (txt) { if (icon) h.innerHTML = FB; h.append(Object.assign(document.createElement('span'), { textContent: txt })); }
   else h.remove();
 }
-if (!CFG.brand) $('credit').remove();
 
 const slides = CFG.list.map(src => {
   const d = document.createElement('div'); d.className = 'slide abs';
@@ -155,8 +143,7 @@ function render(t) {
   const e = seg(t, [D - TL.end, D - TL.end + 0.8]);
   $('endShade').style.opacity = e;
   $('end').style.opacity = e;
-  atY($('end'), 860 + 20 * (1 - e));
-  if ($('credit')) $('credit').style.opacity = seg(t, [D - TL.end + 0.6, D - TL.end + 1.4]);
+  atY($('end'), 560 + 20 * (1 - e));
 
   $('fade').style.opacity = 1 - out;
 }
@@ -173,16 +160,14 @@ function fitName() {
 
 window.render = render;
 window.ready = (async () => {
-  await document.fonts.load('900 120px Tajawal', CFG.creator);
-  await document.fonts.load('500 42px Tajawal', CFG.handle + 'tamaynut-ihahan.org');
-  await document.fonts.ready;
+    await document.fonts.ready;
   await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
   slides.filter(s => s.im.naturalWidth).forEach(prepare);
   fitName();
   render(0);
   const S = CFG.duration / slides.length;
   return {
-    fonts: [...document.fonts].map(f => f.family.replace(/"/g, '') + ':' + f.status),
+    font: document.fonts.check('700 112px "DejaVu Sans"', CFG.creator),
     photos: slides.filter(s => s.im.naturalWidth).length,
     slide: S,
   };
