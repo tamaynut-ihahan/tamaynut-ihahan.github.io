@@ -1,10 +1,10 @@
 {
   "photos": "in/photos",
-  "music": "",
+  "music": "out/music.wav",
   "musicStart": 0,
-  "duration": 40,
-  "creator": "Fati Att",
-  "handle": "",
-  "brand": true,
-  "output": "creator_reel.mp4"
+  "duration": 25,
+  "creator": "Prénom Nom",
+  "tagline": "Créatrice de contenu",
+  "cta": "Suivez-moi sur Facebook",
+  "output": "reel.mp4"
 }

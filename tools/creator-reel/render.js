@@ -29,7 +29,7 @@ async function page() {
   await p.addInitScript(cfg => { window.__CFG__ = cfg; }, CFG);
   await p.goto('file://' + path.join(__dirname, 'index.html'));
   const info = await p.evaluate(() => window.ready);
-  if (info.photos !== CFG.list.length || !info.fonts.length || info.fonts.some(f => !f.endsWith(':loaded')))
+  if (info.photos !== CFG.list.length || !info.font)
     throw new Error('fonts/photos not loaded: ' + JSON.stringify(info));
   console.log(`${info.photos} photos, ${info.slide.toFixed(2)} s each`);
   return { b, p };
