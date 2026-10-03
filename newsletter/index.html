@@ -43,15 +43,3 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
     {%- endif %}
 </div></div>
 
-{%- assign shown = 0 -%}
-{%- for it in issues -%}{%- if it.status == "published" and it.title_tz != latest.title_tz -%}{%- assign shown = shown | plus: 1 -%}{%- endif -%}{%- endfor -%}
-{%- if shown > 0 %}
-<div class="band"><div class="wrap"><div class="prose">
-    <h2>إصدارات سابقة</h2>
-    <ul class="ag-list">
-      {%- for it in issues -%}{%- if it.status == "published" and it.title_tz != latest.title_tz %}
-      <li><a class="tz" lang="zgh" href="{{ it.pdf_phone | default: it.pdf_a4 | relative_url }}">{{ it.title_tz }}</a><span class="date">{% include date.html date=it.date precision="month" %}</span></li>
-      {%- endif -%}{%- endfor %}
-    </ul>
-</div></div></div>
-{%- endif %}
