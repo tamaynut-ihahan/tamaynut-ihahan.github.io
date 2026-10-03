@@ -1,9 +1,0 @@
-out/
-__pycache__/
-node_modules/
-*.mp4
-*.wav
-*.m4a
-*.mp3
-*.oga
-*.zip
