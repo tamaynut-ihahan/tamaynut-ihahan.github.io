@@ -31,6 +31,7 @@
 | صورة إعلان أو خبر أو اقتباس أو تهنئة | `poster-maker/` | `python3 tools/poster-maker/make_posters.py posts.yml --only <name>` |
 | فيديو موشن غرافيك (ريلز) | `aghmis-video/` | انسخه إلى `tools/<اسم-الفيديو>/` وعدّل `TEXT` و`TL` والمشاهد في `index.html`، ثم `node render.js` |
 | ريلز أغنية لبرنامج ⴰⵎⴰⵔⴳ (صورة الفنان ومقطع من أغنيته) | `amarg-reel/` | ضع الصورة والأغنية في `in/`، وعدّل `config.json` و`TEXT`، ثم `node render.js` |
+| ريلز من صور صانع محتوى (تتابع صور مع اسمه، 40 ث) | `creator-reel/` | ضع الصور في `in/photos/`، وعدّل `config.json`، ثم `node render.js`. احذف `in/` و`out/` بعد التسليم |
 | ريلز بصوت مسجّل وترجمة بتيفيناغ متزامنة مع الكلام | `aghmis-reel/` | `python3 tools/aghmis-reel/align.py <تسجيل>` ثم `prepare_voice.py` و`music.py` و`node render.js` |
 | تنقية صوت تسجيل أو تعميقه | `voice-cleanup/` | `python3 tools/voice-cleanup/voice_cleanup.py <ملف>`، أو مع `--no-voice-change` للتنقية فقط |
 | صور المشاركة لصفحات الموقع (og:image) | `og/` | `python3 tools/og/make_og.py` |

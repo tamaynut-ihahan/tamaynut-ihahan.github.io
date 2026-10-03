@@ -1,0 +1,10 @@
+{
+  "photos": "in/photos",
+  "music": "in/music.mp3",
+  "musicStart": 0,
+  "duration": 40,
+  "creator": "Fati Att",
+  "handle": "",
+  "brand": true,
+  "output": "creator_reel.mp4"
+}
