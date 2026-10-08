@@ -12,7 +12,7 @@
 ولإصدار ⴰⵖⵎⵉⵙ من _data/aghmis.yml (أحدث إصدار): og_image، والغلاف cover_jpg (أو cover).
 يحتاج: python3 + PyYAML، و node + playwright (مع Chromium). لا يحتاج اتصالا بالإنترنت.
 """
-import datetime, html, json, os, subprocess, sys, tempfile
+import datetime, html, json, os, re, subprocess, sys, tempfile
 import yaml
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -53,6 +53,7 @@ def local(url):
 STYLE = """
 *{box-sizing:border-box;margin:0}
 html,body{width:1200px;height:630px;overflow:hidden}
+.tzi{font-family:"Noto Sans Tifinagh",sans-serif;unicode-bidi:isolate;white-space:nowrap}
 body{background:#0A1A3A;color:#fff;font-family:"Noto Naskh Arabic",serif;display:grid;grid-template-columns:600px 600px;direction:rtl}
 .tz{font-family:"Noto Sans Tifinagh",sans-serif;direction:ltr;unicode-bidi:isolate}
 .panel{position:relative;padding:56px 60px 48px 56px;display:flex;flex-direction:column;background:linear-gradient(160deg,#0A1A3A 0%,#0B2150 100%)}
@@ -76,6 +77,12 @@ h1{font-family:"Noto Kufi Arabic",sans-serif;font-weight:800;line-height:1.5;col
 """
 
 
+def tz_runs(text):
+    """نص بتيفيناغ داخل عنوان عربي: معزول وفي سطر واحد (لا ينقسم بين سطرين)."""
+    return re.sub(r'[\u2D30-\u2D7F](?:[\u2D30-\u2D7F ]*[\u2D30-\u2D7F])?',
+                  lambda m: f'<span class="tzi" dir="ltr">{m.group(0)}</span>', html.escape(text))
+
+
 def item_card(fm, section):
     title = fm.get('og_title') or fm['title']
     size = 46 if len(title) <= 38 else 40 if len(title) <= 60 else 34
@@ -89,7 +96,7 @@ def item_card(fm, section):
 <div class="panel">
   <div class="sec"><span class="tz">{tz}</span><span class="ar">{ar}</span></div>
   <div class="rule"></div>
-  <h1 style="font-size:{size}px">{html.escape(title)}</h1>
+  <h1 style="font-size:{size}px">{tz_runs(title)}</h1>
   <div class="date">{html.escape(date)}</div>
   <div class="foot"><span class="logo"><img src="{local('/assets/img/logo.png')}"></span><span class="domain">{html.escape(CONFIG['url'].split('//')[1])}</span></div>
 </div>
