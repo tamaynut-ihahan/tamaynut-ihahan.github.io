@@ -20,18 +20,16 @@
 
 issues:
   - title_tz: "ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ"
-    status: preparing
-    note: "قيد الإعداد. سيتوفر رابط القراءة والتحميل هنا فور الصدور."
+    status: published
+    date: 2026-10-08
     date_tz: "ⴽⵟⵓⴱⵕ 2026"
     year_tz: "2976"
     cover: /assets/aghmis/afrag-n-tmagit-cover.webp
     cover_jpg: /assets/aghmis/afrag-n-tmagit-cover.jpg
     og_image: /assets/og/aghmis-afrag-n-tmagit.jpg
-    # يوم الصدور: status: published، وdate، وملفا PDF:
-    # date:       2026-10-
-    # pdf_phone:  /assets/aghmis/afrag-n-tmagit-phone.pdf
-    # pdf_a4:     /assets/aghmis/afrag-n-tmagit-A4.pdf
-    # size_phone: "2.2 MB"
-    # size_a4:    "2.2 MB"
-    # about:      ""
-    # contributors: []
+    pdf_phone: /assets/aghmis/afrag-n-tmagit-phone.pdf
+    pdf_a4: /assets/aghmis/afrag-n-tmagit-A4.pdf
+    size_phone: "2.2 MB"
+    size_a4: "2.2 MB"
+    about: "إصدار ثقافي بحرف تيفيناغ، يضم افتتاحية ومقالات في الرواية الأمازيغية وأحواش إحاحان، وقصصاً وشعراً، وبورتريه للمناضل حسن إد بلقاسم، وأمثالاً من إحاحان، ومعجماً لأسماء النباتات بالأمازيغية مع أسمائها العلمية."
+    contributors: ["محمد أكوناض", "فاضمة فراس", "أنس أولحلو", "محمد أوسوس", "محمد اخصاصي", "سليمان تينزفت", "فاطمة أوبلا", "مينة بوركيك"]
