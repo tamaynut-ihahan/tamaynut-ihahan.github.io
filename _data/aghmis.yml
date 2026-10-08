@@ -1,14 +1,16 @@
 # إصدارات ⴰⵖⵎⵉⵙ – تقرأها صفحة /newsletter/
 # الأحدث أولاً. لا رقم عدد ولا وتيرة صدور (دليل الهوية في مستودع tamaynut-tools: brand/identity-guide.html، القسم 2).
 #
-# status: preparing  → يظهر الإصدار «قيد الإعداد» دون غلاف ولا روابط
+# status: preparing  → يظهر الإصدار «قيد الإعداد» دون روابط (ويظهر الغلاف إن وُضع، بلا رابط)
 # status: published  → يظهر الغلاف وتاريخ الصدور وزرّا التحميل (الصفحة تعرض أحدث إصدار فقط: الأول في القائمة)
 #
 # يوم الصدور: ضع الملفات في assets/aghmis/ ثم املأ الحقول:
 #   date:       2026-11-15            (يُكتب بالعربية المغربية تلقائياً)
 #   date_tz:    "ⵏⵓⵡⴰⵏⴱⵉⵔ 2026"         (كما في بطاقة الإصدار، من الورشة)
 #   year_tz:    "2976"                (السنة الأمازيغية)
-#   cover:      /assets/aghmis/<الاسم>-cover.jpg
+#   cover:      /assets/aghmis/<الاسم>-cover.webp   (595 عرضاً، يظهر في الصفحة)
+#   cover_jpg:  /assets/aghmis/<الاسم>-cover.jpg    (1190 عرضاً، لصورة المشاركة: tools/og/make_og.py)
+#   og_image:   /assets/og/aghmis-<الاسم>.jpg
 #   pdf_phone:  /assets/aghmis/<الاسم>-phone.pdf
 #   pdf_a4:     /assets/aghmis/<الاسم>-A4.pdf
 #   size_phone: "1.3 MB"
@@ -18,3 +20,14 @@ issues:
   - title_tz: "ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ"
     status: preparing
     note: "قيد الإعداد. سيتوفر رابط القراءة والتحميل هنا فور الصدور."
+    date_tz: "ⴽⵟⵓⴱⵕ 2026"
+    year_tz: "2976"
+    cover: /assets/aghmis/afrag-n-tmagit-cover.webp
+    cover_jpg: /assets/aghmis/afrag-n-tmagit-cover.jpg
+    og_image: /assets/og/aghmis-afrag-n-tmagit.jpg
+    # يوم الصدور: status: published، وdate، وملفا PDF:
+    # date:       2026-10-
+    # pdf_phone:  /assets/aghmis/afrag-n-tmagit-phone.pdf
+    # pdf_a4:     /assets/aghmis/afrag-n-tmagit-A4.pdf
+    # size_phone: "2.2 MB"
+    # size_a4:    "2.2 MB"

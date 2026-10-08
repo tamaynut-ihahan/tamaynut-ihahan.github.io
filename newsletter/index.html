@@ -4,6 +4,7 @@ title: "ⴰⵖⵎⵉⵙ – إصدارات ثقافية"
 nav: newsletter
 head_logo: true
 head_ar: إصدارات ثقافية
+og_from_aghmis: true   # صورة المشاركة من أحدث إصدار (og_image في _data/aghmis.yml)
 description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي."
 ---
 {%- comment -%}
@@ -23,8 +24,14 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
     {%- if latest %}
     <aside class="infobox ag-box" aria-labelledby="ag-latest">
       <h3>{% if latest.status == "published" %}أحدث إصدار{% else %}إصدار جديد{% endif %}</h3>
-      {%- if latest.status == "published" and latest.cover %}
-      <a class="ag-cover" href="{{ latest.pdf_phone | default: latest.pdf_a4 | relative_url }}"><img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" loading="lazy"></a>
+      {%- if latest.cover %}
+      {%- capture cover_img %}<img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" loading="lazy">{% endcapture %}
+      {%- assign cover_pdf = latest.pdf_phone | default: latest.pdf_a4 %}
+      {%- if latest.status == "published" and cover_pdf %}
+      <a class="ag-cover" href="{{ cover_pdf | relative_url }}">{{ cover_img }}</a>
+      {%- else %}
+      <div class="ag-cover">{{ cover_img }}</div>
+      {%- endif %}
       {%- endif %}
       <p class="ag-title" id="ag-latest" lang="zgh">{{ latest.title_tz }}</p>
       {%- if latest.status == "published" %}
