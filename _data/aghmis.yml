@@ -15,6 +15,8 @@
 #   pdf_a4:     /assets/aghmis/<الاسم>-A4.pdf
 #   size_phone: "1.3 MB"
 #   size_a4:    "1.2 MB"
+#   about:        "سطر عن الإصدار"                (اختياري، بنص يرسله صاحب المستودع)
+#   contributors: ["اسم", "اسم"]                  (اختياري: «في هذا الإصدار»)
 
 issues:
   - title_tz: "ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ"
@@ -31,3 +33,5 @@ issues:
     # pdf_a4:     /assets/aghmis/afrag-n-tmagit-A4.pdf
     # size_phone: "2.2 MB"
     # size_a4:    "2.2 MB"
+    # about:      ""
+    # contributors: []
