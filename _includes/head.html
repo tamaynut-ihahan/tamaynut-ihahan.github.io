@@ -5,7 +5,9 @@
 {%- endif -%}
 {%- assign desc = page.description | default: site.description | strip_html | normalize_whitespace -%}
 {%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
-{%- assign og_image = page.og_image | default: site.default_image | absolute_url -%}
+{%- assign og_src = page.og_image -%}
+{%- if page.og_from_aghmis -%}{%- assign og_src = site.data.aghmis.issues.first.og_image | default: og_src -%}{%- endif -%}
+{%- assign og_image = og_src | default: site.default_image | absolute_url -%}
 {%- if page.collection == "activities" or page.collection == "news" -%}{%- assign og_type = "article" -%}{%- else -%}{%- assign og_type = "website" -%}{%- endif -%}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

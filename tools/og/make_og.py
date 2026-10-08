@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""يولّد صور المشاركة (og:image) لكل نشاط وخبر، وللموقع عامة.
+"""يولّد صور المشاركة (og:image) لكل نشاط وخبر، ولأحدث إصدار ⴰⵖⵎⵉⵙ، وللموقع عامة.
 
 الاستعمال (من جذر المستودع):
     python3 tools/og/make_og.py            # يولّد الصور الناقصة فقط
@@ -9,6 +9,7 @@
   og_image   مسار الصورة الناتجة (مثلا /assets/og/act-....jpg)
   og_source  الصورة المستعملة داخل البطاقة (اختياري، وإلا card_image ثم image)
   og_title   عنوان مختصر للبطاقة (اختياري، وإلا title)
+ولإصدار ⴰⵖⵎⵉⵙ من _data/aghmis.yml (أحدث إصدار): og_image، والغلاف cover_jpg (أو cover).
 يحتاج: python3 + PyYAML، و node + playwright (مع Chromium). لا يحتاج اتصالا بالإنترنت.
 """
 import datetime, html, json, os, subprocess, sys, tempfile
@@ -26,8 +27,8 @@ FONT_CSS = ''
 
 def local_fonts():
     """خطوط الموقع نفسها (assets/fonts) بمسارات file:// ليستعملها Chromium."""
-    css = open(os.path.join(ROOT, 'assets', 'css', 'fonts.css'), encoding='utf-8').read()
-    return css.replace('url(../fonts/', 'url(file://' + os.path.join(ROOT, 'assets', 'fonts') + '/')
+    css = open(os.path.join(ROOT, '_includes', 'css', 'fonts.css'), encoding='utf-8').read()
+    return css.replace("url({{ '/assets/fonts/' | relative_url }}", 'url(file://' + os.path.join(ROOT, 'assets', 'fonts') + '/')
 
 
 def front_matter(path):
@@ -100,6 +101,25 @@ if(i.complete)apply();else i.onload=apply;
 </script></body></html>"""
 
 
+def aghmis_card(issue):
+    """بطاقة أحدث إصدار ⴰⵖⵎⵉⵙ: العنوان بتيفيناغ والغلاف كاملاً. لا رقم عدد ولا وتيرة صدور."""
+    src = issue.get('cover_jpg') or issue['cover']
+    return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8">
+<style>{FONT_CSS}{STYLE}
+h1.tz{{font-family:"Noto Sans Tifinagh",sans-serif;font-weight:400;font-size:64px;line-height:1.3;text-align:right}}
+.sub{{font-family:"Noto Kufi Arabic",sans-serif;font-weight:500;font-size:26px;color:#C9A24A;margin-top:14px}}
+</style></head><body>
+<div class="panel">
+  <div class="sec"><span class="tz">ⴰⵖⵎⵉⵙ</span><span class="ar">إصدارات</span></div>
+  <div class="rule"></div>
+  <h1 class="tz">{html.escape(issue['title_tz'])}</h1>
+  <div class="sub">إصدارات ثقافية</div>
+  <div class="foot"><span class="logo"><img src="{local('/assets/img/logo.png')}"></span><span class="domain">{html.escape(CONFIG['url'].split('//')[1])}</span></div>
+</div>
+<div class="media contain"><div class="bg" style="background-image:url('{local(src)}')"></div><img src="{local(src)}"></div>
+</body></html>"""
+
+
 def default_card():
     return f"""<!doctype html><html lang="ar"><head><meta charset="utf-8">
 <style>{FONT_CSS}
@@ -156,6 +176,10 @@ def main():
                 print(f'  - {section}/{f}: لا يوجد og_image، تم التجاوز')
                 continue
             add(f'{section}-{f}', fm['og_image'], item_card(fm, section))
+
+    issues = (yaml.safe_load(open(os.path.join(ROOT, '_data', 'aghmis.yml'), encoding='utf-8')) or {}).get('issues') or []
+    if issues and issues[0].get('og_image') and (issues[0].get('cover_jpg') or issues[0].get('cover')):
+        add('aghmis', issues[0]['og_image'], aghmis_card(issues[0]))
 
     if not jobs:
         print('كل الصور موجودة. استعمل --all لإعادة التوليد.')
