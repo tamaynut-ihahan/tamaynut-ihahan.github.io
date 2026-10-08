@@ -10,44 +10,81 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
 {%- comment -%}
   قسم ⴰⵖⵎⵉⵙ بهوية الموقع، مع استثناءين ثابتين بطلب صاحب المستودع (لا يُغيَّران):
   شعار ⴰⵖⵎⵉⵙ في رأس الصفحة (head_logo)، وعنوان الإصدار بخط Adlis. هوية المجلة الكاملة في الإصدارات نفسها.
-  التعريف بتيفيناغ وبالعربية بنفس الحجم. الإصدارات من _data/aghmis.yml. لا رقم عدد ولا وتيرة صدور.
+  ترتيب صفحات المجلات: أحدث إصدار أولاً بغلاف كبير، ثم التعريف بـ ⴰⵖⵎⵉⵙ (تيفيناغ والعربية عمودان متقابلان
+  بنفس الحجم)، ثم الإصدارات السابقة بأغلفتها حين توجد. الإصدارات من _data/aghmis.yml. لا رقم عدد ولا وتيرة صدور.
+  about وcontributors لا تُملأ إلا يوم الصدور (لا يُنشر شيء من محتوى إصدار قبل موعده).
 {%- endcomment -%}
 {%- assign issues = site.data.aghmis.issues -%}
 {%- assign latest = issues | first -%}
-<div class="band"><div class="wrap two-col">
-    <div class="prose">
-      <p class="lead-text ag-lead-tz tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵥⵍⵉⵏⵜ ⵉ ⵜⵙⴽⵍⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵜⴰⵢⵙⵉ ⵏ ⵜⵎⴰⵣⵉⵖⵜ.</p>
-      <p class="lead-text">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
-      <p class="ag-note">الإشراف: مكتب الفرع</p>
-    </div>
-
-    {%- if latest %}
-    <aside class="infobox ag-box" aria-labelledby="ag-latest">
-      <h3>{% if latest.status == "published" %}أحدث إصدار{% else %}إصدار جديد{% endif %}</h3>
-      {%- if latest.cover %}
-      {%- capture cover_img %}<img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" loading="lazy">{% endcapture %}
-      {%- assign cover_pdf = latest.pdf_phone | default: latest.pdf_a4 %}
-      {%- if latest.status == "published" and cover_pdf %}
-      <a class="ag-cover" href="{{ cover_pdf | relative_url }}">{{ cover_img }}</a>
-      {%- else %}
-      <div class="ag-cover">{{ cover_img }}</div>
-      {%- endif %}
-      {%- endif %}
-      <p class="ag-title" id="ag-latest" lang="zgh">{{ latest.title_tz }}</p>
-      {%- if latest.status == "published" %}
-      <span class="date">{% include date.html date=latest.date precision="month" %}</span>
-      <div class="ag-dl">
-        {%- if latest.pdf_phone %}
-        <a class="btn btn-gold" href="{{ latest.pdf_phone | relative_url }}" download>للقراءة على الهاتف<small>PDF{% if latest.size_phone %} · {{ latest.size_phone }}{% endif %}</small></a>
-        {%- endif %}
-        {%- if latest.pdf_a4 %}
-        <a class="btn btn-line" href="{{ latest.pdf_a4 | relative_url }}" download>للطباعة A4<small>PDF{% if latest.size_a4 %} · {{ latest.size_a4 }}{% endif %}</small></a>
-        {%- endif %}
-      </div>
-      {%- else %}
-      <p>{{ latest.note }}</p>
-      {%- endif %}
-    </aside>
+{%- if latest %}
+{%- assign published = false -%}{%- if latest.status == "published" -%}{%- assign published = true -%}{%- endif -%}
+{%- assign cover_pdf = latest.pdf_phone | default: latest.pdf_a4 -%}
+<section class="band ag-feature" aria-labelledby="ag-latest"><div class="wrap ag-grid">
+  {%- if latest.cover %}
+  {%- capture cover_img %}<img src="{{ latest.cover | relative_url }}" alt="غلاف {{ latest.title_tz }}" width="595" height="842" fetchpriority="high">{% endcapture %}
+  {%- if published and cover_pdf %}
+  <a class="ag-cover" href="{{ cover_pdf | relative_url }}">{{ cover_img }}</a>
+  {%- else %}
+  <div class="ag-cover">{{ cover_img }}</div>
+  {%- endif %}
+  {%- endif %}
+  <div class="ag-info">
+    <p class="ag-kicker">{% if published %}أحدث إصدار{% else %}إصدار جديد{% endif %}</p>
+    <h2 class="ag-title" id="ag-latest" lang="zgh">{{ latest.title_tz }}</h2>
+    {%- if latest.date_tz or latest.date %}
+    <p class="ag-meta">
+      {%- if latest.date_tz %}<span class="tz" lang="zgh">{{ latest.date_tz }}</span>{% endif -%}
+      {%- if published and latest.date %}<span>{% include date.html date=latest.date precision="month" %}</span>{% endif -%}
+    </p>
     {%- endif %}
-</div></div>
+    {%- if published and latest.about %}
+    <p class="ag-about">{{ latest.about }}</p>
+    {%- endif %}
+    {%- if published and latest.contributors %}
+    <div class="ag-contrib">
+      <h3>في هذا الإصدار</h3>
+      <ul>{% for c in latest.contributors %}<li>{{ c }}</li>{% endfor %}</ul>
+    </div>
+    {%- endif %}
+    {%- if published %}
+    <div class="ag-dl">
+      {%- if latest.pdf_phone %}
+      <a class="btn btn-gold" href="{{ latest.pdf_phone | relative_url }}" download>للقراءة على الهاتف<small>PDF{% if latest.size_phone %} · {{ latest.size_phone }}{% endif %}</small></a>
+      {%- endif %}
+      {%- if latest.pdf_a4 %}
+      <a class="btn btn-line" href="{{ latest.pdf_a4 | relative_url }}" download>للطباعة A4<small>PDF{% if latest.size_a4 %} · {{ latest.size_a4 }}{% endif %}</small></a>
+      {%- endif %}
+    </div>
+    {%- else %}
+    <p class="ag-status"><span class="ag-pill">قيد الإعداد</span>{{ latest.note | remove: "قيد الإعداد. " }}</p>
+    {%- endif %}
+  </div>
+</div></section>
+{%- endif %}
 
+<section class="band ag-intro" aria-labelledby="ag-about"><div class="wrap">
+  <h2 class="bh" id="ag-about"><span class="tz" lang="zgh">ⴰⵖⵎⵉⵙ</span><span class="ar">عن الإصدارات</span></h2>
+  <div class="ag-bi">
+    <p class="ag-bi-ar">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
+    <p class="ag-bi-tz tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵥⵍⵉⵏⵜ ⵉ ⵜⵙⴽⵍⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵜⴰⵢⵙⵉ ⵏ ⵜⵎⴰⵣⵉⵖⵜ.</p>
+  </div>
+  <p class="ag-credit">الإشراف: مكتب الفرع</p>
+</div></section>
+
+{%- assign past = issues | where: "status", "published" -%}
+{%- if published %}{% assign past_count = past.size | minus: 1 %}{% else %}{% assign past_count = past.size %}{% endif -%}
+{%- if past_count > 0 %}
+<section class="band" aria-labelledby="ag-past"><div class="wrap">
+  <h2 class="ag-sec" id="ag-past">إصدارات سابقة</h2>
+  <ul class="ag-shelf">
+    {%- for it in past %}{% if it.title_tz == latest.title_tz %}{% continue %}{% endif %}
+    {%- assign it_pdf = it.pdf_phone | default: it.pdf_a4 %}
+    <li><a href="{{ it_pdf | relative_url }}">
+      {%- if it.cover %}<img src="{{ it.cover | relative_url }}" alt="" width="595" height="842" loading="lazy">{% endif %}
+      <span class="ag-shelf-t" lang="zgh">{{ it.title_tz }}</span>
+      {%- if it.date %}<span class="date">{% include date.html date=it.date precision="month" %}</span>{% endif %}
+    </a></li>
+    {%- endfor %}
+  </ul>
+</div></section>
+{%- endif %}
