@@ -79,10 +79,23 @@ og_image: /assets/og/default.jpg
       <p class="lead-text">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
       <a class="more" href="{{ '/newsletter/' | relative_url }}">تعرّف على ⴰⵖⵎⵉⵙ</a>
     </div>
+    {%- assign ag = site.data.aghmis.issues | first %}
+    {%- if ag %}
     <aside class="infobox">
-      <h3><span class="tz" lang="zgh">ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ</span></h3>
+      {%- if ag.status == "published" %}
+      {%- if ag.cover %}
+      <a class="infobox-cover" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy"></a>
+      {%- endif %}
+      <p class="infobox-kicker">أحدث إصدار</p>
+      <h3><span class="tz" lang="zgh">{{ ag.title_tz }}</span></h3>
+      {%- if ag.date %}<p>صدر في {% include date.html date=ag.date precision="month" %}</p>{% endif %}
+      <a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">اقرأ الإصدار وحمّله</a>
+      {%- else %}
+      <h3><span class="tz" lang="zgh">{{ ag.title_tz }}</span></h3>
       <p>قيد الإعداد</p>
+      {%- endif %}
     </aside>
+    {%- endif %}
   </div>
 </div>
 
