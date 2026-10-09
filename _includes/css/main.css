@@ -159,6 +159,10 @@ ul{margin:0;padding:0;list-style:none}
 .infobox p{font-size:1rem;line-height:1.8;margin-bottom:1rem;color:var(--muted)}
 .infobox p:last-child{margin-bottom:0}
 .infobox a{word-break:break-all}
+.infobox .btn{word-break:normal}
+.infobox-cover{display:block;max-width:11rem;margin-bottom:1rem}
+.infobox-cover img{display:block;width:100%;height:auto;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.infobox .infobox-kicker{font-size:.85rem;font-weight:700;color:var(--blue);margin-bottom:.2rem}
 @media (max-width:860px){.two-col{grid-template-columns:1fr}}
 
 /* goals */
