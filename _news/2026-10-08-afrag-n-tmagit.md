@@ -4,7 +4,7 @@ list_title: "صدور «ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ»، إصدار ج
 date: 2026-10-08
 description: "فرع تاماينوت تمنار احاحان يصدر «ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ» ضمن إصدارات ⴰⵖⵎⵉⵙ الثقافية: مقالات وإبداع ووجوه وأدب شفوي ومعجم، متاح للتحميل مجاناً بنسختين للهاتف وللطباعة."
 og_image: /assets/og/news-2026-10-08-afrag-n-tmagit.jpg
-image: /assets/aghmis/afrag-n-tmagit-cover.jpg
+image: /assets/img/n2026-afrag-n-tmagit.jpg
 image_alt: "غلاف إصدار ⴰⴼⵔⴰⴳ ⵏ ⵜⵎⴰⴳⵉⵜ"
 image_zoom_label: "تكبير الغلاف"
 image_width: 1190
