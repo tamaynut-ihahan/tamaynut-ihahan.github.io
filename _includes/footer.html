@@ -27,6 +27,13 @@
         {% include social.html %}
       </div>
     </div>
+    <div class="foot-marks">
+      <h2><span class="tz" lang="zgh">ⵜⵉⵎⵉⵜⴰⵔ ⵏⵏⵖ</span><span class="ar">علاماتنا</span></h2>
+      <ul>
+        <li><a class="mk-aghmis" href="{{ '/newsletter/' | relative_url }}" aria-label="ⴰⵖⵎⵉⵙ، إصدارات">{% include aghmis-logo.svg id="foot" %}</a></li>
+        <li><a class="mk-tifawt" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer" aria-label="قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب (تفتح في نافذة جديدة)"><img src="{{ '/assets/img/tifawt.webp' | relative_url }}" alt="" loading="lazy" width="84" height="84"><span><b lang="zgh">ⵜⵉⴼⴰⵡⵜ</b><small lang="en">TIFAWT</small></span></a></li>
+      </ul>
+    </div>
     <p class="copy">© <span id="year">{{ site.time | date: "%Y" }}</span> {{ site.title }}</p>
   </div>
 </footer>
