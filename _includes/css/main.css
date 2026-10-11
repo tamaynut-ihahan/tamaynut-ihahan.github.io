@@ -268,6 +268,22 @@ dialog.lb .close{position:fixed;top:1rem;left:1rem;background:#fff;color:var(--i
 .page-head .aghmis-logo{width:clamp(240px,55vw,420px)}
 .page-head .aghmis-logo .lg-m,.page-head .aghmis-logo .lg-s{fill:#fff}.page-head .aghmis-logo .lg-r{fill:var(--gold)}
 .bh-logo .ar{margin-top:.5rem}
+/* ⵜⵉⵎⵉⵜⴰⵔ ⵏⵏⵖ: علامات المنظمة في التذييل */
+.foot-marks{margin-top:2.4rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.12);text-align:center}
+.site-footer .foot-marks h2{display:flex;flex-direction:column;align-items:center;gap:.1rem;margin-bottom:1.3rem}
+.foot-marks h2 .tz{font-family:var(--f-tz);font-size:1.15rem;font-weight:400;letter-spacing:.04em;color:var(--gold)}
+.foot-marks h2 .ar{font-family:var(--f-head);font-size:.85rem;font-weight:500;color:#B9C5D8}
+.foot-marks ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.5rem 4rem}
+.site-footer .foot-marks li{margin:0}
+.foot-marks a{display:flex;align-items:center;gap:.9rem;opacity:.92;transition:opacity .2s,transform .2s}
+.foot-marks a:hover{opacity:1;transform:translateY(-2px);text-decoration:none}
+.foot-marks .aghmis-logo{width:200px}
+.site-footer .foot-marks .aghmis-logo .lg-m,.site-footer .foot-marks .aghmis-logo .lg-s{fill:#fff}.site-footer .foot-marks .aghmis-logo .lg-r{fill:var(--gold)}
+.mk-tifawt img{width:84px;height:84px;border-radius:50%}
+.mk-tifawt span{display:flex;flex-direction:column;line-height:1.2;text-align:start}
+.mk-tifawt b{font-family:var(--f-tz);font-size:1.7rem;font-weight:400;color:#fff}
+.mk-tifawt small{font-size:.8rem;letter-spacing:.3em;color:#B9C5D8}
+.site-footer .foot-marks + .copy{margin-top:2rem}
 
 /* inner page head as link back to its section (single activity / news pages) */
 .page-head a.bh{text-decoration:none}

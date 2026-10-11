@@ -30,6 +30,8 @@ for src in sorted(IMG.glob("*")):
         continue
     if src.stem in {"logo", "hero"} and src.suffix == ".webp":
         continue
+    if src.stem == "tifawt":  # رمز ⵜⵉⴼⴰⵡⵜ في التذييل: 168px جاهز، بلا نسخ أخرى
+        continue
     im = Image.open(src)
     im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
     if src.stem == "logo":
