@@ -27,9 +27,43 @@
       var open=nav.classList.toggle('open');
       btn.setAttribute('aria-expanded',open?'true':'false');
     });
+    function closeNav(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
     document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus();}
+      if(e.key==='Escape'&&nav.classList.contains('open')){closeNav();btn.focus();}
     });
+    /* a tap outside the open menu closes it */
+    document.addEventListener('click',function(e){
+      if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))closeNav();
+    });
+  }
+
+  /* header gains depth once the page scrolls */
+  var hd=document.querySelector('.site-header'),stuck=null;
+  function onScroll(){
+    var s=window.scrollY>4;
+    if(s!==stuck){stuck=s;hd.classList.toggle('is-stuck',s);}
+  }
+  if(hd){onScroll();window.addEventListener('scroll',onScroll,{passive:true});}
+
+  /* scroll reveal: only for elements still below the fold, so nothing on screen ever blinks */
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!still){
+    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .activity > *, .news-item, .gallery button, .pager a, .ag-shelf li';
+    var vh=window.innerHeight;
+    var els=[].slice.call(document.querySelectorAll(sel)).filter(function(el){return el.getBoundingClientRect().top>vh*.92;});
+    var io=new IntersectionObserver(function(entries){
+      var n=0;
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var el=en.target;
+        el.style.transitionDelay=Math.min(n++,5)*90+'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+        /* once settled, hand the element back to its own hover/transition styles */
+        setTimeout(function(){el.classList.remove('rv','in');el.style.transitionDelay='';},1700);
+      });
+    },{rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){el.classList.add('rv');io.observe(el);});
   }
 
   /* language tabs: Arabic by default, choice remembered */
