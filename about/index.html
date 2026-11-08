@@ -1,32 +1,150 @@
 ---
-layout: page
+layout: default
 title: من نحن
 nav: about
 head_tz: "ⵎⴰⴷ ⵏⴳⴰ?"
 description: "تعرّف على فرع منظمة تاماينوت بتمنار احاحان، أحد فروع المنظمة الفدرالية الأمازيغية التي تأسست سنة 1978."
 ---
-<div class="band"><div class="wrap two-col">
-    <div class="prose">
-      <h2>تأسيس المنظمة</h2>
-      <p>تأسست منظمة تاماينوت بتاريخ 16 أكتوبر 1978، وهي منظمة فدرالية أمازيغية ديمقراطية غير حكومية، يوجد مقرها الفدرالي بمدينة إنزكان، ولها فروع منتشرة عبر مختلف مدن وقرى المغرب.</p>
-      <h2>فرعنا</h2>
-      <p>فرع تمنار احاحان هو أحد فروع المنظمة، ويقع مقره بمدينة تمنار، إقليم الصويرة. يعمل الفرع، ضمن الإطار الفدرالي للمنظمة، على ترجمة أهدافها إلى أنشطة ثقافية وتربوية وتنموية ملموسة على المستوى المحلي، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
-      <h2>ما ننشغل به</h2>
-      <p>ينشط الفرع في ثلاثة محاور رئيسية: الدفاع عن الحقوق والهوية الأمازيغية، ودعم الكتابة والإبداع والتربية باللغة الأمازيغية، والمساهمة في التنمية المحلية بشراكة مع الساكنة والفاعلين المدنيين.</p>
-      <p><a class="more" href="{{ '/goals/' | relative_url }}">اقرأ أهدافنا ومبادئنا</a></p>
-      <h2 lang="zgh">ⵜⵉⴼⴰⵡⵜ</h2>
-      <p><span lang="zgh">ⵜⵉⴼⴰⵡⵜ</span>: مشروع الفرع للإنتاج السمعي البصري، انطلق في أكتوبر 2026. يعمل على تعزيز حضور الأمازيغية في الفضاء الرقمي، بالصوت والصورة، وينشر موادّه على <a href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناته في يوتيوب <bdi dir="ltr">@tifawtihahan</bdi></a> وعلى صفحة الفرع في فيسبوك.</p>
-      <p><a class="more" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}">اقرأ خبر ⵜⵉⴼⴰⵡⵜ</a></p>
-      <h2>انضم إلينا</h2>
-      <p>الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في صفوف الفرع والمساهمة في أنشطته.</p>
-      <a class="btn btn-line" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
+{%- comment -%}
+  صفحة «من نحن» بإخراج تحريري. كل النصوص من محتوى الموقع:
+  - فقرات الصفحة الأصلية كما هي (لم تُحذف جملة)، وقد انتقلت فقرة ⵜⵉⴼⴰⵡⵜ إلى بطاقتها في «مشاريع الفرع».
+  - اسم المنظمة والفرع بتيفيناغ من site.title_tz، وعناوين المحاور من الصفحة الرئيسية، والشعار من site.slogan.
+  - بطاقة ⴰⵖⵎⵉⵙ: الوصفان منسوخان حرفياً من newsletter/index.html، والغلاف من _data/aghmis.yml.
+  - بطاقة ⵜⵉⴼⴰⵡⵜ: النص بتيفيناغ يُقرأ من حقل tz في _news/2026-10-31-tifawt.md.
+{%- endcomment -%}
+{%- assign names_tz = site.title_tz | split: " – " -%}
+{%- assign names_ar = site.title | split: " – " -%}
+{%- assign ag = site.data.aghmis.issues | first -%}
+{%- assign tf_news = site.news | where_exp: "n", "n.url contains 'tifawt'" | first -%}
+{%- assign pics = "" | split: "" -%}
+{%- for a in site.activities -%}{%- for g in a.gallery -%}{%- unless g.src contains "hero" -%}{%- assign pics = pics | push: g -%}{%- endunless -%}{%- endfor -%}{%- endfor -%}
+
+<header class="ab-hero">
+  <img class="ab-hero-img" src="{{ '/assets/img/hero.webp' | relative_url }}" srcset="{{ '/assets/img/sm/hero.webp' | relative_url }} 640w, {{ '/assets/img/hero.webp' | relative_url }} 1080w" sizes="100vw" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" width="1080" height="484" fetchpriority="high">
+  <div class="wrap ab-hero-inner">
+    <h1 class="ab-title"><span class="tz" lang="zgh">{{ page.head_tz }}</span><span class="ar">{{ page.title }}</span></h1>
+    <p class="ab-names">
+      <span class="ab-name"><span class="tz" lang="zgh">{{ names_tz[0] }}</span><span class="ar">{{ names_ar[0] }}</span></span>
+      <span class="ab-name"><span class="tz" lang="zgh">{{ names_tz[1] }}</span><span class="ar">{{ names_ar[1] }}</span></span>
+    </p>
+  </div>
+  <div class="wrap ab-facts-wrap">
+    <dl class="ab-facts">
+      <div><dt>المنظمة</dt><dd><b>1978</b><span>تأسست في 16 أكتوبر 1978</span></dd></div>
+      <div><dt>المقر الفدرالي</dt><dd><b>إنزكان</b></dd></div>
+      <div><dt>مقر الفرع</dt><dd><b>تمنار</b><span>شارع المقاومة، تمنار – إقليم الصويرة</span></dd></div>
+    </dl>
+  </div>
+</header>
+
+<section class="band ab-projects" aria-labelledby="ab-projects-h">
+  <div class="wrap">
+    <h2 class="ab-sec-h" id="ab-projects-h">مشاريع الفرع</h2>
+    <div class="ab-brands">
+
+      <article class="brand-card bc-aghmis">
+        <div class="bc-head">
+          <a class="bc-logo" href="{{ '/newsletter/' | relative_url }}" aria-label="ⴰⵖⵎⵉⵙ، إصدارات">{% include aghmis-logo.svg id="about" %}</a>
+          <p class="bc-kicker">إصدارات ثقافية</p>
+        </div>
+        {%- if ag and ag.cover %}
+        <a class="bc-cover" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true">
+          <img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy">
+          {%- if ag.status == "published" %}<span class="bc-cover-cap"><small>أحدث إصدار</small><span class="tz" lang="zgh">{{ ag.title_tz }}</span></span>{% endif %}
+        </a>
+        {%- endif %}
+        <div class="bc-bi">
+          <p class="bc-ar">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
+          <p class="bc-tz tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵥⵍⵉⵏⵜ ⵉ ⵜⵙⴽⵍⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵜⴰⵢⵙⵉ ⵏ ⵜⵎⴰⵣⵉⵖⵜ.</p>
+        </div>
+        <div class="bc-links">
+          <a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">إلى صفحة ⴰⵖⵎⵉⵙ</a>
+        </div>
+      </article>
+
+      <article class="brand-card bc-tifawt">
+        <div class="bc-head">
+          <span class="bc-lockup"><img src="{{ '/assets/img/tifawt.webp' | relative_url }}" alt="" width="84" height="84" loading="lazy"><span><b class="tz" lang="zgh">ⵜⵉⴼⴰⵡⵜ</b><small>TIFAWT</small></span></span>
+        </div>
+        <a class="bc-cover bc-poster" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}" tabindex="-1" aria-hidden="true">
+          <img src="{{ '/assets/img/sm/n2026-tifawt.webp' | relative_url }}" alt="" width="640" height="800" loading="lazy">
+        </a>
+        <div class="bc-bi">
+          <p class="bc-ar"><span lang="zgh">ⵜⵉⴼⴰⵡⵜ</span>: مشروع الفرع للإنتاج السمعي البصري، انطلق في أكتوبر 2026. يعمل على تعزيز حضور الأمازيغية في الفضاء الرقمي، بالصوت والصورة، وينشر موادّه على <a href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناته في يوتيوب <bdi dir="ltr">@tifawtihahan</bdi></a> وعلى صفحة الفرع في فيسبوك.</p>
+          {%- if tf_news.tz %}
+          <div class="bc-tz tz" lang="zgh">{{ tf_news.tz | markdownify }}</div>
+          {%- endif %}
+        </div>
+        <div class="bc-links">
+          <a class="btn btn-gold" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب</a>
+          <a class="more" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}">اقرأ خبر ⵜⵉⴼⴰⵡⵜ</a>
+        </div>
+      </article>
+
     </div>
-    <aside class="infobox">
-      <h3>المنظمة</h3>
-      <p>تأسست في 16 أكتوبر 1978<br>المقر الفدرالي: إنزكان</p>
-      <h3>مقر الفرع</h3>
-      <p>شارع المقاومة، تمنار<br>إقليم الصويرة</p>
-      <h3>البريد الإلكتروني</h3>
-      <p><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></p>
-    </aside>
-  </div></div>
+  </div>
+</section>
+
+<section class="band band-alt ab-story" aria-label="{{ names_ar[0] }}">
+  <div class="wrap ab-timeline">
+    <div class="tl-step tl-org">
+      <div class="tl-mark" aria-hidden="true"><span class="tl-year">1978</span></div>
+      <div class="tl-body">
+        <p class="tl-name"><span class="tz" lang="zgh">{{ names_tz[0] }}</span><span class="ar">{{ names_ar[0] }}</span></p>
+        <h2>تأسيس المنظمة</h2>
+        <p>تأسست منظمة تاماينوت بتاريخ 16 أكتوبر 1978، وهي منظمة فدرالية أمازيغية ديمقراطية غير حكومية، يوجد مقرها الفدرالي بمدينة إنزكان، ولها فروع منتشرة عبر مختلف مدن وقرى المغرب.</p>
+        <p class="tl-place" aria-hidden="true">إنزكان</p>
+      </div>
+    </div>
+    <div class="tl-step tl-branch">
+      <div class="tl-mark" aria-hidden="true">
+        <div class="tl-mosaic">
+          {%- for g in pics limit: 3 %}
+          <img src="{% include img.html src=g.src size="sm" %}" alt="" width="640" height="286" loading="lazy">
+          {%- endfor %}
+        </div>
+      </div>
+      <div class="tl-body">
+        <p class="tl-name"><span class="tz" lang="zgh">{{ names_tz[1] }}</span><span class="ar">{{ names_ar[1] }}</span></p>
+        <h2>فرعنا</h2>
+        <p>فرع تمنار احاحان هو أحد فروع المنظمة، ويقع مقره بمدينة تمنار، إقليم الصويرة. يعمل الفرع، ضمن الإطار الفدرالي للمنظمة، على ترجمة أهدافها إلى أنشطة ثقافية وتربوية وتنموية ملموسة على المستوى المحلي، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
+        <p class="tl-place" aria-hidden="true">تمنار</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-quote">
+  <div class="wrap">
+    <blockquote><p>{{ site.slogan }}</p></blockquote>
+  </div>
+</section>
+
+<section class="band ab-axes" aria-labelledby="ab-axes-h">
+  <div class="wrap">
+    <div class="ab-axes-head">
+      <h2 class="ab-sec-h" id="ab-axes-h">ما ننشغل به</h2>
+      <p class="lead-text">ينشط الفرع في ثلاثة محاور رئيسية: الدفاع عن الحقوق والهوية الأمازيغية، ودعم الكتابة والإبداع والتربية باللغة الأمازيغية، والمساهمة في التنمية المحلية بشراكة مع الساكنة والفاعلين المدنيين.</p>
+    </div>
+    <ol class="ab-axis-cards">
+      <li><span class="ax-n" aria-hidden="true">01</span><h3>الحقوق والهوية</h3><p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p></li>
+      <li><span class="ax-n" aria-hidden="true">02</span><h3>الثقافة والتربية</h3><p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p></li>
+      <li><span class="ax-n" aria-hidden="true">03</span><h3>التنمية المحلية</h3><p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p></li>
+    </ol>
+    <p class="section-foot"><a class="more" href="{{ '/goals/' | relative_url }}">اقرأ أهدافنا ومبادئنا</a></p>
+  </div>
+</section>
+
+<section class="band join-band ab-join" aria-labelledby="ab-join-h">
+  <div class="wrap ab-join-grid">
+    <div>
+      <h2 class="ab-join-h" id="ab-join-h">انضم إلينا</h2>
+      <p>الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في صفوف الفرع والمساهمة في أنشطته.</p>
+      <a class="btn btn-gold" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
+    </div>
+    <dl class="ab-contact">
+      <div><dt>مقر الفرع</dt><dd>شارع المقاومة، تمنار<br>إقليم الصويرة</dd></div>
+      <div><dt>البريد الإلكتروني</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+    </dl>
+  </div>
+</section>

@@ -48,7 +48,7 @@
   /* scroll reveal: only for elements still below the fold, so nothing on screen ever blinks */
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!still){
-    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h';
+    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h, .ab-sec-h, .brand-card, .tl-body, .tl-mark, .ab-axes-head .lead-text, .ab-axis-cards li, .ab-quote blockquote, .ab-join-grid > *';
     var vh=window.innerHeight;
     var els=[].slice.call(document.querySelectorAll(sel)).filter(function(el){return el.getBoundingClientRect().top>vh*.92;});
     var io=new IntersectionObserver(function(entries){
