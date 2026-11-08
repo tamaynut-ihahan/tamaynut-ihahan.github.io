@@ -1,11 +1,13 @@
-{%- comment -%} التنقل بين العناصر: الأحدث / الأقدم {%- endcomment -%}
+{%- comment -%} التنقل بين العناصر: الأحدث / الأقدم، ببطاقات مصغرة {%- endcomment -%}
 {%- if page.next or page.previous -%}
 <nav class="pager" aria-label="{{ include.label | escape }}">
   {%- if page.next %}
-  <a class="prev" href="{{ page.next.url | relative_url }}"><small>{{ include.newer }}</small><strong>{{ page.next.title | escape }}</strong></a>
+  {%- assign pg_src = page.next.card_image | default: page.next.image %}
+  <a class="prev" href="{{ page.next.url | relative_url }}">{% if pg_src %}<span class="pg-thumb"><img src="{% include img.html src=pg_src size="xs" %}" alt="" loading="lazy" width="240" height="240"></span>{% endif %}<span class="pg-text"><small>{{ include.newer }}</small><strong>{{ page.next.list_title | default: page.next.title | escape }}</strong></span></a>
   {%- else %}<span></span>{% endif %}
   {%- if page.previous %}
-  <a class="next" href="{{ page.previous.url | relative_url }}"><small>{{ include.older }}</small><strong>{{ page.previous.title | escape }}</strong></a>
+  {%- assign pg_src = page.previous.card_image | default: page.previous.image %}
+  <a class="next" href="{{ page.previous.url | relative_url }}">{% if pg_src %}<span class="pg-thumb"><img src="{% include img.html src=pg_src size="xs" %}" alt="" loading="lazy" width="240" height="240"></span>{% endif %}<span class="pg-text"><small>{{ include.older }}</small><strong>{{ page.previous.list_title | default: page.previous.title | escape }}</strong></span></a>
   {%- endif %}
 </nav>
 {%- endif -%}

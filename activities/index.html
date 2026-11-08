@@ -6,14 +6,6 @@ head_tz: "ⵉⵎⵓⵙⵙⵓⵜⵏ"
 description: "أنشطة فرع منظمة تاماينوت بتمنار احاحان: لقاءات أدبية، ورشات في الكتابة والإملائية الأمازيغية، وتقديم الإصدارات."
 ---
 {%- assign items = site.activities | sort: "date" | reverse %}
-<div class="band"><div class="wrap">
-  <div class="cards">
-    {%- for a in items %}
-    <a class="card" href="{{ a.url | relative_url }}">
-      <div class="thumb">{%- assign card_src = a.card_image | default: a.image %}<img src="{% include img.html src=card_src size="sm" %}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy" width="640" height="400"></div>
-      <span class="date">{% include date.html date=a.date weekday=true %}</span>
-      <h2>{{ a.title | escape }}</h2>
-    </a>
-    {%- endfor %}
-  </div>
+<div class="band band-top"><div class="wrap list-page">
+  {% include list-years.html items=items kind="activity" %}
 </div></div>

@@ -1,0 +1,24 @@
+{%- comment -%} بطاقة في صفحتي الأنشطة والأخبار. include list-card.html it=item kind="activity|news" featured=true {%- endcomment -%}
+{%- assign it = include.it -%}
+{%- if include.kind == "activity" -%}
+  {%- assign c_src = it.card_image | default: it.image -%}{%- assign c_alt = it.card_alt | default: it.image_alt -%}{%- assign c_title = it.title -%}
+{%- else -%}
+  {%- assign c_src = it.image -%}{%- assign c_alt = it.image_alt -%}{%- assign c_title = it.list_title | default: it.title -%}
+{%- endif -%}
+<li{% if include.featured %} class="feat-li"{% endif %}>
+<a class="card {{ include.kind }}-card{% if include.featured %} feat{% endif %}" href="{{ it.url | relative_url }}">
+  {%- if c_src %}
+  <div class="thumb">
+    {%- if include.kind == "news" %}<img class="thumb-bg" src="{% include img.html src=c_src size="xs" %}" alt="" aria-hidden="true" loading="lazy" width="240" height="300">{% endif %}
+    <img src="{% include img.html src=c_src size="sm" %}" alt="{{ c_alt | escape }}"{% unless include.featured %} loading="lazy"{% endunless %} width="640" height="{% if include.kind == 'news' %}800{% else %}400{% endif %}">
+  </div>
+  {%- endif %}
+  <div class="card-body">
+    <span class="date">{% if include.kind == "activity" %}{% include date.html date=it.date weekday=true %}{% else %}{% include date.html date=it.date precision=it.date_precision %}{% endif %}</span>
+    <h3>{{ c_title | escape }}</h3>
+    {%- if include.featured and it.description %}
+    <p class="card-desc">{{ it.description | strip_html | escape }}</p>
+    {%- endif %}
+  </div>
+</a>
+</li>

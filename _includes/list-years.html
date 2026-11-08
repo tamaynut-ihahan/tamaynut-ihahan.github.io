@@ -1,0 +1,24 @@
+{%- comment -%}
+قائمة مقسمة حسب السنة، مع روابط السنوات (أرقام فقط). بدون JS: الروابط تنقل إلى السنة؛ مع JS: تصفّي.
+include list-years.html items=items kind="activity|news"
+{%- endcomment -%}
+{%- assign groups = include.items | group_by_exp: "it", "it.date | date: '%Y'" -%}
+{%- if groups.size > 1 %}
+<ul class="years">
+  {%- for g in groups %}
+  <li><a href="#y{{ g.name }}" data-year="{{ g.name }}">{{ g.name }}<span class="n">{{ g.items.size }}</span></a></li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+{%- for g in groups %}
+{%- assign first_group = forloop.first %}
+<section class="year-group" id="y{{ g.name }}" aria-labelledby="yh{{ g.name }}">
+  <h2 class="year-h" id="yh{{ g.name }}">{{ g.name }}</h2>
+  <ul class="lcards {{ include.kind }}-cards">
+    {%- for it in g.items %}
+    {%- assign feat = false %}{% if first_group and forloop.first %}{% assign feat = true %}{% endif %}
+    {% include list-card.html it=it kind=include.kind featured=feat %}
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
