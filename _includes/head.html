@@ -44,4 +44,6 @@
 {%- comment -%} CSS is inlined so the first paint doesn't wait for extra requests. Edit _includes/css/*.css {%- endcomment -%}
 {%- capture css %}{% include css/fonts.css %}{% include css/main.css %}{% endcapture %}
 <style>{{ css | scssify }}</style>
+{%- comment -%} بدون JS لا تعمل أزرار اللغة: يظهر النصان معاً (العربية ثم تيفيناغ) وتختفي الأزرار. لا أثر له حين يعمل JS، فلا قفز في الصفحة. {%- endcomment %}
+<noscript><style>.bi .tabs{display:none}.bi .pane-ar,.bi .pane-tz{display:block!important}.bi .pane-tz{margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--line)}</style></noscript>
 {% include jsonld.html canonical=canonical desc=desc og_image=og_image %}
