@@ -1,0 +1,64 @@
+{%- comment -%}
+صفحة نشاط أو خبر: واجهة عريضة بالعنوان، ثم عمود القراءة، وبجانبه الصورة الرئيسية والمشاركة، ثم معرض الصور.
+include article.html kind="activity|news" list_url="/activities/" tz="ⵉⵎⵓⵙⵙⵓⵜⵏ" ar="أنشطة" content=content
+- واجهة النشاط: صورة البطاقة (card_image) كما هي.
+- واجهة الخبر: صورته كما هي إن كانت عريضة، وإلا نسخة مموّهة منها خلفيةً، والصورة نفسها كاملة في العمود الجانبي.
+{%- endcomment -%}
+{%- assign is_act = false -%}{%- if include.kind == "activity" -%}{%- assign is_act = true -%}{%- endif -%}
+{%- assign sharp = true -%}
+{%- if is_act -%}
+  {%- assign hero_src = page.card_image | default: page.image -%}
+{%- else -%}
+  {%- assign hero_src = page.image -%}
+  {%- assign w10 = page.image_width | default: 1 | times: 10 -%}{%- assign h13 = page.image_height | default: 1 | times: 13 -%}
+  {%- if w10 <= h13 -%}{%- assign sharp = false -%}{%- endif -%}
+{%- endif -%}
+{%- assign lead_aside = false -%}{%- assign hero_zoom = false -%}
+{%- if page.image -%}
+  {%- if page.image != hero_src or sharp == false -%}{%- assign lead_aside = true -%}{%- else -%}{%- assign hero_zoom = true -%}{%- endif -%}
+{%- endif -%}
+{%- assign zoom_label = page.image_zoom_label | default: "تكبير الصورة" -%}
+<article class="art{% if lead_aside %} has-lead{% endif %}" data-gallery>
+  <header class="art-hero{% unless sharp %} is-blur{% endunless %}{% unless hero_src %} no-img{% endunless %}">
+    {%- if hero_src %}
+    <div class="art-hero-media">
+      {%- if hero_zoom %}<button class="zoom art-hero-zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ zoom_label | escape }}">{% endif %}
+      {%- if sharp %}
+      <img src="{% include img.html src=hero_src size="sm" %}" srcset="{% include img.html src=hero_src size="sm" %} 640w, {{ hero_src | relative_url }} 1080w" sizes="100vw" alt="{% if hero_zoom %}{{ page.image_alt | escape }}{% endif %}" width="1080" height="484" fetchpriority="high">
+      {%- else %}
+      <img src="{% include img.html src=hero_src size="xs" %}" alt="" width="240" height="300" fetchpriority="high">
+      {%- endif %}
+      {%- if hero_zoom %}<span class="zoom-ico" aria-hidden="true"></span></button>{% endif %}
+    </div>
+    {%- endif %}
+    <div class="wrap art-hero-inner">
+      <a class="art-kicker" href="{{ include.list_url | relative_url }}"><span class="tz" lang="zgh">{{ include.tz }}</span><span class="ar">{{ include.ar }}</span></a>
+      <h1>{{ page.title | escape }}</h1>
+      <p class="art-meta"><span>{% if is_act %}{% include date.html date=page.date weekday=true %}{% else %}{% include date.html date=page.date precision=page.date_precision %}{% endif %}</span>{% if page.place %}<span>{{ page.place }}</span>{% endif %}</p>
+    </div>
+  </header>
+
+  <div class="wrap art-grid">
+   <div class="art-top">
+    <div class="art-body">
+      {% include bilingual.html ar=include.content tz=page.tz %}
+    </div>
+    <aside class="art-aside">
+      {%- if lead_aside %}
+      <button class="lead-media {{ page.image_shape | default: 'portrait' }} zoom" data-zoom="{{ page.image | relative_url }}" aria-label="{{ zoom_label | escape }}">
+        <img src="{% include img.html src=page.image size="sm" %}" srcset="{% include img.html src=page.image size="sm" %} 640w, {{ page.image | relative_url }} {{ page.image_width }}w" sizes="(max-width: 900px) 92vw, 340px" alt="{{ page.image_alt | escape }}" width="{{ page.image_width }}" height="{{ page.image_height }}">
+        <span class="zoom-ico" aria-hidden="true"></span>
+      </button>
+      {%- endif %}
+      {% include share.html %}
+    </aside>
+   </div>
+    {%- if page.gallery %}
+    <div class="gallery g-{{ page.gallery.size }}">
+      {%- for g in page.gallery %}
+      <button class="zoom" data-zoom="{{ g.src | relative_url }}" aria-label="تكبير الصورة"><img src="{% include img.html src=g.src size="sm" %}" alt="{{ g.alt | escape }}" loading="lazy" width="640" height="286"><span class="zoom-ico" aria-hidden="true"></span></button>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</article>
