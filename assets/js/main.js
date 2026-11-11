@@ -66,7 +66,7 @@
     els.forEach(function(el){el.classList.add('rv');io.observe(el);});
   }
 
-  /* language tabs: Arabic by default, choice remembered */
+  /* language tabs: Tamazight (Tifinagh) by default, choice remembered */
   var blocks=[].slice.call(document.querySelectorAll('.bi'));
   function setLang(l){
     blocks.forEach(function(b){
