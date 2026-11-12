@@ -15,7 +15,7 @@ description: "تعرّف على فرع منظمة تاماينوت بتمنار 
 {%- assign names_tz = site.title_tz | split: " – " -%}
 {%- assign names_ar = site.title | split: " – " -%}
 {%- assign ag = site.data.aghmis.issues | first -%}
-{%- assign tf_news = site.news | where_exp: "n", "n.url contains 'tifawt'" | first -%}
+{%- assign tf_news = site.news | where_exp: "n", "n.url == '/news/2026-10-31-tifawt/'" | first -%}
 {%- assign pics = "" | split: "" -%}
 {%- for a in site.activities -%}{%- for g in a.gallery -%}{%- unless g.src contains "hero" -%}{%- assign pics = pics | push: g -%}{%- endunless -%}{%- endfor -%}{%- endfor -%}
 

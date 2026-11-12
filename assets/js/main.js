@@ -48,7 +48,7 @@
   /* scroll reveal: only for elements still below the fold, so nothing on screen ever blinks */
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!still){
-    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h, .ab-sec-h, .brand-card, .tl-body, .tl-mark, .ab-axes-head .lead-text, .ab-axis-cards li, .ab-quote blockquote, .ab-join-grid > *';
+    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h, .ab-sec-h, .brand-card, .tl-body, .tl-mark, .ab-axes-head .lead-text, .ab-axis-cards li, .ab-quote blockquote, .ab-join-grid > *, .gl-ch-head > *, .gl-goals li, .gl-pr-head, .gl-seals li, .gl-join-grid > *';
     var vh=window.innerHeight;
     var els=[].slice.call(document.querySelectorAll(sel)).filter(function(el){return el.getBoundingClientRect().top>vh*.92;});
     var io=new IntersectionObserver(function(entries){
@@ -147,6 +147,23 @@
     });
     function fromHash(){var hy=location.hash.match(/^#y(\d{4})$/);if(hy&&document.getElementById('y'+hy[1]))filter(hy[1],false);}
     fromHash();window.addEventListener('hashchange',fromHash);
+  }
+
+  /* goals: the sticky chapter bar follows the reading position */
+  var gnav=document.querySelector('.gl-nav');
+  if(gnav&&'IntersectionObserver' in window){
+    var glinks={};
+    [].forEach.call(gnav.querySelectorAll('a[href^="#"]'),function(a){glinks[a.getAttribute('href').slice(1)]=a;});
+    var gio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        var a=glinks[en.target.id];if(!a)return;
+        Object.keys(glinks).forEach(function(k){glinks[k].removeAttribute('aria-current');});
+        a.setAttribute('aria-current','true');
+        var ul=a.closest('ul'),ar=a.getBoundingClientRect(),ur=ul.getBoundingClientRect();if(ul.scrollWidth>ul.clientWidth&&ul.scrollBy)ul.scrollBy({left:(ar.left+ar.width/2)-(ur.left+ur.width/2),behavior:'smooth'});
+      });
+    },{rootMargin:'-35% 0px -60% 0px'});
+    Object.keys(glinks).forEach(function(id){var el=document.getElementById(id);if(el)gio.observe(el);});
   }
 
   var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
