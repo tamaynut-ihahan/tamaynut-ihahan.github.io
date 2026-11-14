@@ -1,0 +1,83 @@
+/* section heading with the gold diamond rule */
+.ab-sec-h{display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+.ab-sec-h::after{content:"";width:76px;height:10px;margin-top:.7rem;transform-origin:right center;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='10'%3E%3Cpath d='M14 3.5h62v3H14z' fill='%23C9A24A'/%3E%3Cpath d='M5 0l5 5-5 5-5-5z' fill='%23C9A24A'/%3E%3C/svg%3E") right center/76px 10px no-repeat}
+
+/* projects: two brand cards, each in its own colours inside the site identity */
+.ab-brands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.25rem,3vw,2.2rem);align-items:stretch}
+.brand-card{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) clamp(120px,30%,190px);grid-template-areas:"head cover" "bi bi" "links links";grid-template-rows:auto auto 1fr;
+  gap:1.4rem clamp(1.2rem,2.5vw,2rem);align-content:start;padding:clamp(1.5rem,3vw,2.4rem);border-radius:24px;box-shadow:var(--sh-1);transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+.brand-card:hover{transform:translateY(-6px);box-shadow:var(--sh-2)}
+.brand-card::before{content:"";position:absolute;inset:0;z-index:-1;background-size:56px 56px;pointer-events:none}
+.bc-head{grid-area:head;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.8rem}
+.bc-kicker{margin:0;font-family:var(--f-head);font-weight:700;font-size:.95rem}
+.bc-cover{grid-area:cover;align-self:center;display:block;position:relative;text-decoration:none}
+.bc-cover img{display:block;width:100%;height:auto;border-radius:6px;transition:transform .7s var(--ease-out)}
+.bc-bi{grid-area:bi;display:flex;flex-direction:column;gap:1.1rem}
+.bc-bi p,.bc-tz{margin:0;font-size:1.1rem;line-height:1.95}
+.bc-tz{direction:ltr;text-align:left;padding-top:1.1rem;border-top:1px solid var(--line)}
+.bc-tz p + p{margin-top:.8em}
+.bc-links{grid-area:links;display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.4rem;align-self:end}
+
+/* ⴰⵖⵎⵉⵙ: paper-white, blue logo, the latest cover tilted like a magazine on a table */
+.bc-aghmis{background:var(--surface)}
+.bc-aghmis::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%230059C3' stroke-width='1'%3E%3Cpath d='M28 6 50 28 28 50 6 28Z'/%3E%3Cpath d='M28 18 38 28 28 38 18 28Z'/%3E%3C/g%3E%3C/svg%3E");opacity:.06;
+  -webkit-mask-image:radial-gradient(60% 60% at 0% 100%,#000,transparent 70%);mask-image:radial-gradient(60% 60% at 0% 100%,#000,transparent 70%)}
+.bc-aghmis .bc-logo{display:block;border-radius:6px}
+.bc-aghmis .aghmis-logo{width:clamp(170px,22vw,240px)}
+.bc-aghmis .bc-kicker{color:var(--muted)}
+.bc-aghmis .bc-cover img{transform:rotate(-3deg);box-shadow:0 2px 4px rgba(10,26,58,.08),0 24px 40px -14px rgba(10,26,58,.45)}
+.bc-aghmis:hover .bc-cover img{transform:rotate(0) translateY(-4px)}
+.bc-cover-cap{display:flex;flex-direction:column;align-items:flex-start;margin-top:1rem;line-height:1.5}
+.bc-cover-cap small{font-family:var(--f-head);font-weight:700;font-size:.8rem;color:var(--muted)}
+.bc-cover-cap .tz{font-size:1.1rem;color:var(--link)}
+
+/* ⵜⵉⴼⴰⵡⵜ: deep blue like its own card, white lockup, the poster tilted the other way */
+.bc-tifawt{background:radial-gradient(70% 60% at 100% 0%,rgba(141,184,255,.35),transparent 60%),linear-gradient(160deg,#0B66D6 0%,var(--blue-deep) 55%,var(--ink) 100%);color:#fff}
+.bc-tifawt::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M28 6 50 28 28 50 6 28Z'/%3E%3Cpath d='M28 18 38 28 28 38 18 28Z'/%3E%3C/g%3E%3C/svg%3E");opacity:.08;
+  -webkit-mask-image:radial-gradient(60% 60% at 0% 100%,#000,transparent 70%);mask-image:radial-gradient(60% 60% at 0% 100%,#000,transparent 70%)}
+.bc-lockup{display:flex;align-items:center;gap:.9rem}
+.bc-lockup img{width:64px;height:64px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.18)}
+.bc-lockup > span{display:flex;flex-direction:column;line-height:1.15}
+.bc-lockup b{font-family:var(--f-tz);font-weight:400;font-size:1.9rem}
+.bc-lockup small{font-size:.75rem;letter-spacing:.32em;color:#C6D1E2}
+.bc-tifawt .bc-cover img{transform:rotate(3deg);box-shadow:0 30px 50px -18px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12)}
+.bc-tifawt:hover .bc-cover img{transform:rotate(0) translateY(-4px)}
+.bc-tifawt .bc-ar{color:#E3ECFA}
+.bc-tifawt .bc-tz{color:#E3ECFA;border-top-color:rgba(255,255,255,.18)}
+.bc-tifawt a:not(.btn){color:#fff;text-decoration-color:var(--gold)}
+.bc-tifawt .more{color:#fff}
+@media (max-width:980px){.ab-brands{grid-template-columns:1fr}}
+@media (max-width:480px){
+  .brand-card{grid-template-columns:minmax(0,1fr) 34%}
+  .bc-aghmis .aghmis-logo{width:150px}
+  .bc-lockup img{width:52px;height:52px}
+  .bc-lockup b{font-size:1.6rem}
+}
+
+/* what we work on: three numbered cards */
+.ab-axes-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.5rem,5vw,4rem);align-items:end;margin-bottom:clamp(2rem,4vw,3rem)}
+.ab-axes-head .ab-sec-h{margin-bottom:0}
+.ab-axes-head .lead-text{margin:0}
+.ab-axis-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.5vw,1.8rem)}
+.ab-axis-cards li{position:relative;overflow:hidden;padding:clamp(1.6rem,3vw,2.2rem);background:var(--surface);border-radius:var(--r);box-shadow:var(--sh-1);transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
+.ab-axis-cards li::before{content:"";position:absolute;inset-inline:0;top:0;height:3px;background:linear-gradient(to left,var(--gold),var(--blue));transform:scaleX(.25);transform-origin:right;transition:transform .6s var(--ease-out)}
+.ab-axis-cards li:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+.ab-axis-cards li:hover::before{transform:none}
+.ax-n{display:block;font-family:var(--f-head);font-weight:800;font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--blue);margin-bottom:1.2rem}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ax-n{-webkit-text-stroke-color:#8DB8FF}}
+:root[data-theme="dark"] .ax-n{-webkit-text-stroke-color:#8DB8FF}
+.ab-axis-cards h3{font-size:1.25rem;margin-bottom:.5rem}
+.ab-axis-cards p{margin:0;color:var(--muted);font-size:1.05rem;line-height:1.85}
+@media (max-width:860px){.ab-axes-head{grid-template-columns:1fr;align-items:start}.ab-axis-cards{grid-template-columns:1fr}}
+
+/* join */
+.ab-join-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+.ab-join-h{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;margin-bottom:1rem}
+.ab-join p{color:#E3ECFA;max-width:46ch;margin:0 0 1.8rem;font-size:1.15rem}
+.ab-contact{margin:0;display:grid;gap:1rem}
+.ab-contact > div{padding:1.2rem 1.4rem;border-radius:var(--r);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.ab-contact dt{font-family:var(--f-head);font-weight:700;font-size:.85rem;color:var(--gold-hi);margin-bottom:.3rem}
+.ab-contact dd{margin:0;font-size:1.1rem;line-height:1.8}
+.ab-contact a{color:#fff;word-break:break-all;text-decoration-color:var(--gold)}
+@media (max-width:760px){.ab-join-grid{grid-template-columns:1fr}}

@@ -35,9 +35,9 @@ collections:
 
 defaults:
   - scope: { path: "", type: activities }
-    values: { layout: activity, section: activities }
+    values: { layout: activity, section: activities, css: [article] }
   - scope: { path: "", type: news }
-    values: { layout: news, section: news }
+    values: { layout: news, section: news, css: [article] }
 
 exclude:
   - README.md

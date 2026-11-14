@@ -2,11 +2,25 @@
 layout: default
 nav: home
 og_image: /assets/og/default.jpg
+css: [lists, editorial, home]
 ---
+{%- comment -%}
+  الرئيسية: من نحن، ماذا نفعل، ماذا ننتج، كيف تنضم، في تمريرة واحدة.
+  كل النصوص من محتوى الموقع؛ الأرقام تُحسب من البيانات (الأنشطة، الأخبار، الوجوه، إصدارات ⴰⵖⵎⵉⵙ المنشورة).
+{%- endcomment -%}
 {%- assign latest_activities = site.activities | sort: "date" | reverse | slice: 0, 2 -%}
 {%- assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 -%}
-{%- assign face = site.data.faces | first -%}
-<div class="hero">
+{%- assign faces = site.data.faces -%}
+{%- assign face = faces | first -%}
+{%- assign ag_published = site.data.aghmis.issues | where: "status", "published" -%}
+{%- assign nav_act = site.data.nav | where: "id", "activities" | first -%}
+{%- assign nav_news = site.data.nav | where: "id", "news" | first -%}
+{%- assign nav_faces = site.data.nav | where: "id", "faces" | first -%}
+{%- assign nav_ag = site.data.nav | where: "id", "newsletter" | first -%}
+{%- assign nav_join = site.data.nav | where: "id", "join" | first -%}
+{%- assign nav_about = site.data.nav | where: "id", "about" | first -%}
+
+<header class="hero">
   <img src="{{ '/assets/img/hero.webp' | relative_url }}" srcset="{{ '/assets/img/sm/hero.webp' | relative_url }} 640w, {{ '/assets/img/hero.webp' | relative_url }} 1080w" sizes="100vw" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
   <div class="wrap hero-inner">
     <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
@@ -19,46 +33,64 @@ og_image: /assets/og/default.jpg
       <a class="btn btn-ghost" href="{{ '/about/' | relative_url }}">تعرّف على الفرع</a>
     </div>
   </div>
-</div>
+</header>
 
-<div class="band band-alt">
-  <div class="wrap intro">
-    <div>
-      <h2 class="bh"><span class="tz" lang="zgh">ⵎⴰⴷ ⵏⴳⴰ?</span><span class="ar">من نحن</span></h2>
-      <p class="lead-text">فرع تمنار احاحان أحد فروع منظمة تاماينوت، المنظمة الفدرالية الأمازيغية الديمقراطية غير الحكومية التي تأسست سنة 1978. يعمل الفرع على ترجمة أهداف المنظمة إلى أنشطة ثقافية وتربوية وتنموية ملموسة، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
-      <a class="more" href="{{ '/about/' | relative_url }}">اقرأ المزيد</a>
-    </div>
-    <div>
-      <ul class="axes">
-        <li><h3>الحقوق والهوية</h3><p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p></li>
-        <li><h3>الثقافة والتربية</h3><p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p></li>
-        <li><h3>التنمية المحلية</h3><p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p></li>
-      </ul>
-      <div class="section-foot"><a class="more" href="{{ '/goals/' | relative_url }}">أهدافنا ومبادئنا كاملة</a></div>
-    </div>
-  </div>
-</div>
-
-<div class="band">
+<section class="home-stats" aria-label="{{ site.title }}">
   <div class="wrap">
-    <h2 class="bh"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ</span><span class="ar">آخر الأنشطة</span></h2>
-    <div class="cards">
-      {%- for a in latest_activities %}
-      <a class="card" href="{{ a.url | relative_url }}">
-        <div class="thumb">{%- assign card_src = a.card_image | default: a.image %}<img src="{% include img.html src=card_src size="sm" %}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy" width="640" height="400"></div>
-        <span class="date">{% include date.html date=a.date weekday=true %}</span>
-        <h3>{{ a.title | escape }}</h3>
-      </a>
-      {%- endfor %}
-    </div>
-    <div class="section-foot"><a class="more" href="{{ '/activities/' | relative_url }}">كل الأنشطة</a></div>
+    <ul class="stats">
+      <li class="st-fact"><b>1978</b><span class="st-l"><span class="ar">المنظمة</span></span></li>
+      <li class="st-fact"><b>تمنار</b><span class="st-l"><span class="ar">مقر الفرع</span></span></li>
+      <li><a href="{{ nav_act.url | relative_url }}"><b>{{ site.activities.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_act.tz }}</span><span class="ar">{{ nav_act.ar }}</span></span></a></li>
+      <li><a href="{{ nav_news.url | relative_url }}"><b>{{ site.news.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_news.tz }}</span><span class="ar">{{ nav_news.ar }}</span></span></a></li>
+      <li><a href="{{ nav_faces.url | relative_url }}"><b>{{ faces.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_faces.tz }}</span><span class="ar">{{ nav_faces.ar }}</span></span></a></li>
+      <li><a href="{{ nav_ag.url | relative_url }}"><b>{{ ag_published.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_ag.tz }}</span><span class="ar">{{ nav_ag.ar }}</span></span></a></li>
+    </ul>
   </div>
-</div>
+</section>
 
-<div class="band faces-band">
+<section class="band band-alt home-about" aria-labelledby="h-about">
+  <div class="wrap">
+    <div class="ha-head">
+      <h2 class="bh" id="h-about"><span class="tz" lang="zgh">{{ nav_about.tz }}</span><span class="ar">{{ nav_about.ar }}</span></h2>
+      <div>
+        <p class="lead-text">فرع تمنار احاحان أحد فروع منظمة تاماينوت، المنظمة الفدرالية الأمازيغية الديمقراطية غير الحكومية التي تأسست سنة 1978. يعمل الفرع على ترجمة أهداف المنظمة إلى أنشطة ثقافية وتربوية وتنموية ملموسة، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
+        <a class="more" href="{{ '/about/' | relative_url }}">اقرأ المزيد</a>
+      </div>
+    </div>
+    <ol class="ab-axis-cards ax-links">
+      <li><a href="{{ '/goals/' | relative_url }}#axis-1"><span class="ax-n" aria-hidden="true">01</span><h3>الحقوق والهوية</h3><p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p></a></li>
+      <li><a href="{{ '/goals/' | relative_url }}#axis-2"><span class="ax-n" aria-hidden="true">02</span><h3>الثقافة والتربية</h3><p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p></a></li>
+      <li><a href="{{ '/goals/' | relative_url }}#axis-3"><span class="ax-n" aria-hidden="true">03</span><h3>التنمية المحلية</h3><p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p></a></li>
+    </ol>
+    <p class="section-foot"><a class="more" href="{{ '/goals/' | relative_url }}">أهدافنا ومبادئنا كاملة</a></p>
+  </div>
+</section>
+
+<section class="band home-acts" aria-labelledby="h-acts">
+  <div class="wrap">
+    <div class="sec-row">
+      <h2 class="bh" id="h-acts"><span class="tz" lang="zgh">{{ nav_act.tz }}</span><span class="ar">آخر الأنشطة</span></h2>
+      <a class="more" href="{{ '/activities/' | relative_url }}">كل الأنشطة</a>
+    </div>
+    <ul class="lcards ha-acts">
+      {%- for a in latest_activities %}
+      {% include list-card.html it=a kind="activity" featured=forloop.first %}
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="band band-alt home-projects" aria-labelledby="ab-projects-h">
+  <div class="wrap">
+    <h2 class="ab-sec-h" id="ab-projects-h">مشاريع الفرع</h2>
+    {% include projects.html id="home" home=true %}
+  </div>
+</section>
+
+<section class="band faces-band" aria-labelledby="h-faces">
   <div class="wrap faces-grid">
-    <div>
-      <h2 class="bh"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ</span><span class="ar">وجوه</span></h2>
+    <div class="faces-text">
+      <h2 class="bh" id="h-faces"><span class="tz" lang="zgh">{{ nav_faces.tz }}</span><span class="ar">{{ nav_faces.ar }}</span></h2>
       <div class="faces-intro">
         <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
         <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
@@ -66,57 +98,44 @@ og_image: /assets/og/default.jpg
       <span class="tz face-name" lang="zgh">{{ face.name_tz }}</span>
       <a class="btn btn-line" href="{{ '/faces/' | relative_url }}">كل الوجوه</a>
     </div>
-    <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | default: face.name_tz | escape }}">
-      <img src="{% include img.html src=face.image size="sm" %}" alt="بطاقة وجوه: {{ face.label | default: face.name_tz | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
-    </button>
-  </div>
-</div>
-
-<div class="band">
-  <div class="wrap intro">
-    <div>
-      <h2 class="bh bh-logo">{% include aghmis-logo.svg id="home" %}<span class="ar">إصدارات ثقافية</span></h2>
-      <p class="lead-text">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
-      <a class="more" href="{{ '/newsletter/' | relative_url }}">تعرّف على ⴰⵖⵎⵉⵙ</a>
+    <div class="face-stack">
+      {%- for f in faces offset: 1 limit: 2 %}
+      <img class="fs-back fs-{{ forloop.index }}" src="{% include img.html src=f.image size="sm" %}" alt="" aria-hidden="true" loading="lazy" width="{{ f.width }}" height="{{ f.height }}">
+      {%- endfor %}
+      <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | default: face.name_tz | escape }}">
+        <img src="{% include img.html src=face.image size="sm" %}" alt="بطاقة وجوه: {{ face.label | default: face.name_tz | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
+        <span class="zoom-ico" aria-hidden="true"></span>
+      </button>
     </div>
-    {%- assign ag = site.data.aghmis.issues | first %}
-    {%- if ag %}
-    <aside class="infobox">
-      {%- if ag.status == "published" %}
-      {%- if ag.cover %}
-      <a class="infobox-cover" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy"></a>
-      {%- endif %}
-      <p class="infobox-kicker">أحدث إصدار</p>
-      <h3><span class="tz" lang="zgh">{{ ag.title_tz }}</span></h3>
-      {%- if ag.date %}<p>صدر في {% include date.html date=ag.date precision="month" %}</p>{% endif %}
-      <a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">اقرأ الإصدار وحمّله</a>
-      {%- else %}
-      <h3><span class="tz" lang="zgh">{{ ag.title_tz }}</span></h3>
-      <p>قيد الإعداد</p>
-      {%- endif %}
-    </aside>
-    {%- endif %}
   </div>
-</div>
+</section>
 
-<div class="band band-alt">
+<section class="band home-news" aria-labelledby="h-news">
   <div class="wrap">
-    <h2 class="bh"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ</span><span class="ar">أخبار</span></h2>
-    <ul class="news-list">
+    <div class="sec-row">
+      <h2 class="bh" id="h-news"><span class="tz" lang="zgh">{{ nav_news.tz }}</span><span class="ar">{{ nav_news.ar }}</span></h2>
+      <a class="more" href="{{ '/news/' | relative_url }}">كل الأخبار</a>
+    </div>
+    <ul class="lcards news-cards hn-grid">
       {%- for n in latest_news %}
-      <li><a class="nthumb" href="{{ n.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{% include img.html src=n.image size="xs" %}" alt="" loading="lazy" width="240" height="320"></a>
-        <a href="{{ n.url | relative_url }}"><span class="date">{% include date.html date=n.date precision=n.date_precision %}</span><h3>{{ n.list_title | default: n.title | escape }}</h3></a></li>
+      {% include list-card.html it=n kind="news" featured=forloop.first %}
       {%- endfor %}
     </ul>
   </div>
-</div>
+</section>
 
-<div class="band join-band">
-  <div class="wrap join-grid">
+<section class="home-join" aria-labelledby="h-join">
+  <div class="wrap hj-grid">
     <div>
-      <h2 class="bh"><span class="tz" lang="zgh">ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ</span><span class="ar">انخراط وتواصل</span></h2>
-      <p>الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في الفرع والمساهمة في أنشطته.</p>
+      <h2 class="hj-title" id="h-join"><span class="tz" lang="zgh">{{ nav_join.tz }}</span><span class="ar">{{ nav_join.ar }}</span></h2>
+      <p class="hj-text">الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في الفرع والمساهمة في أنشطته.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
+      </div>
     </div>
-    <a class="btn btn-gold" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
+    <dl class="ab-contact">
+      <div><dt>مقر الفرع</dt><dd>{{ site.address_street }}، {{ site.address_city }}<br>{{ site.address_region }}</dd></div>
+      <div><dt>البريد الإلكتروني</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+    </dl>
   </div>
-</div>
+</section>

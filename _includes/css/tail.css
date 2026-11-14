@@ -1,0 +1,16 @@
+/* scroll reveal: main.js adds .rv only to elements still below the fold, so nothing visible is ever hidden and the site works fully without JS */
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform 1s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+  .rv .bh::after,.bh.rv::after{transform:scaleX(0);transition:transform .9s .25s var(--ease-out)}
+  .rv.in .bh::after,.bh.rv.in::after{transform:none}
+}
+
+/* page-to-page: a soft cross-fade where supported (header stays put) */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  ::view-transition-old(root){animation:vt-out .22s ease both}
+  ::view-transition-new(root){animation:vt-in .38s var(--ease-out) both}
+  @keyframes vt-out{to{opacity:0}}
+  @keyframes vt-in{from{opacity:0;transform:translateY(8px)}}
+}

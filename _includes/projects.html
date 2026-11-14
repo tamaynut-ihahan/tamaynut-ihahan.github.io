@@ -1,0 +1,56 @@
+{%- comment -%}
+بطاقتا مشاريع الفرع (ⴰⵖⵎⵉⵙ وⵜⵉⴼⴰⵡⵜ)، في «من نحن» وفي الرئيسية.
+include projects.html id="about"   ← id فريد لشعار ⴰⵖⵎⵉⵙ
+include projects.html id="home" home=true   ← في الرئيسية: تاريخ الإصدار وروابط القسم القديم في الرئيسية
+النصوص: وصفا ⴰⵖⵎⵉⵙ منسوخان حرفياً من newsletter/index.html، ونص ⵜⵉⴼⴰⵡⵜ بتيفيناغ من حقل tz في خبرها الأول.
+{%- endcomment -%}
+{%- assign ag = site.data.aghmis.issues | first -%}
+{%- assign ag_pub = false -%}{%- if ag.status == "published" -%}{%- assign ag_pub = true -%}{%- endif -%}
+{%- assign tf_news = site.news | where_exp: "n", "n.url == '/news/2026-10-31-tifawt/'" | first -%}
+    <div class="ab-brands">
+
+      <article class="brand-card bc-aghmis">
+        <div class="bc-head">
+          <a class="bc-logo" href="{{ '/newsletter/' | relative_url }}" aria-label="ⴰⵖⵎⵉⵙ، إصدارات">{% include aghmis-logo.svg id=include.id %}</a>
+          <p class="bc-kicker">إصدارات ثقافية</p>
+        </div>
+        {%- if ag and ag.cover %}
+        <a class="bc-cover" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true">
+          <img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy">
+          {%- if ag_pub %}<span class="bc-cover-cap"><small>أحدث إصدار</small><span class="tz" lang="zgh">{{ ag.title_tz }}</span>{% if include.home and ag.date %}<small>صدر في {% include date.html date=ag.date precision="month" %}</small>{% endif %}</span>{% endif %}
+        </a>
+        {%- endif %}
+        <div class="bc-bi">
+          <p class="bc-ar">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
+          <p class="bc-tz tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵥⵍⵉⵏⵜ ⵉ ⵜⵙⴽⵍⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵜⴰⵢⵙⵉ ⵏ ⵜⵎⴰⵣⵉⵖⵜ.</p>
+        </div>
+        <div class="bc-links">
+          {%- if include.home %}
+          {%- if ag_pub %}<a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">اقرأ الإصدار وحمّله</a>{% else %}<p class="bc-status"><span class="tz" lang="zgh">{{ ag.title_tz }}</span> قيد الإعداد</p>{% endif %}
+          <a class="more" href="{{ '/newsletter/' | relative_url }}">تعرّف على ⴰⵖⵎⵉⵙ</a>
+          {%- else %}
+          <a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">إلى صفحة ⴰⵖⵎⵉⵙ</a>
+          {%- endif %}
+        </div>
+      </article>
+
+      <article class="brand-card bc-tifawt">
+        <div class="bc-head">
+          <span class="bc-lockup"><img src="{{ '/assets/img/tifawt.webp' | relative_url }}" alt="" width="84" height="84" loading="lazy"><span><b class="tz" lang="zgh">ⵜⵉⴼⴰⵡⵜ</b><small>TIFAWT</small></span></span>
+        </div>
+        <a class="bc-cover bc-poster" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}" tabindex="-1" aria-hidden="true">
+          <img src="{{ '/assets/img/sm/n2026-tifawt.webp' | relative_url }}" alt="" width="640" height="800" loading="lazy">
+        </a>
+        <div class="bc-bi">
+          <p class="bc-ar"><span lang="zgh">ⵜⵉⴼⴰⵡⵜ</span>: مشروع الفرع للإنتاج السمعي البصري، انطلق في أكتوبر 2026. يعمل على تعزيز حضور الأمازيغية في الفضاء الرقمي، بالصوت والصورة، وينشر موادّه على <a href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناته في يوتيوب <bdi dir="ltr">@tifawtihahan</bdi></a> وعلى صفحة الفرع في فيسبوك.</p>
+          {%- if tf_news.tz %}
+          <div class="bc-tz tz" lang="zgh">{{ tf_news.tz | markdownify }}</div>
+          {%- endif %}
+        </div>
+        <div class="bc-links">
+          <a class="btn btn-gold" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب</a>
+          <a class="more" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}">اقرأ خبر ⵜⵉⴼⴰⵡⵜ</a>
+        </div>
+      </article>
+
+    </div>
