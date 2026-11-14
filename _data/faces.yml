@@ -1,9 +1,11 @@
 # سلسلة «وجوه» – أول عنصر يظهر في الصفحة الرئيسية
 - name_tz: "ⵎⴱⴰⵔⴽ ⴰⵢⵉⵙⴰⵔ"
+  label: "الفنان مبارك ايسار"
   image: /assets/img/udm-ayisar.webp
   width: 1080
   height: 1928
 - name_tz: "ⵃⴰⵙⴰⵏ ⵉⴱⵉⵇⵙ"
+  label: "الشهيد حسن ابيقس"
   image: /assets/img/udm-ibiqs.webp
   width: 820
   height: 1350
