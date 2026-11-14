@@ -6,7 +6,7 @@
 /* motif on the text side, fading into the photo */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;background-size:56px 56px;opacity:.07;
   -webkit-mask-image:linear-gradient(270deg,#000 0%,transparent 55%);mask-image:linear-gradient(270deg,#000 0%,transparent 55%)}
-.hero-inner{position:relative;z-index:2;padding-block:6rem clamp(6.5rem,11vw,8.5rem);width:100%}
+.hero-inner{position:relative;z-index:2;padding-block:6rem clamp(4rem,8vw,6rem);width:100%}
 .hero-name{display:block;font-size:clamp(3rem,8.4vw,6.4rem);line-height:1.08;text-align:right;text-shadow:0 2px 24px rgba(10,26,58,.45)}
 .hero-branch{display:block;font-size:clamp(1.45rem,3.8vw,2.7rem);color:#fff;margin-top:.6rem;text-align:right}
 .hero .rule{width:96px;height:10px;margin:1.6rem 0 1.2rem;transform-origin:right center;
@@ -41,27 +41,6 @@
 .face-card img{border-radius:8px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);transition:transform .7s var(--ease-out),box-shadow .7s var(--ease-out)}
 .face-card:hover img{transform:translateY(-6px) rotate(-1deg);box-shadow:0 40px 80px -24px rgba(0,0,0,.8),0 0 0 1px rgba(201,162,74,.4)}
 @media (max-width:760px){.faces-grid{grid-template-columns:1fr}}
-
-/* figures strip: a raised card that overlaps the bottom of the hero */
-.home-stats{position:relative;z-index:3;margin-top:calc(-1 * clamp(3.2rem,6vw,4.6rem))}
-.home-stats + .band{border-top:0;padding-top:clamp(3rem,6vw,5rem)}
-.stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:var(--surface);border-radius:20px;box-shadow:var(--sh-2);overflow:hidden}
-.stats li{min-width:0;border-inline-start:1px solid var(--line)}
-.stats li:first-child{border-inline-start:0}
-.stats li > a,.st-fact{display:flex;flex-direction:column;gap:.25rem;height:100%;padding:clamp(1rem,2vw,1.5rem) clamp(.9rem,1.8vw,1.4rem);color:inherit;text-decoration:none;transition:background-color .25s}
-.stats li > a:hover{background:var(--chip)}
-.stats b{font-family:var(--f-head);font-weight:800;font-size:clamp(1.55rem,3vw,2.4rem);line-height:1.2;color:var(--link)}
-.st-fact b{color:var(--text)}
-.st-l{display:flex;flex-direction:column;font-size:.95rem;line-height:1.5}
-.st-l .tz{color:var(--text)}
-.st-l .ar{font-family:var(--f-head);font-weight:700;color:var(--muted)}
-.stats li > a:hover .ar{color:var(--link)}
-@media (max-width:760px){
-  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .stats li:nth-child(4){border-inline-start:0}
-  .stats li:nth-child(n+4){border-top:1px solid var(--line)}
-  .st-l{font-size:.85rem}
-}
 
 /* about + the three axes, each card opening its chapter in «أهدافنا» */
 .ha-head{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(1.5rem,5vw,4rem);align-items:start;margin-bottom:clamp(2rem,4vw,3rem)}

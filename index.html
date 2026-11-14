@@ -6,17 +6,15 @@ css: [lists, editorial, home]
 ---
 {%- comment -%}
   الرئيسية: من نحن، ماذا نفعل، ماذا ننتج، كيف تنضم، في تمريرة واحدة.
-  كل النصوص من محتوى الموقع؛ الأرقام تُحسب من البيانات (الأنشطة، الأخبار، الوجوه، إصدارات ⴰⵖⵎⵉⵙ المنشورة).
+  كل النصوص من محتوى الموقع.
 {%- endcomment -%}
 {%- assign latest_activities = site.activities | sort: "date" | reverse | slice: 0, 2 -%}
 {%- assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 -%}
 {%- assign faces = site.data.faces -%}
 {%- assign face = faces | first -%}
-{%- assign ag_published = site.data.aghmis.issues | where: "status", "published" -%}
 {%- assign nav_act = site.data.nav | where: "id", "activities" | first -%}
 {%- assign nav_news = site.data.nav | where: "id", "news" | first -%}
 {%- assign nav_faces = site.data.nav | where: "id", "faces" | first -%}
-{%- assign nav_ag = site.data.nav | where: "id", "newsletter" | first -%}
 {%- assign nav_join = site.data.nav | where: "id", "join" | first -%}
 {%- assign nav_about = site.data.nav | where: "id", "about" | first -%}
 
@@ -35,18 +33,6 @@ css: [lists, editorial, home]
   </div>
 </header>
 
-<section class="home-stats" aria-label="{{ site.title }}">
-  <div class="wrap">
-    <ul class="stats">
-      <li class="st-fact"><b>1978</b><span class="st-l"><span class="ar">المنظمة</span></span></li>
-      <li class="st-fact"><b>تمنار</b><span class="st-l"><span class="ar">مقر الفرع</span></span></li>
-      <li><a href="{{ nav_act.url | relative_url }}"><b>{{ site.activities.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_act.tz }}</span><span class="ar">{{ nav_act.ar }}</span></span></a></li>
-      <li><a href="{{ nav_news.url | relative_url }}"><b>{{ site.news.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_news.tz }}</span><span class="ar">{{ nav_news.ar }}</span></span></a></li>
-      <li><a href="{{ nav_faces.url | relative_url }}"><b>{{ faces.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_faces.tz }}</span><span class="ar">{{ nav_faces.ar }}</span></span></a></li>
-      <li><a href="{{ nav_ag.url | relative_url }}"><b>{{ ag_published.size }}</b><span class="st-l"><span class="tz" lang="zgh">{{ nav_ag.tz }}</span><span class="ar">{{ nav_ag.ar }}</span></span></a></li>
-    </ul>
-  </div>
-</section>
 
 <section class="band band-alt home-about" aria-labelledby="h-about">
   <div class="wrap">
