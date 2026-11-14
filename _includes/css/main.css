@@ -117,7 +117,7 @@ ul{margin:0;padding:0;list-style:none}
 }
 
 /* زخرفة معينات مستوحاة من الزرابي الأمازيغية، بالأبيض وبشفافية فوق الخلفيات الداكنة */
-.hero::after,.faces-band::after,.join-band::after,.page-head::after,.art-hero::after,.ab-hero::after,.ab-quote::after,.gl-hero::after,.gl-ch-2::after,.home-join::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M28 6 50 28 28 50 6 28Z'/%3E%3Cpath d='M28 18 38 28 28 38 18 28Z'/%3E%3C/g%3E%3Cpath d='M26.5 26.5h3v3h-3zM-1.5-1.5h3v3h-3zM54.5-1.5h3v3h-3zM-1.5 54.5h3v3h-3zM54.5 54.5h3v3h-3z' fill='white'/%3E%3C/svg%3E")}
+.hero::after,.faces-band::after,.join-band::after,.page-head::after,.art-hero::after,.ab-hero::after,.ab-quote::after,.gl-hero::after,.gl-ch-2::after,.home-join::after,.fc-hero::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='white' stroke-width='1'%3E%3Cpath d='M28 6 50 28 28 50 6 28Z'/%3E%3Cpath d='M28 18 38 28 28 38 18 28Z'/%3E%3C/g%3E%3Cpath d='M26.5 26.5h3v3h-3zM-1.5-1.5h3v3h-3zM54.5-1.5h3v3h-3zM-1.5 54.5h3v3h-3zM54.5 54.5h3v3h-3z' fill='white'/%3E%3C/svg%3E")}
 
 /* sections */
 .band{padding-block:clamp(3.4rem,8vw,6.5rem)}
@@ -168,12 +168,6 @@ ul{margin:0;padding:0;list-style:none}
 .infobox .infobox-kicker{font-size:.85rem;font-weight:700;color:var(--blue);margin-bottom:.2rem}
 @media (max-width:860px){.two-col{grid-template-columns:1fr}}
 
-/* faces page */
-.faces-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2rem;align-items:start}
-.faces-list figure{margin:0}
-.faces-list button{display:block;padding:0;border:0;background:var(--ink);cursor:zoom-in;width:100%;aspect-ratio:2/3;overflow:hidden}
-.faces-list button img{width:100%;height:100%;object-fit:cover;object-position:top}
-.faces-list figcaption{font-size:1.25rem;margin-top:.7rem;text-align:right}
 
 /* join page */
 .conditions li{position:relative;padding-inline-start:1.3rem;padding-block:.75rem;border-top:1px solid var(--line)}
@@ -250,7 +244,6 @@ ul{margin:0;padding:0;list-style:none}
 
 /* utility classes (no inline styles, so the Content-Security-Policy can forbid them) */
 .face-card,.lead-media{padding:0;border:0;background:none}
-.faces-page-intro{margin-bottom:2.4rem}
 .notfound .btn-row{margin-top:1.6rem}
 .muted{color:var(--muted)}
 

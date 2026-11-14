@@ -2,7 +2,7 @@
 layout: default
 nav: home
 og_image: /assets/og/default.jpg
-css: [lists, editorial, home]
+css: [lists, editorial, home, join]
 ---
 {%- comment -%}
   الرئيسية: من نحن، ماذا نفعل، ماذا ننتج، كيف تنضم، في تمريرة واحدة.
@@ -110,18 +110,4 @@ css: [lists, editorial, home]
   </div>
 </section>
 
-<section class="home-join" aria-labelledby="h-join">
-  <div class="wrap hj-grid">
-    <div>
-      <h2 class="hj-title" id="h-join"><span class="tz" lang="zgh">{{ nav_join.tz }}</span><span class="ar">{{ nav_join.ar }}</span></h2>
-      <p class="hj-text">الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في الفرع والمساهمة في أنشطته.</p>
-      <div class="btn-row">
-        <a class="btn btn-gold" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
-      </div>
-    </div>
-    <dl class="ab-contact">
-      <div><dt>مقر الفرع</dt><dd>{{ site.address_street }}، {{ site.address_city }}<br>{{ site.address_region }}</dd></div>
-      <div><dt>البريد الإلكتروني</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
-    </dl>
-  </div>
-</section>
+{% include join-close.html contact=true %}

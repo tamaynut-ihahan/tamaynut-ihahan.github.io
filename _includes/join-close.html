@@ -1,0 +1,25 @@
+{%- comment -%}
+ختام «انخراط وتواصل»: في الرئيسية (contact=true: بطاقتا المقر والبريد) وفي «وجوه» (links=true: روابط إلى ⴰⵖⵎⵉⵙ والأنشطة).
+الأنماط في _includes/css/join.css، فأضف join إلى css: في رأس الصفحة.
+{%- endcomment -%}
+{%- assign nav_join = site.data.nav | where: "id", "join" | first -%}
+<section class="home-join" aria-labelledby="h-join">
+  <div class="wrap hj-grid">
+    <div>
+      <h2 class="hj-title" id="h-join"><span class="tz" lang="zgh">{{ nav_join.tz }}</span><span class="ar">{{ nav_join.ar }}</span></h2>
+      <p class="hj-text">الباب مفتوح أمام كل مهتم بالثقافة الأمازيغية وقضايا احاحان للانخراط في الفرع والمساهمة في أنشطته.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="{{ '/join/' | relative_url }}">شروط الانخراط</a>
+      </div>
+      {%- if include.links %}
+      <p class="hj-links"><a class="more" href="{{ '/newsletter/' | relative_url }}">تعرّف على ⴰⵖⵎⵉⵙ</a><a class="more" href="{{ '/activities/' | relative_url }}">كل الأنشطة</a></p>
+      {%- endif %}
+    </div>
+    {%- if include.contact %}
+    <dl class="ab-contact">
+      <div><dt>مقر الفرع</dt><dd>{{ site.address_street }}، {{ site.address_city }}<br>{{ site.address_region }}</dd></div>
+      <div><dt>البريد الإلكتروني</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+    </dl>
+    {%- endif %}
+  </div>
+</section>
