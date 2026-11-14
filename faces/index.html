@@ -1,21 +1,47 @@
 ---
-layout: page
+layout: default
+css: [faces, join]
 title: وجوه
 nav: faces
 head_tz: "ⵓⴷⵎⴰⵡⵏ"
 description: "«وجوه»: مشروع رقمي لفرع تاماينوت تمنار احاحان للتعريف بشخصيات احاحان من كتاب وفنانين ومبدعين."
 ---
-<div class="band"><div class="wrap">
-  <div class="faces-intro prose faces-page-intro">
-    <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
-    <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
+{%- comment -%}
+  «وجوه»: معرض. البطاقات من _data/faces.yml بنسبها الأصلية، كلوحات معلّقة، وتُكبَّر كمجموعة واحدة.
+  تحت كل بطاقة name_tz، ثم label إن وُجد (لا يُخترع اسم عربي).
+{%- endcomment -%}
+{%- assign faces = site.data.faces -%}
+<header class="fc-hero">
+  <div class="wrap fc-hero-grid">
+    <div class="fc-hero-text">
+      <h1 class="fc-title"><span class="tz" lang="zgh">{{ page.head_tz }}</span><span class="ar">{{ page.title }}</span></h1>
+      <div class="fc-intro">
+        <p class="fc-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
+        <p class="fc-lead tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
+      </div>
+    </div>
+    <div class="fc-stack" aria-hidden="true">
+      {%- for f in faces offset: 1 limit: 3 %}
+      <img class="fcs-{{ forloop.index }}" src="{% include img.html src=f.image size="sm" %}" alt="" width="{{ f.width }}" height="{{ f.height }}"{% if forloop.first %} fetchpriority="high"{% endif %}>
+      {%- endfor %}
+    </div>
   </div>
-  <div class="faces-list" data-gallery>
-    {%- for f in site.data.faces %}
-    <figure>
-      <button class="zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | default: f.name_tz | escape }}"><img src="{% include img.html src=f.image size="sm" %}" alt="بطاقة وجوه: {{ f.label | default: f.name_tz | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"></button>
-      <figcaption class="tz" lang="zgh">{{ f.name_tz }}</figcaption>
-    </figure>
-    {%- endfor %}
+</header>
+
+<section class="fc-wall-band" aria-labelledby="fc-wall-h">
+  <h2 class="fc-sr" id="fc-wall-h">{{ page.title }}</h2>
+  <div class="wrap">
+    <ul class="fc-wall" data-gallery>
+      {%- for f in faces %}
+      <li class="fc-item">
+        <figure>
+          <button class="fc-frame zoom" data-zoom="{{ f.image | relative_url }}" aria-label="تكبير بطاقة {{ f.label | default: f.name_tz | escape }}"><img src="{% include img.html src=f.image size="sm" %}" alt="بطاقة وجوه: {{ f.label | default: f.name_tz | escape }}" loading="lazy" width="{{ f.width }}" height="{{ f.height }}"><span class="zoom-ico" aria-hidden="true"></span></button>
+          <figcaption><span class="tz" lang="zgh">{{ f.name_tz }}</span>{% if f.label %}<span class="ar">{{ f.label }}</span>{% endif %}</figcaption>
+        </figure>
+      </li>
+      {%- endfor %}
+    </ul>
   </div>
-</div></div>
+</section>
+
+{% include join-close.html links=true %}
