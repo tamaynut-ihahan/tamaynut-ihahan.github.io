@@ -1,0 +1,67 @@
+/* activity cards (home): raised surfaces with a forward arrow */
+.card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-1);
+  transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh-2)}
+.card .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line)}
+.card .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,26,58,.35),transparent 45%);opacity:.6;transition:opacity .5s}
+.card:hover .thumb::after{opacity:1}
+.card .thumb img{width:100%;height:100%;object-fit:cover;object-position:72% center;transition:transform 1.1s var(--ease-out)}
+.card:hover .thumb img{transform:scale(1.06)}
+.card .date{display:inline-flex;align-items:center;gap:.5rem;margin:1.3rem 1.5rem .35rem}
+.card .date::before{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.card h2,.card h3{font-size:clamp(1.08rem,2vw,1.3rem);line-height:1.6;margin:0 1.5rem 1.5rem;padding-inline-end:3.4rem;transition:color .25s}
+.card::after{content:"";position:absolute;inset-inline-end:1.25rem;bottom:1.35rem;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10 3 5 8l5 5' fill='none' stroke='%230059C3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;
+  transition:transform .45s var(--ease-out),background-color .3s}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .card::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10 3 5 8l5 5' fill='none' stroke='%238DB8FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}}
+:root[data-theme="dark"] .card::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10 3 5 8l5 5' fill='none' stroke='%238DB8FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+:root .card:hover::after,html:root .card:hover::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10 3 5 8l5 5' fill='none' stroke='%230A1A3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");transform:translateX(-4px);background-color:var(--gold)}
+.card:hover h2,.card:hover h3{color:var(--link)}
+
+/* ===== صفحتا الأنشطة والأخبار: سنوات وبطاقات ===== */
+.years{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 clamp(2rem,4vw,2.8rem)}
+.years a{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-head);font-weight:700;font-size:1rem;line-height:1.3;padding:.45rem 1.1rem;padding-inline-end:.45rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);text-decoration:none;
+  transition:background-color .25s,border-color .25s,color .25s,transform .3s var(--ease-out)}
+.years a:hover{border-color:var(--gold);transform:translateY(-1px)}
+.years .n{display:inline-grid;place-items:center;min-width:1.75rem;height:1.75rem;padding-inline:.35rem;border-radius:999px;background:var(--chip);color:var(--link);font-size:.8rem}
+.years a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}
+.years a[aria-current] .n{background:rgba(255,255,255,.2);color:#fff}
+.year-group{scroll-margin-top:calc(var(--hh) + 1.5rem)}
+.year-group[hidden]{display:none}
+.year-group + .year-group{margin-top:clamp(3rem,6vw,4.5rem)}
+.year-h{display:flex;align-items:center;gap:1.1rem;font-size:clamp(1.6rem,3vw,2.1rem);font-weight:800;line-height:1.2;color:var(--blue);margin-bottom:clamp(1.3rem,3vw,1.8rem)}
+.year-h::after{content:"";flex:1;height:1px;background:linear-gradient(to left,var(--gold),var(--line) 35%)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .year-h{color:#8DB8FF}}
+:root[data-theme="dark"] .year-h{color:#8DB8FF}
+
+.lcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:clamp(1.25rem,2.6vw,2rem)}
+.lcards > li{display:flex;min-width:0}
+.lcards .card{width:100%}
+.lcards .card-body{display:flex;flex-direction:column;flex:1}
+.card-desc{margin:0 1.5rem 1.6rem;padding-inline-end:3.4rem;color:var(--muted);font-size:1.02rem;line-height:1.85;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* news: posters are shown whole, over a blurred copy of themselves */
+.news-card .thumb{aspect-ratio:1/1;background:var(--ink)}
+.news-card .thumb .thumb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(18px) saturate(1.2);transform:scale(1.2);opacity:.75}
+.lcards .news-card .thumb img:not(.thumb-bg){position:relative;object-fit:contain;object-position:center;padding:clamp(.8rem,2vw,1.2rem);filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+.news-card .thumb::after{display:none}
+.lcards .news-card:hover .thumb img:not(.thumb-bg){transform:scale(1.04)}
+/* the newest item leads, wide */
+.lcards > .feat-li{grid-column:1/-1}
+@media (min-width:821px){
+  .feat{display:grid;grid-template-columns:1.25fr 1fr;align-items:stretch}
+  .feat .thumb{aspect-ratio:auto;height:100%;min-height:clamp(320px,32vw,420px)}
+  .feat .card-body{justify-content:center;padding-block:1.5rem}
+  .feat .date{margin-inline:2rem}
+  .feat h3{font-size:clamp(1.4rem,2.4vw,1.95rem);line-height:1.5;margin-inline:2rem;margin-bottom:.9rem}
+  .feat .card-desc{margin-inline:2rem;-webkit-line-clamp:4}
+  .feat::after{inset-inline-end:2rem;bottom:2rem}
+}
+/* phones: news as compact rows, poster beside the title */
+@media (max-width:600px){
+  .news-cards .news-card:not(.feat){display:grid;grid-template-columns:104px 1fr;align-items:center}
+  .news-cards .news-card:not(.feat) .thumb{aspect-ratio:auto;width:100%;height:100%;min-height:130px}
+  .news-cards .news-card:not(.feat) .thumb img:not(.thumb-bg){padding:.45rem}
+  .news-cards .news-card:not(.feat) .date{margin:.9rem 1rem .2rem}
+  .news-cards .news-card:not(.feat) h3{font-size:1.02rem;margin:0 1rem .9rem;padding:0}
+  .news-cards .news-card:not(.feat)::after{display:none}
+  .lcards{gap:1rem}
+}

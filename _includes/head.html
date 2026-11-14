@@ -42,7 +42,8 @@
 <meta name="theme-color" content="#0059C3">
 <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
 {%- comment -%} CSS is inlined so the first paint doesn't wait for extra requests. Edit _includes/css/*.css {%- endcomment -%}
-{%- capture css %}{% include css/fonts.css %}{% include css/main.css %}{% endcapture %}
+{%- comment -%} أنماط مشتركة، ثم أنماط الصفحة نفسها (page.css في رأسها أو في defaults)، ثم الحركة عند التمرير. كلها مدمجة، فلا وميض. {%- endcomment %}
+{%- capture css %}{% include css/fonts.css %}{% include css/main.css %}{% for c in page.css %}{% include css/{{ c }}.css %}{% endfor %}{% include css/tail.css %}{% endcapture %}
 <style>{{ css | scssify }}</style>
 {%- comment -%} بدون JS لا تعمل أزرار اللغة: يظهر النصان معاً (العربية ثم تيفيناغ) وتختفي الأزرار. لا أثر له حين يعمل JS، فلا قفز في الصفحة. {%- endcomment %}
 <noscript><style>.bi .tabs{display:none}.bi .pane-ar,.bi .pane-tz{display:block!important}.bi .pane-tz{margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--line)}</style></noscript>
