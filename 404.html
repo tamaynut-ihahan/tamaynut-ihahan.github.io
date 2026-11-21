@@ -1,20 +1,31 @@
 ---
 layout: default
+css: [notfound]
 title: الصفحة غير موجودة
 permalink: /404.html
 noindex: true
 sitemap: false
 description: "الصفحة المطلوبة غير موجودة على موقع منظمة تاماينوت – فرع تمنار احاحان."
 ---
-<div class="page-head"><div class="wrap">
-  <h1 class="bh"><span class="tz" lang="zgh">ⵜⴰⵙⵏⴰ ⵓⵔ ⵜⵍⵍⵉ</span><span class="ar">الصفحة غير موجودة</span></h1>
-</div></div>
-<div class="band"><div class="wrap notfound">
-  <p class="code">404</p>
-  <p class="lead-text">عذرا، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الرئيسية أو تصفح أنشطة الفرع وأخباره.</p>
-  <div class="btn-row">
-    <a class="btn btn-gold" href="{{ '/' | relative_url }}">العودة إلى الرئيسية</a>
-    <a class="btn btn-line" href="{{ '/activities/' | relative_url }}">الأنشطة</a>
-    <a class="btn btn-line" href="{{ '/news/' | relative_url }}">الأخبار</a>
+{%- comment -%} تُعرض من أي مسار: كل الروابط مطلقة (relative_url). البطاقات من _data/nav.yml. {%- endcomment -%}
+<section class="nf">
+  <div class="wrap nf-grid">
+    <div class="nf-text">
+      <p class="nf-code" aria-hidden="true"><span>4</span><span class="nf-0"><i></i></span><span>4</span></p>
+      <h1 class="nf-title"><span class="tz" lang="zgh">ⵜⴰⵙⵏⴰ ⵓⵔ ⵜⵍⵍⵉ</span><span class="ar">الصفحة غير موجودة</span></h1>
+      <p class="nf-lead"><span class="fc-sr">404. </span>عذرا، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الرئيسية أو تصفح أنشطة الفرع وأخباره.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="{{ '/' | relative_url }}">العودة إلى الرئيسية</a>
+        <a class="btn btn-ghost" href="{{ '/activities/' | relative_url }}">الأنشطة</a>
+        <a class="btn btn-ghost" href="{{ '/news/' | relative_url }}">الأخبار</a>
+      </div>
+    </div>
+    <nav class="nf-nav" aria-label="القائمة الرئيسية">
+      <ul>
+        {%- for item in site.data.nav %}{% if item.id == "home" %}{% continue %}{% endif %}
+        <li><a href="{{ item.url | relative_url }}"><span class="tz" lang="zgh">{{ item.tz }}</span><span class="ar">{{ item.ar }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
   </div>
-</div></div>
+</section>
