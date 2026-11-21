@@ -1,30 +1,75 @@
 ---
-layout: page
+layout: default
+css: [join-page]
 title: انخراط وتواصل
 nav: join
 head_tz: "ⴰⵍⵜⴰⵖ ⴷ ⵓⵏⵢⴰⵍⴽⴰⵎ"
 description: "شروط الانخراط في فرع منظمة تاماينوت بتمنار احاحان وطرق التواصل مع مكتب الفرع."
 ---
-<div class="band"><div class="wrap two-col">
-    <div class="prose">
-      <h2>شروط الانخراط</h2>
-      <p>تُقبل العضوية في المنظمة على أساس الالتزام بقانونها الأساسي ومبادئها وإطارها المرجعي وقانونها الداخلي وقرارات هياكلها، ويشترط في المنخرط:</p>
-      <ul class="conditions">
-        <li>أن يكون بالغا 18 سنة.</li>
-        <li>أن يؤدي واجب الانخراط السنوي الذي يحدده مكتب الفرع كل سنة.</li>
-        <li>أن يقدم طلبه على المطبوع الموحد الذي تعده المنظمة، وأن يقبل مكتب الفرع انخراطه.</li>
-        <li>في حالة الانتقال من فرع آخر، أن يدلي بما يفيد تسوية وضعيته مع الفرع السابق.</li>
-      </ul>
-      <h2>كيف تنخرط؟</h2>
-      <p>راسلنا عبر البريد الإلكتروني باسمك ومدينتك ورقم هاتفك، وسيتواصل معك مكتب الفرع لإتمام الإجراءات.</p>
-      <a class="btn btn-line" href="mailto:tamaynut44200@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%A7%D9%86%D8%AE%D8%B1%D8%A7%D8%B7">راسلنا لطلب الانخراط</a>
+{%- comment -%}
+  «انخراط وتواصل»: دعوة، ثم الشروط مرقمة، ثم «كيف تنخرط؟» خطوتين من الفقرة نفسها بالحرف، ثم بطاقات التواصل، ثم روابط «من نحن» و«أهدافنا».
+  كل النصوص كما كانت. زر «نسخ البريد» يظهر فقط حين يعمل JS (hidden في HTML).
+{%- endcomment -%}
+{%- assign join_mail = "mailto:tamaynut44200@gmail.com?subject=%D8%B7%D9%84%D8%A8%20%D8%A7%D9%86%D8%AE%D8%B1%D8%A7%D8%B7" -%}
+{%- assign nav_about = site.data.nav | where: "id", "about" | first -%}
+{%- assign nav_goals = site.data.nav | where: "id", "goals" | first -%}
+<header class="jn-hero">
+  <img class="jn-hero-img" src="{{ '/assets/img/sm/a2026-group.webp' | relative_url }}" srcset="{{ '/assets/img/sm/a2026-group.webp' | relative_url }} 640w, {{ '/assets/img/a2026-group.jpg' | relative_url }} 1080w" sizes="100vw" alt="" width="1080" height="483" fetchpriority="high">
+  <div class="wrap jn-hero-inner">
+    <h1 class="jn-title"><span class="tz" lang="zgh">{{ page.head_tz }}</span><span class="ar">{{ page.title }}</span></h1>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="{{ join_mail }}">راسلنا لطلب الانخراط</a>
+      <a class="btn btn-ghost" href="#jn-conditions-h">شروط الانخراط</a>
     </div>
-    <aside class="infobox">
+  </div>
+</header>
+
+<section class="band band-alt jn-cond" aria-labelledby="jn-conditions-h">
+  <div class="wrap">
+    <div class="jn-cond-head">
+      <h2 class="jn-sec-h" id="jn-conditions-h">شروط الانخراط</h2>
+      <p class="lead-text">تُقبل العضوية في المنظمة على أساس الالتزام بقانونها الأساسي ومبادئها وإطارها المرجعي وقانونها الداخلي وقرارات هياكلها، ويشترط في المنخرط:</p>
+    </div>
+    <ol class="jn-conditions">
+      <li><span class="jc-n" aria-hidden="true">01</span><p>أن يكون بالغا 18 سنة.</p></li>
+      <li><span class="jc-n" aria-hidden="true">02</span><p>أن يؤدي واجب الانخراط السنوي الذي يحدده مكتب الفرع كل سنة.</p></li>
+      <li><span class="jc-n" aria-hidden="true">03</span><p>أن يقدم طلبه على المطبوع الموحد الذي تعده المنظمة، وأن يقبل مكتب الفرع انخراطه.</p></li>
+      <li><span class="jc-n" aria-hidden="true">04</span><p>في حالة الانتقال من فرع آخر، أن يدلي بما يفيد تسوية وضعيته مع الفرع السابق.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="jn-how" aria-labelledby="jn-how-h">
+  <div class="wrap jn-how-grid">
+    <h2 class="jn-how-h" id="jn-how-h">كيف تنخرط؟</h2>
+    <div>
+      <p class="jn-steps"><span class="js-step js-1">راسلنا عبر البريد الإلكتروني باسمك ومدينتك ورقم هاتفك،</span> <span class="js-step js-2">وسيتواصل معك مكتب الفرع لإتمام الإجراءات.</span></p>
+      <a class="btn btn-gold jn-cta" href="{{ join_mail }}">راسلنا لطلب الانخراط</a>
+    </div>
+  </div>
+</section>
+
+<section class="band jn-contact" aria-label="تواصل">
+  <div class="wrap jn-cards">
+    <div class="jn-card jn-mail">
       <h3>البريد الإلكتروني</h3>
-      <p><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></p>
+      <p class="jn-mail-addr"><a href="mailto:tamaynut44200@gmail.com">tamaynut44200@gmail.com</a></p>
+      <button class="jn-copy" type="button" data-copy="tamaynut44200@gmail.com" data-done="تم النسخ" hidden>نسخ البريد</button>
+    </div>
+    <div class="jn-card jn-place">
       <h3>مقر الفرع</h3>
       <p>شارع المقاومة، تمنار<br>إقليم الصويرة</p>
+    </div>
+    <div class="jn-card jn-follow">
       <h3>تابعونا</h3>
       {% include social.html class="social-light" %}
-    </aside>
-  </div></div>
+    </div>
+  </div>
+</section>
+
+<nav class="band band-alt jn-next" aria-label="{{ nav_about.ar }}، {{ nav_goals.ar }}">
+  <div class="wrap jn-next-grid">
+    <a href="{{ nav_about.url | relative_url }}"><span class="tz" lang="zgh">{{ nav_about.tz }}</span><span class="ar">{{ nav_about.ar }}</span></a>
+    <a href="{{ nav_goals.url | relative_url }}"><span class="tz" lang="zgh">{{ nav_goals.tz }}</span><span class="ar">{{ nav_goals.ar }}</span></a>
+  </div>
+</nav>

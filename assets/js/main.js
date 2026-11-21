@@ -48,7 +48,7 @@
   /* scroll reveal: only for elements still below the fold, so nothing on screen ever blinks */
   var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if('IntersectionObserver' in window&&!still){
-    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h, .ab-sec-h, .brand-card, .tl-body, .tl-mark, .ab-axes-head .lead-text, .ab-axis-cards li, .ab-quote blockquote, .ab-join-grid > *, .gl-ch-head > *, .gl-goals li, .gl-pr-head, .gl-seals li, .gl-join-grid > *, .ha-head > *, .face-stack, .faces-text, .hj-grid > *, .sec-row .more, .fc-item';
+    var sel='main .band .bh, .lead-text, .intro .more, .axes li, .cards .card, .faces-grid > *, .infobox, .news-list li, .join-grid > *, .two-col > *, .goal-list li, .principles li, .faces-list figure, .gallery button, .pager a, .ag-shelf li, .lcards > li, .year-h, .ab-sec-h, .brand-card, .tl-body, .tl-mark, .ab-axes-head .lead-text, .ab-axis-cards li, .ab-quote blockquote, .ab-join-grid > *, .gl-ch-head > *, .gl-goals li, .gl-pr-head, .gl-seals li, .gl-join-grid > *, .ha-head > *, .face-stack, .faces-text, .hj-grid > *, .sec-row .more, .fc-item, .jn-cond-head > *, .jn-conditions li, .jn-how-grid > *, .jn-card, .jn-next a';
     var vh=window.innerHeight;
     var els=[].slice.call(document.querySelectorAll(sel)).filter(function(el){return el.getBoundingClientRect().top>vh*.92;});
     var io=new IntersectionObserver(function(entries){
@@ -165,6 +165,19 @@
     },{rootMargin:'-35% 0px -60% 0px'});
     Object.keys(glinks).forEach(function(id){var el=document.getElementById(id);if(el)gio.observe(el);});
   }
+
+  /* copy buttons (hidden without JS) */
+  [].forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    if(!navigator.clipboard)return;
+    var label=b.textContent;
+    b.hidden=false;
+    b.addEventListener('click',function(){
+      navigator.clipboard.writeText(b.dataset.copy).then(function(){
+        b.textContent=b.dataset.done;b.classList.add('done');
+        setTimeout(function(){b.textContent=label;b.classList.remove('done');},2000);
+      },function(){});
+    });
+  });
 
   var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
 })();
