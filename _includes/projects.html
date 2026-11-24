@@ -2,11 +2,10 @@
 بطاقتا مشاريع الفرع (ⴰⵖⵎⵉⵙ وⵜⵉⴼⴰⵡⵜ)، في «من نحن» وفي الرئيسية.
 include projects.html id="about"   ← id فريد لشعار ⴰⵖⵎⵉⵙ
 include projects.html id="home" home=true   ← في الرئيسية: تاريخ الإصدار وروابط القسم القديم في الرئيسية
-النصوص: وصفا ⴰⵖⵎⵉⵙ منسوخان حرفياً من newsletter/index.html، ونص ⵜⵉⴼⴰⵡⵜ بتيفيناغ من حقل tz في خبرها الأول.
+النصوص: وصفا ⴰⵖⵎⵉⵙ منسوخان حرفياً من newsletter/index.html، ونص ⵜⵉⴼⴰⵡⵜ بتيفيناغ خاص بالبطاقة (أرسله صاحب المستودع)، مستقل عن حقل tz في خبرها.
 {%- endcomment -%}
 {%- assign ag = site.data.aghmis.issues | first -%}
 {%- assign ag_pub = false -%}{%- if ag.status == "published" -%}{%- assign ag_pub = true -%}{%- endif -%}
-{%- assign tf_news = site.news | where_exp: "n", "n.url == '/news/2026-10-31-tifawt/'" | first -%}
     <div class="ab-brands">
 
       <article class="brand-card bc-aghmis">
@@ -43,9 +42,7 @@ include projects.html id="home" home=true   ← في الرئيسية: تاري�
         </a>
         <div class="bc-bi">
           <p class="bc-ar"><span lang="zgh">ⵜⵉⴼⴰⵡⵜ</span>: مشروع الفرع للإنتاج السمعي البصري، انطلق في أكتوبر 2026. يعمل على تعزيز حضور الأمازيغية في الفضاء الرقمي، بالصوت والصورة، وينشر موادّه على <a href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناته في يوتيوب <bdi dir="ltr">@tifawtihahan</bdi></a> وعلى صفحة الفرع في فيسبوك.</p>
-          {%- if tf_news.tz %}
-          <div class="bc-tz tz" lang="zgh">{{ tf_news.tz | markdownify }}</div>
-          {%- endif %}
+          <p class="bc-tz tz" lang="zgh">ⵜⵉⴼⴰⵡⵜ: ⴰⵙⵏⴼⴰⵔ ⵏ ⵡⴰⵢⵢⴰⵡ ⵉ ⵜⵙⵢⴰⴼⵓⵜ ⵏ ⵓⵙⵍⵉⵥⵉⵕ, ⵉⴱⴷⴰ ⴳ ⴽⵟⵓⴱⵕ 2026. ⴰⵔ ⵉⵙⴷⵓⵙ ⵜⵉⵍⵉⵜ ⵏ ⵜⵎⴰⵣⵉⵖⵜ ⴳ ⵓⵙⴰⵢⵔⴰⵔ ⴰⵎⵓⵟⵟⵓⵏ, ⵙ ⵉⵎⵙⵍⵉ ⴷ ⵜⵡⵍⴰⴼⵜ, ⴰⵔ ⵉⵣⵓⵣⵣⵓⵔ ⵜⵉⴼⵉⴼⵖⵉⵏ ⵏⵏⵙ ⴳ ⵓⵙⴰⵔⵓ ⵏⵏⵙ ⴳ ⵢⵓⵜⵢⵓⴱ <bdi dir="ltr">@tifawtihahan</bdi>, ⴷ ⴳ ⵜⵙⵏⴰ ⵏ ⵡⴰⵢⵢⴰⵡ ⴳ ⴼⴰⵢⵙⴱⵓⴽ.</p>
         </div>
         <div class="bc-links">
           <a class="btn btn-gold" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب</a>
