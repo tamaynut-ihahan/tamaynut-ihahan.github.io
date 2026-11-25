@@ -33,6 +33,11 @@ ul{margin:0;padding:0;list-style:none}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
 .tz{font-family:var(--f-tz);direction:ltr;unicode-bidi:isolate}
+/* bilingual: Tifinagh paragraph after the Arabic one, same size; dual label (Tifinagh above Arabic) in buttons, links, small headings */
+.tz-p{display:block;text-align:right}
+.dl{display:inline-flex;flex-direction:column;align-items:flex-start;gap:.1rem}
+.dl .tz{font-weight:400;font-size:1.15em}
+.btn .dl{align-items:center}
 .skip{position:absolute;right:-999px;top:0;background:var(--gold);color:var(--ink);padding:.5rem 1rem;z-index:100;border-radius:0 0 var(--r-sm) var(--r-sm)}
 .skip:focus{right:1rem}
 

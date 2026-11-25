@@ -13,6 +13,7 @@
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='10'%3E%3Cpath d='M14 3.5h82v3H14z' fill='%23C9A24A'/%3E%3Cpath d='M5 0l5 5-5 5-5-5z' fill='%23C9A24A'/%3E%3C/svg%3E") right center/96px 10px no-repeat}
 .hero h1{font-size:clamp(1.35rem,2.8vw,2.1rem);font-weight:800}
 .hero .slogan{max-width:42ch;color:#D3DDEB;font-size:clamp(1.05rem,2vw,1.25rem);margin:.4rem 0 2rem}
+.hero .slogan:has(+ .slogan-tz){margin-bottom:.3rem}
 /* bottom edge: soft fade into the page */
 .hero-inner::after{content:"";position:absolute;inset-inline:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,74,.5),transparent)}
 @media (prefers-reduced-motion:no-preference){

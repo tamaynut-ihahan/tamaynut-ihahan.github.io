@@ -3,6 +3,7 @@ title: "منظمة تاماينوت – فرع تمنار احاحان"
 title_tz: "ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ – ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ"
 description: "الموقع الرسمي لفرع منظمة تاماينوت بتمنار احاحان: من نحن، أهدافنا، أنشطة الفرع، سلسلة وجوه، والأخبار."
 slogan: "حركة من أجل التقسيم العادل للسلطة والثروة والشراكة في القيم"
+slogan_tz: "ⴰⵎⵓⵙⵙⵓ ⵅⴼ ⵓⴱⵟⵟⵓ ⴰⵎⵣⴷⴰⴳ ⵏ ⵓⵏⴱⴰⴹ ⴷ ⵡⴰⵢⴷⴰ ⴷ ⵜⵎⴷⵔⴰⵡⵜ ⴳ ⵡⴰⵜⵉⴳⵏ"
 url: "https://tamaynut-ihahan.org"
 baseurl: ""
 lang: ar
@@ -13,6 +14,7 @@ email: tamaynut44200@gmail.com
 address_street: "شارع المقاومة"
 address_city: "تمنار"
 address_region: "إقليم الصويرة"
+address_tz: "ⵜⴰⵙⵓⴽⵜ ⵏ ⵍⵎⵓⵇⴰⵡⴰⵎⴰ, ⵜⵎⴰⵏⴰⵔ – ⵜⴰⵙⴳⴰ ⵏ ⵚⵚⵡⵉⵔⴰ"
 facebook: "https://www.facebook.com/profile.php?id=61573979400539"
 youtube: "https://www.youtube.com/@tifawtihahan"   # قناة ⵜⵉⴼⴰⵡⵜ
 default_image: /assets/og/default.jpg
