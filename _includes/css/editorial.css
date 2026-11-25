@@ -70,7 +70,6 @@
 :root[data-theme="dark"] .ax-n{-webkit-text-stroke-color:#8DB8FF}
 .ab-axis-cards h3{font-size:1.25rem;margin-bottom:.5rem}
 .ab-axis-cards p{margin:0;color:var(--muted);font-size:1.05rem;line-height:1.85}
-.ab-axis-cards p + .tz-p{margin-top:.5rem}
 @media (max-width:860px){.ab-axes-head{grid-template-columns:1fr;align-items:start}.ab-axis-cards{grid-template-columns:1fr}}
 
 /* join */
