@@ -1,9 +1,9 @@
 :root{
   --blue:#0059C3; --blue-deep:#00408F; --ink:#0A1A3A; --gold:#C9A24A; --gold-hi:#DDB963;
   --bg:#F4F6FA; --surface:#FFFFFF; --text:#18212F; --muted:#5B6576; --line:#DDE3EC; --link:#0059C3;
-  --f-tz:"Noto Sans Tifinagh","Ebrima","Segoe UI Historic",sans-serif;
-  --f-head:"Noto Kufi Arabic","Noto Sans Tifinagh","Segoe UI",Tahoma,sans-serif;
-  --f-body:"Noto Naskh Arabic","Noto Sans Tifinagh","Traditional Arabic","Times New Roman",serif;
+  --f-tz:"Adlis Text","Noto Sans Tifinagh","Ebrima","Segoe UI Historic",sans-serif;
+  --f-head:"Noto Kufi Arabic","Adlis Text","Noto Sans Tifinagh","Segoe UI",Tahoma,sans-serif;
+  --f-body:"Noto Naskh Arabic","Adlis Text","Noto Sans Tifinagh","Traditional Arabic","Times New Roman",serif;
   --wrap:1140px;
   /* إيقاع موحّد: زوايا، ظلال، حركة */
   --r:16px; --r-sm:10px;
@@ -23,7 +23,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + 1rem);accent-color:var(--blue)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:1.125rem;line-height:1.9;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:1.125rem;line-height:1.9;-webkit-text-size-adjust:100%;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--link);text-underline-offset:.25em}
 h1,h2,h3,h4{font-family:var(--f-head);line-height:1.45;margin:0;text-wrap:balance}
@@ -32,12 +32,33 @@ ul{margin:0;padding:0;list-style:none}
 ::selection{background:var(--gold);color:var(--ink)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
-.tz{font-family:var(--f-tz);direction:ltr;unicode-bidi:isolate}
-/* bilingual: Tifinagh paragraph after the Arabic one, same size; dual label (Tifinagh above Arabic) in buttons, links, small headings */
+.tz{font-family:var(--f-tz);font-weight:400;direction:ltr;unicode-bidi:isolate}
+/* ثنائية اللغة. النص بتيفيناغ دائماً بحجم العربي.
+   .tz-p: فقرة تيفيناغ بعد العربية.
+   .bi-pair: فقرتان متقابلتان. مكدستان بفاصل ذهبي، و.cols على الشاشات العريضة: عمودان، العربية يميناً وتيفيناغ يساراً، بينهما خيط ذهبي ومعيّن.
+   .dl: تسمية مزدوجة في سطر واحد (تيفيناغ ثم العربية) بمعيّن صغير بينهما؛ إن ضاق المكان انتقلت العربية إلى سطر ثانٍ يبدأ بالمعيّن. */
 .tz-p{display:block;text-align:right}
-.dl{display:inline-flex;flex-direction:column;align-items:flex-start;gap:.1rem}
-.dl .tz{font-weight:400;font-size:1.15em}
-.btn .dl{align-items:center}
+/* Adlis هندسي ومتقارب: تباعد خفيف بين الحروف والكلمات وأسطر أوسع قليلاً في الفقرات الطويلة */
+.tz-p,.bc-tz,.pane-tz,.fc-lead.tz,.faces-lead-tz{letter-spacing:.015em;word-spacing:.12em}
+.bi-pair{position:relative;display:grid;gap:1rem}
+.bi-pair > *{margin:0}
+.bi-pair > .tz{position:relative;padding-top:1.15rem;text-align:left}
+.bi-pair > .tz::before{content:"";position:absolute;top:0;left:0;width:56px;height:8px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='8'%3E%3Cpath d='M12 3h44v2H12z' fill='%23C9A24A'/%3E%3Cpath d='M4 0l4 4-4 4-4-4z' fill='%23C9A24A'/%3E%3C/svg%3E") left center/56px 8px no-repeat}
+@media (min-width:900px){
+  .bi-pair.cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 clamp(2.4rem,5vw,4.5rem)}
+  .bi-pair.cols > .tz{padding-top:0}
+  .bi-pair.cols > .tz::before{top:.4em;bottom:.4em;left:auto;right:calc(-1 * clamp(1.2rem,2.5vw,2.25rem));width:1px;height:auto;background:linear-gradient(180deg,var(--gold),rgba(201,162,74,.15))}
+  .bi-pair.cols::after{content:"";position:absolute;top:0;left:50%;width:9px;height:9px;margin-left:-4.5px;background:var(--gold);transform:rotate(45deg)}
+}
+.dl{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:0 .55em}
+.dl > .tz{font-weight:400;font-size:1.12em}
+.dl > .tz + *{display:inline-flex;align-items:baseline;gap:.55em}
+.dl > .tz + *::before{content:"";flex:none;width:.36em;height:.36em;background:var(--gold);transform:translateY(-.12em) rotate(45deg)}
+.btn .dl{justify-content:center}
+.btn-gold .dl > .tz + *::before{background:var(--ink);opacity:.55}
+h3 .dl{flex-direction:column;gap:.05em}
+h3 .dl > .tz + *::before{display:none}
 .skip{position:absolute;right:-999px;top:0;background:var(--gold);color:var(--ink);padding:.5rem 1rem;z-index:100;border-radius:0 0 var(--r-sm) var(--r-sm)}
 .skip:focus{right:1rem}
 

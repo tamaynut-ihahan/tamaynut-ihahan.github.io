@@ -41,6 +41,8 @@
 <meta name="twitter:image" content="{{ og_image }}">
 <meta name="theme-color" content="#0059C3">
 <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
+{%- comment -%} خط Adlis لكل تيفيناغ الموقع (5 كيلوبايت)، يظهر في الشاشة الأولى من كل صفحة {%- endcomment %}
+<link rel="preload" href="{{ '/assets/fonts/adlis-tifinagh.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 {%- comment -%} CSS is inlined so the first paint doesn't wait for extra requests. Edit _includes/css/*.css {%- endcomment -%}
 {%- comment -%} أنماط مشتركة، ثم أنماط الصفحة نفسها (page.css في رأسها أو في defaults)، ثم الحركة عند التمرير. كلها مدمجة، فلا وميض. {%- endcomment %}
 {%- capture css %}{% include css/fonts.css %}{% include css/main.css %}{% for c in page.css %}{% include css/{{ c }}.css %}{% endfor %}{% include css/tail.css %}{% endcapture %}
