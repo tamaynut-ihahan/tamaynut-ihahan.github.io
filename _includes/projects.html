@@ -11,12 +11,12 @@ include projects.html id="home" home=true   ← في الرئيسية: تاري�
       <article class="brand-card bc-aghmis">
         <div class="bc-head">
           <a class="bc-logo" href="{{ '/newsletter/' | relative_url }}" aria-label="ⴰⵖⵎⵉⵙ، إصدارات">{% include aghmis-logo.svg id=include.id %}</a>
-          <p class="bc-kicker">إصدارات ثقافية</p>
+          <p class="bc-kicker"><span class="dl"><span class="tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ</span><span>إصدارات ثقافية</span></span></p>
         </div>
         {%- if ag and ag.cover %}
         <a class="bc-cover" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true">
           <img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy">
-          {%- if ag_pub %}<span class="bc-cover-cap"><small>أحدث إصدار</small><span class="tz" lang="zgh">{{ ag.title_tz }}</span>{% if include.home and ag.date %}<small>صدر في {% include date.html date=ag.date precision="month" %}</small>{% endif %}</span>{% endif %}
+          {%- if ag_pub %}<span class="bc-cover-cap"><small class="tz" lang="zgh">ⵜⴰⵥⵕⵉⴳⵜ ⵜⴰⵎⴳⴳⴰⵔⵓⵜ</small><small>أحدث إصدار</small><span class="tz" lang="zgh">{{ ag.title_tz }}</span>{% if include.home and ag.date %}<small class="tz" lang="zgh">ⴰⵙⴰⴽⵓⴷ ⵏ ⵓⵙⵓⴼⵖ</small><small>صدر في {% include date.html date=ag.date precision="month" %}</small>{% endif %}</span>{% endif %}
         </a>
         {%- endif %}
         <div class="bc-bi">
@@ -25,8 +25,8 @@ include projects.html id="home" home=true   ← في الرئيسية: تاري�
         </div>
         <div class="bc-links">
           {%- if include.home %}
-          {%- if ag_pub %}<a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">اقرأ الإصدار وحمّله</a>{% else %}<p class="bc-status"><span class="tz" lang="zgh">{{ ag.title_tz }}</span> قيد الإعداد</p>{% endif %}
-          <a class="more" href="{{ '/newsletter/' | relative_url }}">تعرّف على ⴰⵖⵎⵉⵙ</a>
+          {%- if ag_pub %}<a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵖⵔ ⵜⴰⵥⵕⵉⴳⵜ, ⵙⵔⵓⵙ ⵜⵜ</span><span>اقرأ الإصدار وحمّله</span></span></a>{% else %}<p class="bc-status"><span class="dl"><span class="tz" lang="zgh">{{ ag.title_tz }} ⴳ ⵓⴱⵔⵉⴷ ⵏ ⵓⵙⵎⵓⵜⵜⴳ</span><span><span class="tz" lang="zgh">{{ ag.title_tz }}</span> قيد الإعداد</span></span></p>{% endif %}
+          <a class="more" href="{{ '/newsletter/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵙⵙⵏ ⴰⵖⵎⵉⵙ</span><span>تعرّف على ⴰⵖⵎⵉⵙ</span></span></a>
           {%- else %}
           <a class="btn btn-gold" href="{{ '/newsletter/' | relative_url }}">إلى صفحة ⴰⵖⵎⵉⵙ</a>
           {%- endif %}
@@ -45,8 +45,8 @@ include projects.html id="home" home=true   ← في الرئيسية: تاري�
           <p class="bc-tz tz" lang="zgh">ⵜⵉⴼⴰⵡⵜ: ⴰⵙⵏⴼⴰⵔ ⵏ ⵡⴰⵢⵢⴰⵡ ⵉ ⵜⵙⵢⴰⴼⵓⵜ ⵏ ⵓⵙⵍⵉⵥⵉⵕ, ⵉⴱⴷⴰ ⴳ ⴽⵟⵓⴱⵕ 2026. ⴰⵔ ⵉⵙⴷⵓⵙ ⵜⵉⵍⵉⵜ ⵏ ⵜⵎⴰⵣⵉⵖⵜ ⴳ ⵓⵙⴰⵢⵔⴰⵔ ⴰⵎⵓⵟⵟⵓⵏ, ⵙ ⵉⵎⵙⵍⵉ ⴷ ⵜⵡⵍⴰⴼⵜ, ⴰⵔ ⵉⵣⵓⵣⵣⵓⵔ ⵜⵉⴼⵉⴼⵖⵉⵏ ⵏⵏⵙ ⴳ ⵓⵙⴰⵔⵓ ⵏⵏⵙ ⴳ ⵢⵓⵜⵢⵓⴱ <bdi dir="ltr">@tifawtihahan</bdi>, ⴷ ⴳ ⵜⵙⵏⴰ ⵏ ⵡⴰⵢⵢⴰⵡ ⴳ ⴼⴰⵢⵙⴱⵓⴽ.</p>
         </div>
         <div class="bc-links">
-          <a class="btn btn-gold" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer">قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب</a>
-          <a class="more" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}">اقرأ خبر ⵜⵉⴼⴰⵡⵜ</a>
+          <a class="btn btn-gold" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer"><span class="dl"><span class="tz" lang="zgh">ⴰⵙⴰⵔⵓ ⵏ ⵜⵉⴼⴰⵡⵜ ⴳ ⵓⵢⵓⵜⵓⴱ</span><span>قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب</span></span></a>
+          <a class="more" href="{{ '/news/2026-10-31-tifawt/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵖⵔ ⴰⵏⵖⵎⵉⵙ ⵏ ⵜⵉⴼⴰⵡⵜ</span><span>اقرأ خبر ⵜⵉⴼⴰⵡⵜ</span></span></a>
         </div>
       </article>
 
