@@ -1,9 +1,9 @@
 {%- comment -%}
-ختام «انخراط وتواصل»: في الرئيسية (contact=true: بطاقتا المقر والبريد) وفي «وجوه» (links=true: روابط إلى ⴰⵖⵎⵉⵙ والأنشطة).
+ختام «انخراط وتواصل»: في الرئيسية (contact=true: بطاقتا المقر والبريد؛ bento=true: بلاطتان بأسلوب الرئيسية في home.css) وفي «وجوه» (links=true: روابط إلى ⴰⵖⵎⵉⵙ والأنشطة).
 الأنماط في _includes/css/join.css، فأضف join إلى css: في رأس الصفحة.
 {%- endcomment -%}
 {%- assign nav_join = site.data.nav | where: "id", "join" | first -%}
-<section class="home-join" aria-labelledby="h-join">
+<section class="home-join{% if include.bento %} hj-bento{% endif %}" aria-labelledby="h-join">
   <div class="wrap hj-grid">
     <div>
       <h2 class="hj-title" id="h-join"><span class="tz" lang="zgh">{{ nav_join.tz }}</span><span class="ar">{{ nav_join.ar }}</span></h2>
