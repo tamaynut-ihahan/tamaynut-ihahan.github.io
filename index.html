@@ -2,116 +2,136 @@
 layout: default
 nav: home
 og_image: /assets/og/default.jpg
-css: [lists, editorial, home, join]
+css: [editorial, join, home]
 ---
 {%- comment -%}
-  الرئيسية: من نحن، ماذا نفعل، ماذا ننتج، كيف تنضم، في تمريرة واحدة.
-  كل النصوص من محتوى الموقع.
+  الرئيسية بأسلوب «فسيفساء»: شبكة بلاطات، لكل بلاطة وظيفة واحدة.
+  كل النصوص من محتوى الموقع، والبيانات من الأنشطة والأخبار و_data (faces، aghmis، nav) و_config.yml.
+  بطاقتا المشاريع من _includes/projects.html، والختام من _includes/join-close.html (bento=true)، فلا يتكرر نص.
 {%- endcomment -%}
 {%- assign latest_activities = site.activities | sort: "date" | reverse | slice: 0, 2 -%}
 {%- assign latest_news = site.news | sort: "date" | reverse | slice: 0, 3 -%}
 {%- assign faces = site.data.faces -%}
 {%- assign face = faces | first -%}
+{%- assign ag = site.data.aghmis.issues | first -%}
+{%- assign names_ar = site.title | split: " – " -%}
 {%- assign nav_act = site.data.nav | where: "id", "activities" | first -%}
 {%- assign nav_news = site.data.nav | where: "id", "news" | first -%}
 {%- assign nav_faces = site.data.nav | where: "id", "faces" | first -%}
-{%- assign nav_join = site.data.nav | where: "id", "join" | first -%}
 {%- assign nav_about = site.data.nav | where: "id", "about" | first -%}
 
-<header class="hero">
-  <img src="{{ '/assets/img/hero.webp' | relative_url }}" srcset="{{ '/assets/img/sm/hero.webp' | relative_url }} 640w, {{ '/assets/img/hero.webp' | relative_url }} 1080w" sizes="100vw" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
-  <div class="wrap hero-inner">
-    <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
-    <span class="tz hero-branch" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span>
-    <div class="rule" aria-hidden="true"></div>
-    <h1>{{ site.title }}</h1>
-    <div class="bi-pair cols hero-slogans">
-      <p class="slogan">{{ site.slogan }}</p>
-      <p class="slogan slogan-tz tz tz-p" lang="zgh">{{ site.slogan_tz }}</p>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn-gold" href="{{ '/join/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⴳ ⴰⴳⵎⴰⵎ ⴷⵉⴳⵏⵖ</span><span>انخرط معنا</span></span></a>
-      <a class="btn btn-ghost" href="{{ '/about/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵙⵙⵏ ⴰⵢⵢⴰⵡ</span><span>تعرّف على الفرع</span></span></a>
-    </div>
+<section class="bento hero-bento" data-hero aria-labelledby="h-site">
+  <div class="tile t-name">
+    <h1 id="h-site">
+      <span class="tz hero-name" lang="zgh">ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</span>
+      <span class="ar">{{ names_ar[0] }}</span>
+    </h1>
+    <p class="branch"><span class="tz hero-branch" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ</span><span><span class="sep" aria-hidden="true">– </span>{{ names_ar[1] }}</span></p>
   </div>
-</header>
+  <figure class="tile t-photo">
+    <img src="{{ '/assets/img/hero.webp' | relative_url }}" srcset="{{ '/assets/img/sm/hero.webp' | relative_url }} 640w, {{ '/assets/img/hero.webp' | relative_url }} 1080w" sizes="(min-width:1000px) 50vw, 100vw" alt="صورة جماعية لأعضاء فرع تاماينوت تمنار احاحان مع الأديب محمد اكوناض" fetchpriority="high" width="1080" height="484">
+  </figure>
+  <a class="tile t-go t-join" href="{{ '/join/' | relative_url }}">
+    <span class="go-arrow" aria-hidden="true"></span>
+    <span class="go-l"><span class="tz" lang="zgh">ⴳ ⴰⴳⵎⴰⵎ ⴷⵉⴳⵏⵖ</span><span class="ar">انخرط معنا</span></span>
+  </a>
+  <a class="tile t-go t-about" href="{{ '/about/' | relative_url }}">
+    <span class="go-arrow" aria-hidden="true"></span>
+    <span class="go-l"><span class="tz" lang="zgh">ⵙⵙⵏ ⴰⵢⵢⴰⵡ</span><span class="ar">تعرّف على الفرع</span></span>
+  </a>
+  {%- if ag and ag.cover %}
+  <a class="tile t-aghmis" href="{{ '/newsletter/' | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ ag.cover | relative_url }}" alt="" width="595" height="842" loading="lazy">
+    <span class="cap"><span class="tz t" lang="zgh">{{ ag.title_tz }}</span></span>
+  </a>
+  {%- endif %}
+  <a class="tile t-tifawt" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+    <img src="{{ '/assets/img/tifawt.webp' | relative_url }}" alt="" width="84" height="84" loading="lazy">
+    <span class="cap"><b class="tz" lang="zgh">ⵜⵉⴼⴰⵡⵜ</b><small>TIFAWT</small></span>
+  </a>
+</section>
 
-
-<section class="band band-alt home-about" aria-labelledby="h-about">
-  <div class="wrap">
-    <div class="ha-head">
-      <h2 class="bh" id="h-about"><span class="tz" lang="zgh">{{ nav_about.tz }}</span><span class="ar">{{ nav_about.ar }}</span></h2>
-      <div class="bi-pair cols ha-lead">
-        <p class="lead-text">فرع تمنار احاحان أحد فروع منظمة تاماينوت، المنظمة الفدرالية الأمازيغية الديمقراطية غير الحكومية التي تأسست سنة 1978. يعمل الفرع على ترجمة أهداف المنظمة إلى أنشطة ثقافية وتربوية وتنموية ملموسة، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
-        <p class="lead-text tz tz-p" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ ⵉⴳⴰ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ, ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵣⵉⵖⵜ ⵜⴰⴼⵉⴷⵉⵔⴰⵍⵉⵜ ⵜⴰⵎⴰⴳⴷⴰⵢⵜ ⵍⵍⵉ ⵉⵜⵜⵓⵙⵏⴼⵍⵓⵍⵏ ⴳ ⵓⵙⴳⴳⵯⴰⵙ ⵏ 1978, ⵓⵔ ⵜⴳⵉ ⵜⴰⵏ ⵏ ⵜⵏⴱⴰⴹⵜ. ⴰⵔ ⵉⵙⵙⵓⵖⵓⵍ ⵡⴰⵢⵢⴰⵡ ⵉⵡⵜⵜⴰⵙⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵖⵔ ⵉⵎⵓⵙⵙⵓⵜⵏ ⵉⴽⵎⴰⵎⵏ ⴳ ⵜⴷⵍⵙⴰ ⴷ ⵓⵙⴳⵎⵉ ⴷ ⵜⵎⵔⵏⵉⵡⵜ, ⵍⵍⵉ ⵉⵜⵜⴰⵡⵙⵏ ⵜⴰⵎⵏⴰⴹⵜ ⵏ ⵉⵃⴰⵃⴰⵏ ⴳ ⵎⴰⵙ ⵜⵥⵍⴰ ⴳ ⵜⴷⵍⵙⴰ, ⴷ ⵓⵎⵏⴰⴹ, ⴷ ⵓⴼⴳⴰⵏ.</p>
-      </div>
-      <p class="ha-more"><a class="more" href="{{ '/about/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵖⵔ ⵓⴳⴳⴰⵔ</span><span>اقرأ المزيد</span></span></a></p>
-    </div>
-    <ol class="ab-axis-cards ax-links">
-      <li><a href="{{ '/goals/' | relative_url }}#axis-1"><span class="ax-n" aria-hidden="true">01</span><h3><span class="dl"><span class="tz" lang="zgh">ⵉⵣⵔⴼⴰⵏ ⴷ ⵜⵎⴰⴳⵉⵜ</span><span>الحقوق والهوية</span></span></h3><div class="bi-pair"><p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p><p class="tz tz-p" lang="zgh">ⴰⵎⵣⴰⵖ ⵅⴼ ⵉⵣⵔⴼⴰⵏ ⵏ ⵓⴼⴳⴰⵏ, ⴷ ⵉⵣⵔⴼⴰⵏ ⵏ ⵜⵎⴰⵣⵉⵖⵜ ⴳ ⵜⵓⵜⵍⴰⵢⵜ ⴷ ⵜⴷⵍⵙⴰ.</p></div></a></li>
-      <li><a href="{{ '/goals/' | relative_url }}#axis-2"><span class="ax-n" aria-hidden="true">02</span><h3><span class="dl"><span class="tz" lang="zgh">ⵜⴰⴷⵍⵙⴰ ⴷ ⵓⵙⴳⵎⵉ</span><span>الثقافة والتربية</span></span></h3><div class="bi-pair"><p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p><p class="tz tz-p" lang="zgh">ⴰⵙⵏⴰⵍ ⵏ ⵜⵉⵔⵔⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵓⵙⴳⵎⵉ ⵙ ⵜⵎⴰⵣⵉⵖⵜ.</p></div></a></li>
-      <li><a href="{{ '/goals/' | relative_url }}#axis-3"><span class="ax-n" aria-hidden="true">03</span><h3><span class="dl"><span class="tz" lang="zgh">ⵜⴰⵎⵔⵏⵉⵡⵜ ⵜⴰⴷⵖⵔⴰⵏⵜ</span><span>التنمية المحلية</span></span></h3><div class="bi-pair"><p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p><p class="tz tz-p" lang="zgh">ⵉⵙⵏⴼⴰⵔⵏ ⵙ ⵜⵎⴷⵔⴰⵡⵜ ⴷ ⵉⵎⵣⴷⴰⵖⵏ, ⴷ ⵓⵃⵟⵟⵓ ⵏ ⵓⵎⵏⴰⴹ ⴷ ⵜⵔⴳⴰⵏⵜ.</p></div></a></li>
-    </ol>
-    <p class="section-foot"><a class="more" href="{{ '/goals/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵡⵜⵜⴰⵙⵏ ⴷ ⵡⴰⵜⵉⴳⵏ ⵏⵏⵖ ⴰⴽⴽⵯ</span><span>أهدافنا ومبادئنا كاملة</span></span></a></p>
+<section class="bento" aria-label="{{ site.slogan }}">
+  <div class="tile t-slogan">
+    <p class="slogan">{{ site.slogan }}</p>
+    <p class="slogan slogan-tz tz" lang="zgh">{{ site.slogan_tz }}</p>
   </div>
 </section>
 
-<section class="band home-acts" aria-labelledby="h-acts">
-  <div class="wrap">
-    <div class="sec-row">
-      <h2 class="bh" id="h-acts"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ ⵉⵎⴳⴳⵓⵔⴰ</span><span class="ar">آخر الأنشطة</span></h2>
-      <a class="more" href="{{ '/activities/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ ⴰⴽⴽⵯ</span><span>كل الأنشطة</span></span></a>
-    </div>
-    <ul class="lcards ha-acts">
-      {%- for a in latest_activities %}
-      {% include list-card.html it=a kind="activity" featured=forloop.first %}
-      {%- endfor %}
-    </ul>
+<section class="bento b-about" aria-labelledby="h-about">
+  <div class="tile t-intro">
+    <h2 class="th" id="h-about"><span class="tz" lang="zgh">{{ nav_about.tz }}</span><span class="ar">{{ nav_about.ar }}</span></h2>
+    <p class="lead-text">فرع تمنار احاحان أحد فروع منظمة تاماينوت، المنظمة الفدرالية الأمازيغية الديمقراطية غير الحكومية التي تأسست سنة 1978. يعمل الفرع على ترجمة أهداف المنظمة إلى أنشطة ثقافية وتربوية وتنموية ملموسة، بما يخدم خصوصية منطقة احاحان الثقافية والبيئية والإنسانية.</p>
+    <p class="lead-text tz" lang="zgh">ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ ⵉⴳⴰ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ, ⵜⴰⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵣⵉⵖⵜ ⵜⴰⴼⵉⴷⵉⵔⴰⵍⵉⵜ ⵜⴰⵎⴰⴳⴷⴰⵢⵜ ⵍⵍⵉ ⵉⵜⵜⵓⵙⵏⴼⵍⵓⵍⵏ ⴳ ⵓⵙⴳⴳⵯⴰⵙ ⵏ 1978, ⵓⵔ ⵜⴳⵉ ⵜⴰⵏ ⵏ ⵜⵏⴱⴰⴹⵜ. ⴰⵔ ⵉⵙⵙⵓⵖⵓⵍ ⵡⴰⵢⵢⴰⵡ ⵉⵡⵜⵜⴰⵙⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵖⵔ ⵉⵎⵓⵙⵙⵓⵜⵏ ⵉⴽⵎⴰⵎⵏ ⴳ ⵜⴷⵍⵙⴰ ⴷ ⵓⵙⴳⵎⵉ ⴷ ⵜⵎⵔⵏⵉⵡⵜ, ⵍⵍⵉ ⵉⵜⵜⴰⵡⵙⵏ ⵜⴰⵎⵏⴰⴹⵜ ⵏ ⵉⵃⴰⵃⴰⵏ ⴳ ⵎⴰⵙ ⵜⵥⵍⴰ ⴳ ⵜⴷⵍⵙⴰ, ⴷ ⵓⵎⵏⴰⴹ, ⴷ ⵓⴼⴳⴰⵏ.</p>
+    <p class="intro-links"><a class="pill" href="{{ '/about/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵖⵔ ⵓⴳⴳⴰⵔ</span><span>اقرأ المزيد</span></span></a><a class="pill" href="{{ '/goals/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵡⵜⵜⴰⵙⵏ ⴷ ⵡⴰⵜⵉⴳⵏ ⵏⵏⵖ ⴰⴽⴽⵯ</span><span>أهدافنا ومبادئنا كاملة</span></span></a></p>
   </div>
+  <a class="tile t-ax ax-1" href="{{ '/goals/' | relative_url }}#axis-1">
+    <span class="n" aria-hidden="true">01</span>
+    <h3><span class="tz" lang="zgh">ⵉⵣⵔⴼⴰⵏ ⴷ ⵜⵎⴰⴳⵉⵜ</span><span>الحقوق والهوية</span></h3>
+    <p>الدفاع عن حقوق الإنسان والحقوق اللغوية والثقافية الأمازيغية.</p>
+    <p class="tz" lang="zgh">ⴰⵎⵣⴰⵖ ⵅⴼ ⵉⵣⵔⴼⴰⵏ ⵏ ⵓⴼⴳⴰⵏ, ⴷ ⵉⵣⵔⴼⴰⵏ ⵏ ⵜⵎⴰⵣⵉⵖⵜ ⴳ ⵜⵓⵜⵍⴰⵢⵜ ⴷ ⵜⴷⵍⵙⴰ.</p>
+  </a>
+  <a class="tile t-ax ax-2" href="{{ '/goals/' | relative_url }}#axis-2">
+    <span class="n" aria-hidden="true">02</span>
+    <h3><span class="tz" lang="zgh">ⵜⴰⴷⵍⵙⴰ ⴷ ⵓⵙⴳⵎⵉ</span><span>الثقافة والتربية</span></h3>
+    <p>دعم الكتابة والإبداع والتربية باللغة الأمازيغية.</p>
+    <p class="tz" lang="zgh">ⴰⵙⵏⴰⵍ ⵏ ⵜⵉⵔⵔⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵓⵙⴳⵎⵉ ⵙ ⵜⵎⴰⵣⵉⵖⵜ.</p>
+  </a>
+  <a class="tile t-ax ax-3" href="{{ '/goals/' | relative_url }}#axis-3">
+    <span class="n" aria-hidden="true">03</span>
+    <h3><span class="tz" lang="zgh">ⵜⴰⵎⵔⵏⵉⵡⵜ ⵜⴰⴷⵖⵔⴰⵏⵜ</span><span>التنمية المحلية</span></h3>
+    <p>مشاريع بشراكة مع الساكنة، وحماية البيئة وشجرة أركان.</p>
+    <p class="tz" lang="zgh">ⵉⵙⵏⴼⴰⵔⵏ ⵙ ⵜⵎⴷⵔⴰⵡⵜ ⴷ ⵉⵎⵣⴷⴰⵖⵏ, ⴷ ⵓⵃⵟⵟⵓ ⵏ ⵓⵎⵏⴰⴹ ⴷ ⵜⵔⴳⴰⵏⵜ.</p>
+  </a>
 </section>
 
-<section class="band band-alt home-projects" aria-labelledby="ab-projects-h">
-  <div class="wrap">
-    <h2 class="bh" id="ab-projects-h"><span class="tz" lang="zgh">ⵉⵙⵏⴼⴰⵔⵏ ⵏ ⵡⴰⵢⵢⴰⵡ</span><span class="ar">مشاريع الفرع</span></h2>
-    {% include projects.html id="home" home=true %}
+<section class="bento b-feed" aria-labelledby="h-acts">
+  <div class="row-head">
+    <h2 class="th" id="h-acts"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ ⵉⵎⴳⴳⵓⵔⴰ</span><span class="ar">آخر الأنشطة</span></h2>
+    <a class="pill" href="{{ '/activities/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵎⵓⵙⵙⵓⵜⵏ ⴰⴽⴽⵯ</span><span>كل الأنشطة</span></span></a>
   </div>
+  {%- for a in latest_activities %}
+  {%- assign c_src = a.card_image | default: a.image %}
+  <a class="tile t-card{% if forloop.first %} t-wide{% endif %}" href="{{ a.url | relative_url }}">
+    <span class="card-img"><img src="{% include img.html src=c_src size="sm" %}" alt="{{ a.card_alt | default: a.image_alt | escape }}" loading="lazy" width="640" height="286"></span>
+    <span class="card-b"><span class="chip">{% include date.html date=a.date weekday=true %}</span><h3>{{ a.title | escape }}</h3>{% if forloop.first and a.description %}<span class="card-desc">{{ a.description | strip_html | escape }}</span>{% endif %}</span>
+  </a>
+  {%- endfor %}
 </section>
 
-<section class="band faces-band" aria-labelledby="h-faces">
-  <div class="wrap faces-grid">
-    <div class="faces-text">
-      <h2 class="bh" id="h-faces"><span class="tz" lang="zgh">{{ nav_faces.tz }}</span><span class="ar">{{ nav_faces.ar }}</span></h2>
-      <div class="faces-intro">
-        <p class="faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
-        <p class="tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
-      </div>
-      <span class="tz face-name" lang="zgh">{{ face.name_tz }}</span>
-      <a class="btn btn-line" href="{{ '/faces/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ ⴰⴽⴽⵯ</span><span>كل الوجوه</span></span></a>
-    </div>
-    <div class="face-stack">
+<section class="bento b-proj" aria-labelledby="h-proj">
+  <div class="row-head">
+    <h2 class="th" id="h-proj"><span class="tz" lang="zgh">ⵉⵙⵏⴼⴰⵔⵏ ⵏ ⵡⴰⵢⵢⴰⵡ</span><span class="ar">مشاريع الفرع</span></h2>
+  </div>
+  {% include projects.html id="home" home=true %}
+  <div class="tile t-faces">
+    <h3 class="th"><span class="tz" lang="zgh">{{ nav_faces.tz }}</span><span class="ar">{{ nav_faces.ar }}</span></h3>
+    <p class="fl faces-lead">مشروع رقمي للتعريف بشخصيات احاحان</p>
+    <p class="fl tz faces-lead-tz" lang="zgh">ⴰⵚⵏⴼⴰⵕ ⴰⵎⵓⵟⵟⵓⵏ ⵏ ⵓⵙⵓⵙⵙⵏ ⵙ ⵓⴷⵎⴰⵡⵏ ⵏ ⵜⵎⴰⵣⵉⵔⵜ</p>
+    <div class="fan">
       {%- for f in faces offset: 1 limit: 2 %}
-      <img class="fs-back fs-{{ forloop.index }}" src="{% include img.html src=f.image size="sm" %}" alt="" aria-hidden="true" loading="lazy" width="{{ f.width }}" height="{{ f.height }}">
+      <img class="fan-{{ forloop.index }}" src="{% include img.html src=f.image size="sm" %}" alt="" aria-hidden="true" loading="lazy" width="{{ f.width }}" height="{{ f.height }}">
       {%- endfor %}
-      <button class="face-card zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | default: face.name_tz | escape }}">
-        <img src="{% include img.html src=face.image size="sm" %}" alt="بطاقة وجوه: {{ face.label | default: face.name_tz | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}">
-        <span class="zoom-ico" aria-hidden="true"></span>
-      </button>
+      <button class="fan-front zoom" data-zoom="{{ face.image | relative_url }}" aria-label="تكبير بطاقة {{ face.label | default: face.name_tz | escape }}"><img src="{% include img.html src=face.image size="sm" %}" alt="بطاقة وجوه: {{ face.label | default: face.name_tz | escape }}" loading="lazy" width="{{ face.width }}" height="{{ face.height }}"></button>
     </div>
+    <p class="face-name tz" lang="zgh">{{ face.name_tz }}</p>
+    <a class="pill pill-light" href="{{ '/faces/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵓⴷⵎⴰⵡⵏ ⴰⴽⴽⵯ</span><span>كل الوجوه</span></span></a>
   </div>
 </section>
 
-<section class="band home-news" aria-labelledby="h-news">
-  <div class="wrap">
-    <div class="sec-row">
-      <h2 class="bh" id="h-news"><span class="tz" lang="zgh">{{ nav_news.tz }}</span><span class="ar">{{ nav_news.ar }}</span></h2>
-      <a class="more" href="{{ '/news/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ ⴰⴽⴽⵯ</span><span>كل الأخبار</span></span></a>
-    </div>
-    <ul class="lcards news-cards hn-grid">
-      {%- for n in latest_news %}
-      {% include list-card.html it=n kind="news" featured=forloop.first %}
-      {%- endfor %}
-    </ul>
+<section class="bento b-news" aria-labelledby="h-news">
+  <div class="row-head">
+    <h2 class="th" id="h-news"><span class="tz" lang="zgh">{{ nav_news.tz }}</span><span class="ar">{{ nav_news.ar }}</span></h2>
+    <a class="pill" href="{{ '/news/' | relative_url }}"><span class="dl"><span class="tz" lang="zgh">ⵉⵏⵖⵎⵉⵙⵏ ⴰⴽⴽⵯ</span><span>كل الأخبار</span></span></a>
   </div>
+  {%- for n in latest_news %}
+  <a class="tile t-news" href="{{ n.url | relative_url }}">
+    <span class="card-img"><img class="img-bg" src="{% include img.html src=n.image size="xs" %}" alt="" aria-hidden="true" loading="lazy" width="240" height="300"><img src="{% include img.html src=n.image size="sm" %}" alt="{{ n.image_alt | escape }}" loading="lazy" width="640" height="800"></span>
+    <span class="card-b"><span class="chip">{% include date.html date=n.date precision=n.date_precision %}</span><h3>{{ n.list_title | default: n.title | escape }}</h3>{% if forloop.first and n.description %}<span class="card-desc">{{ n.description | strip_html | escape }}</span>{% endif %}</span>
+  </a>
+  {%- endfor %}
 </section>
 
-{% include join-close.html contact=true %}
+{% include join-close.html contact=true bento=true %}
+
+<a class="sticky-cta" data-sticky-cta href="{{ '/join/' | relative_url }}" tabindex="-1" aria-hidden="true"><span class="dl"><span class="tz" lang="zgh">ⴳ ⴰⴳⵎⴰⵎ ⴷⵉⴳⵏⵖ</span><span>انخرط معنا</span></span></a>
