@@ -169,12 +169,12 @@
   /* copy buttons (hidden without JS) */
   [].forEach.call(document.querySelectorAll('[data-copy]'),function(b){
     if(!navigator.clipboard)return;
-    var label=b.textContent;
+    var label=b.innerHTML;
     b.hidden=false;
     b.addEventListener('click',function(){
       navigator.clipboard.writeText(b.dataset.copy).then(function(){
         b.textContent=b.dataset.done;b.classList.add('done');
-        setTimeout(function(){b.textContent=label;b.classList.remove('done');},2000);
+        setTimeout(function(){b.innerHTML=label;b.classList.remove('done');},2000);
       },function(){});
     });
   });
