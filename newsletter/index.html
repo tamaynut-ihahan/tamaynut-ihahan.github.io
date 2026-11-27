@@ -42,17 +42,17 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
     {%- endif %}
     {%- if published and latest.contributors %}
     <div class="ag-contrib">
-      <h3>في هذا الإصدار</h3>
+      <h3><span class="dl"><span class="tz" lang="zgh">ⴳ ⵜⵥⵕⵉⴳⵜ ⴰ</span><span>في هذا الإصدار</span></span></h3>
       <ul>{% for c in latest.contributors %}<li>{{ c }}</li>{% endfor %}</ul>
     </div>
     {%- endif %}
     {%- if published %}
     <div class="ag-dl">
       {%- if latest.pdf_phone %}
-      <a class="btn btn-gold" href="{{ latest.pdf_phone | relative_url }}" download>للقراءة على الهاتف<small>PDF{% if latest.size_phone %} · {{ latest.size_phone }}{% endif %}</small></a>
+      <a class="btn btn-gold" href="{{ latest.pdf_phone | relative_url }}" download><span class="dl"><span class="tz" lang="zgh">ⵜⵓⵏⵖⵉⵍⵜ ⵏ ⵜⵜⵉⵍⵉⴼⵓⵏ</span><span>للقراءة على الهاتف</span></span><small>PDF{% if latest.size_phone %} · {{ latest.size_phone }}{% endif %}</small></a>
       {%- endif %}
       {%- if latest.pdf_a4 %}
-      <a class="btn btn-line" href="{{ latest.pdf_a4 | relative_url }}" download>للطباعة A4<small>PDF{% if latest.size_a4 %} · {{ latest.size_a4 }}{% endif %}</small></a>
+      <a class="btn btn-line" href="{{ latest.pdf_a4 | relative_url }}" download><span class="dl"><span class="tz" lang="zgh">ⵜⵓⵏⵖⵉⵍⵜ A4 ⵉ ⵓⵙⵉⴳⴳⵣ</span><span>للطباعة A4</span></span><small>PDF{% if latest.size_a4 %} · {{ latest.size_a4 }}{% endif %}</small></a>
       {%- endif %}
     </div>
     {%- else %}
@@ -68,7 +68,7 @@ description: "ⴰⵖⵎⵉⵙ: إصدارات ثقافية مستقلة يصدر
     <p class="ag-bi-ar">إصدارات ثقافية مستقلة يصدرها فرع منظمة تاماينوت بتمنار إحاحان، تُعنى بالأدب والإبداع والتراث الأمازيغي.</p>
     <p class="ag-bi-tz tz" lang="zgh">ⵜⵉⵥⵕⵉⴳⵉⵏ ⵜⵉⴷⵍⵙⴰⵏⵉⵏ ⵏ ⵜⵎⴰⴳⵔⴰⵡⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ ⴰⵢⵢⴰⵡ ⵏ ⵜⵎⴰⵏⴰⵔ ⵉⵃⴰⵃⴰⵏ, ⵥⵍⵉⵏⵜ ⵉ ⵜⵙⴽⵍⴰ ⴷ ⵓⵙⵏⴼⵍⵓⵍ ⴷ ⵜⴰⵢⵙⵉ ⵏ ⵜⵎⴰⵣⵉⵖⵜ.</p>
   </div>
-  <p class="ag-credit">الإشراف: مكتب الفرع</p>
+  <p class="ag-credit"><span class="dl"><span class="tz" lang="zgh">ⴰⵔⴰⵢⴱ: ⴰⵙⵉⵔⴰ ⵏ ⵡⴰⵢⵢⴰⵡ</span><span>الإشراف: مكتب الفرع</span></span></p>
 </div></section>
 
 {%- assign past = issues | where: "status", "published" -%}

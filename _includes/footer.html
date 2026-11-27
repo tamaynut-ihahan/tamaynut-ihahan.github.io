@@ -7,24 +7,20 @@
         <p class="foot-slogan tz tz-p" lang="zgh">{{ site.slogan_tz }}</p>
       </div>
       <div>
-        <h2>الموقع</h2>
+        <h2><span class="dl"><span class="tz" lang="zgh">ⴰⵙⵉⵜ</span><span>الموقع</span></span></h2>
         <ul>
-          <li><a href="{{ '/about/' | relative_url }}">من نحن</a></li>
-          <li><a href="{{ '/goals/' | relative_url }}">أهدافنا</a></li>
-          <li><a href="{{ '/activities/' | relative_url }}">أنشطة</a></li>
-          <li><a href="{{ '/faces/' | relative_url }}">وجوه</a></li>
-          <li><a href="{{ '/newsletter/' | relative_url }}">ⴰⵖⵎⵉⵙ – إصدارات</a></li>
-          <li><a href="{{ '/news/' | relative_url }}">أخبار</a></li>
-          <li><a href="{{ '/join/' | relative_url }}">انخراط وتواصل</a></li>
+          {%- for item in site.data.nav %}{% if item.id == "home" %}{% continue %}{% endif %}
+          <li><a href="{{ item.url | relative_url }}"><span class="dl"><span class="tz" lang="zgh">{{ item.tz }}</span><span>{{ item.ar }}</span></span></a></li>
+          {%- endfor %}
         </ul>
       </div>
       <div>
-        <h2>تواصل</h2>
+        <h2><span class="dl"><span class="tz" lang="zgh">ⴰⵎⵢⴰⵡⴰⴹ</span><span>تواصل</span></span></h2>
         <ul>
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-          <li>{{ site.address_street }}، {{ site.address_city }} – {{ site.address_region }}</li>
+          <li>{{ site.address_street }}، {{ site.address_city }} – {{ site.address_region }}<span class="tz tz-p" lang="zgh">{{ site.address_tz }}</span></li>
         </ul>
-        <h2 class="foot-follow">تابعونا</h2>
+        <h2 class="foot-follow"><span class="dl"><span class="tz" lang="zgh">ⴹⴼⵓⵕⴰⵜ ⴰⵖ</span><span>تابعونا</span></span></h2>
         {% include social.html %}
       </div>
     </div>
@@ -35,6 +31,6 @@
         <li><a class="mk-tifawt" href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer" aria-label="قناة ⵜⵉⴼⴰⵡⵜ على يوتيوب (تفتح في نافذة جديدة)"><img src="{{ '/assets/img/tifawt.webp' | relative_url }}" alt="" loading="lazy" width="84" height="84"><span><b lang="zgh">ⵜⵉⴼⴰⵡⵜ</b><small lang="en">TIFAWT</small></span></a></li>
       </ul>
     </div>
-    <p class="copy">© <span id="year">{{ site.time | date: "%Y" }}</span> {{ site.title }}</p>
+    <p class="copy">© <span id="year">{{ site.time | date: "%Y" }}</span> {{ site.title }}<span class="tz tz-p" lang="zgh">{{ site.title_tz }}</span></p>
   </div>
 </footer>
