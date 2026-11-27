@@ -94,3 +94,11 @@
     @keyframes light{to{background-position:100% 0}}
   }
 }
+/* bilingual: Tifinagh above the Arabic in titles and facts, Tifinagh paragraph after the Arabic */
+.tl-body h2,.ab-join-h{display:flex;flex-direction:column;gap:.15rem}
+.tl-body h2 .tz,.ab-join-h .tz,.ab-sec-h .tz{font-weight:400}
+.ab-facts b.tz{font-weight:400}
+.ab-facts dd .tz{text-align:right}
+.tl-tz{font-size:clamp(1.12rem,1.3vw,1.22rem);line-height:2.05;max-width:58ch}
+.ab-join p + .tz-p{margin-top:-1rem}
+.tl-body h2,.ab-join-h{align-items:flex-start}

@@ -141,3 +141,8 @@
 .gl-goals p + .tz-p{margin-top:.6rem}
 .gl-intro + .gl-intro{margin-top:.8rem}
 .gi-t .dl{display:flex}
+.gl-join .ab-join-h{display:flex;flex-direction:column;gap:.15rem}
+.gl-join .ab-join-h .tz{font-weight:400}
+.gl-join p:not(.gl-join-kicker) + .tz-p{margin-top:.8rem}
+.gl-ch-title h2,.gl-pr-head h2,.gl-join .ab-join-h{align-items:flex-start}
+@media (max-width:640px){.seal-t{align-items:flex-start}}
