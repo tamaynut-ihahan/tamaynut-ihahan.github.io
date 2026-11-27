@@ -134,3 +134,10 @@
 .gl-join p:not(.gl-join-kicker){color:#E3ECFA;max-width:52ch;margin:0;font-size:1.15rem}
 .gl-join .btn{padding:1rem 2rem;font-size:1.05rem}
 @media (max-width:760px){.gl-join-grid{grid-template-columns:1fr}.gl-join .btn{justify-self:start}}
+/* bilingual: Tifinagh above the Arabic in titles, Tifinagh paragraph under each goal */
+.gl-ch-title h2,.gl-pr-head h2,.seal-t{display:flex;flex-direction:column;gap:.15rem}
+.gl-ch-title h2 .tz,.gl-pr-head h2 .tz{font-weight:400}
+.seal-t .tz{font-weight:400;font-size:1.12em}
+.gl-goals p + .tz-p{margin-top:.6rem}
+.gl-intro + .gl-intro{margin-top:.8rem}
+.gi-t .dl{display:flex}
