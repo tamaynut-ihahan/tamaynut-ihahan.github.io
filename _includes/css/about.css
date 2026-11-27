@@ -85,6 +85,7 @@
 .ab-quote::after{content:"";position:absolute;inset:0;z-index:-1;background-size:56px 56px;opacity:.05}
 .ab-quote blockquote{margin:0;position:relative;padding-top:clamp(3rem,7vw,4.5rem)}
 .ab-quote blockquote::before{content:"»";position:absolute;top:0;right:0;font-family:var(--f-head);font-weight:800;font-size:clamp(5rem,12vw,8rem);line-height:.8;color:var(--gold)}
+.ab-quote p.tz{font-family:var(--f-tz);font-weight:400;margin-top:1.2rem}
 .ab-quote p{margin:0;max-width:24ch;font-family:var(--f-head);font-weight:800;font-size:clamp(1.8rem,4.6vw,3.6rem);line-height:1.5;text-wrap:balance}
 @supports (animation-timeline:view()){
   @media (prefers-reduced-motion:no-preference){
